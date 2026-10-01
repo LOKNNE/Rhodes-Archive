@@ -18,6 +18,28 @@ Reproduce, archiva y disfruta historias de **Arknights** con soporte para traduc
 
 ---
 
+## 📸 Capturas
+
+### Pantalla principal
+
+<div align="center">
+  <img src="docs/screenshots/1.png" width="900" alt="Pantalla principal de Rhodes Archive" />
+</div>
+
+### Biblioteca de historias
+
+<div align="center">
+  <img src="docs/screenshots/2.png" width="900" alt="Biblioteca de historias de Rhodes Archive" />
+</div>
+
+### Traducciones
+
+<div align="center">
+  <img src="docs/screenshots/3.png" width="900" alt="Gestor de traducciones de Rhodes Archive" />
+</div>
+
+---
+
 ## ✨ Qué es Rhodes Archive
 
 **Rhodes Archive** es un proyecto fan no oficial basado en el proyecto open-source **Arkstage**. Su objetivo es facilitar la reproducción, archivo y traducción de historias de Arknights, empezando por una experiencia adaptada al español.
