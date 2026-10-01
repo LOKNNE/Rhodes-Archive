@@ -1,129 +1,41 @@
-# 方舟剧场（Arkstage）
+# Rhodes Archive
 
-方舟剧场是一个明日方舟（Arknights）剧情的离线演出回放器。它把 [PRTS Wiki](https://prts.wiki) 的原版演出引擎（新版 StoryPlayer，兼容旧版 ScenarioSimulator）搬进一个跨平台应用里运行，呈现立绘、背景、音频与对话动画，并支持预下载后在无网或计费网络环境下完全离线播放。支持 Android 与桌面（Windows / macOS / Linux）。
+Fan-made archive and story player for **Arknights**, focused on preserving and reproducing stories with custom translations.
 
----
+## About
 
-## ⚠️ 免责声明
+Rhodes Archive is an unofficial fan project based on the open-source **Arkstage** project. The goal is to make Arknights stories easier to archive, replay and translate, starting with Spanish translations.
 
-- 本项目是非官方的同人 / 学习性质作品，与上海鹰角网络（Hypergryph）及 PRTS Wiki 没有任何隶属或合作关系。
-- 剧情文本、立绘、音频、背景和书架封面等素材版权归《明日方舟》/ 鹰角网络所有。剧情演出素材不随安装包分发，运行时从 PRTS 获取；书架分类与封面由本项目独立的 `resources` 分支提供（jsDelivr 优先、GitHub 直连回退），并缓存到本地，仅供个人离线查阅。
-- 请合理使用，控制下载频率以免对 PRTS 源站造成压力，勿用于任何商业用途。
-- 剧情内容的准确性、立绘是否缺失等取决于上游 PRTS Wiki，本应用对此不作担保。
+Current work includes:
+- Spanish interface
+- External `.txt` translation support
+- Fullscreen story playback
+- Custom branding for Rhodes Archive
+- Fan translations of Arknights stories and collaborations
 
----
+## Translations
 
-## ✨ 功能特性
+Rhodes Archive can load translated story scripts from external `.txt` files. A translation file starts with:
 
-- **原版演出还原**：优先运行 PRTS Wiki 的新版 StoryPlayer，支持角色与表情差分合成、手动 / 自动 / 快速播放。每次启动同步并校验引擎和资源表，失败时保留上次验证成功的快照；旧版剧情与缓存继续兼容。
-- **电子书式书架**：以游戏内 StoryLine「曲谱 / 乐章」原图作封面，按剧情关系陈列。书架分类与封面在每次启动时后台刷新，无需更新应用即可识别新章节；长按卡片可进入多选批量下载，缓存与已读状态用圆点标识。
-- **真离线播放**：预下载后断网也能完整播放，运行时资源一律走本地。在线浏览时缺失的资源会自动拉取并缓存。
-- **按范围预下载**：可按单个剧情 / 章节 / 分类批量下载，通过引擎自身的资源清单精确获取所需文件。
-- **内容寻址去重**：跨章节复用的立绘、音乐等相同资源只下载与存储一份，节省空间。
-- **更新检测**：首页显示当前版本号，检测到新版本时高亮闪烁「检测到更新」，点击直接跳转到发布页下载。
-- **博士昵称**：替换剧情文本中的 `{@nickname}` 占位符为自定义昵称。
+```txt
+#ARKSTAGE_TITLE=PAGE_TITLE
+```
 
----
+followed by the complete translated story script.
 
-## 📦 下载与安装
+## Links
 
-前往 [**Releases**](https://github.com/djkcyl/arkstage/releases) 下载对应平台的安装包：
+- YouTube: https://www.youtube.com/@LOKNNE
+- Reddit: https://www.reddit.com/user/LOKNNE/
 
-| 平台 | 文件 | 说明 |
-|------|------|------|
-| Android | `*-android-arm64-v8a.apk` | 64 位机型，侧载安装（需在系统里允许安装未知来源应用） |
-| Windows | `*-setup.exe` | 中文安装向导 |
-| macOS | `.dmg` | 区分 Apple Silicon 与 Intel |
-| Linux | `.deb` / `.rpm` | 按发行版选择 |
+## Credits
 
----
+Rhodes Archive is based on **Arkstage** and uses resources and technology related to **PRTS Wiki / StoryPlayer**.
 
-## 🚀 使用说明
+Arknights, its characters, artwork, audio and story content belong to **Hypergryph** and their respective owners.
 
-首次启动需要联网一次，从 PRTS 拉取剧情目录，并获取书架分类与封面（jsDelivr 优先、GitHub 直连回退；之后均为缓存优先、后台刷新）。双线路都失败时会保留上次成功缓存并显示可重试提示。播放引擎会启动热更新；离线或校验失败时自动回滚，不需要手工预缓存。
+This project is unofficial and is not affiliated with Hypergryph or PRTS Wiki.
 
-**在线观看**
+## License
 
-1. 首页点 **「浏览剧情」** 进入书架。
-2. 选择分类与章节，点开任意剧情即可在线播放。播放过程中用到的资源会自动缓存，供之后离线复看。
-
-**离线下载**
-
-想在断网或计费网络下观看，先在不限量网络下预下载资源：
-
-- 在播放器内点 **「预下载本剧情资源」** 下载当前这部；
-- 或在书架里 **长按** 封面卡片 / 章节进入多选，勾选后用底栏的 **「⬇ 下载」** 批量获取。
-
-下载完成后即可断网流畅播放已缓存的剧情。
-
-**下载机制说明**
-
-应用通过引擎自身的资源清单精确知道每部剧情需要哪些文件，按内容寻址存放到本地；跨剧情复用的素材只存一份。下载受设置里的全局并发数与限速约束，可后台进行、断点续传。
-
----
-
-## ⚙️ 设置详解
-
-- **博士昵称**：填入后会替换剧情文本中的 `{@nickname}` 占位符。
-- **下载设置（并发与限速）**：
-  - **并发数**：同时下载的文件数，数值越大越快、对源站压力越大，默认 4。
-  - **限速（KB/s）**：全局下载速度上限，填 `0` 表示不限速。
-- **播放器返回按钮**：控制播放器左上角是否显示返回按钮。隐藏后仍可用系统返回手势 / 按键退出播放器。
-- **调试控制台**：开启后在应用内显示一个日志控制台，用于排查问题，一般用户保持关闭即可。
-- **资源目录**（桌面端）：剧情图片 / 音频、引擎文件与缓存的存放位置，可改到容量更大的磁盘。Android 端固定在应用私有外部目录，不显示此项。
-- **缓存管理**：
-  - 显示已缓存剧情数量与占用总大小；
-  - **缓存全部剧情**：一次性下载所有剧情资源（占用较大，慎用）；
-  - **压缩资源**：把已缓存的图片转成 WebP 以大幅减小占用（缓存里图片约占九成）。点开后选择一个档位——**无损**（画质不变、约省一半）、**高质量**（肉眼无损、约省八成）、**极致**（体积最小、约省九成），确认后开始「记忆重组」。压缩会替换原图（不保留原始 PNG），期间无法下载新资源，可暂停 / 退出后继续；开启后新下载的图片也会自动压缩。切到更激进的档位会对已压图片二次压缩。
-  - **清除所有缓存**：删除已下载的剧情媒体、剧情索引、书架元数据与封面缓存。内置的引擎与字体不受影响，也不会被清除。
-- **关于**：查看版本号、免责声明、开源许可、上游软件声明，以及项目主页与 PRTS Wiki 链接。
-- **环境信息**：汇总运行环境（系统、WebView 版本等），反馈问题时一并提供有助于定位。
-
----
-
-## ❓ 常见问题
-
-**首次打开必须联网吗？**
-需要联网一次以获取剧情目录、书架分类与封面。之后它们会被缓存，断网也能浏览；只有观看未下载过的剧情才需要再次联网。
-
-**安装包为什么有十几 MB？**
-播放引擎（ScenarioSimulator、toolbox、PreloadJS 等）采用在线热更新、版本化缓存和安装包应急副本三级策略；下载剧情后仍可完全离线播放。
-
-**某部剧情的立绘 / 图片缺失或显示异常？**
-演出资源来自上游 PRTS Wiki。应用会在启动时刷新 PRTS 的全局资源表，并自动修补“图片表已更新但角色映射表尚未同步”的缺口；若仍有异常，请附调试日志与截图提交 Issue。
-
-**怎么更新到新版本？**
-首页底部显示当前版本号。检测到新版本时版本号会变红并闪烁「检测到更新」，点击即跳转到 GitHub 发布页，下载对应平台安装包覆盖安装即可。
-
-**Android 上为什么是横屏 / 侧滑返回？**
-仅播放器锁定横屏并隐藏系统栏以获得沉浸式演出体验，其余页面保持竖屏并显示系统栏。各级页面逐级返回，根页面再返回才退出应用。
-
-**清除缓存会把引擎也删掉吗？**
-不会。「清除所有缓存」会删除剧情媒体、目录与书架资源缓存，内置的引擎与字体始终保留。
-
-**「压缩资源」会损失画质吗？能撤销吗？**
-取决于档位：**无损**档画质完全不变；**高质量**档肉眼基本无损；**极致**档体积最小、可能有轻微可见差异。压缩会替换原图、不保留原始 PNG，**无法还原**，但可随时重新下载对应剧情以恢复原图。压缩期间为避免冲突会暂时禁止下载新资源，任务支持暂停与退出后自动续传。
-
----
-
-## 💬 反馈与建议
-
-遇到问题或有功能建议，欢迎在 GitHub 提交 Issue：
-
-**https://github.com/djkcyl/arkstage/issues**
-
-提交时附上 **设置 → 环境信息** 里的内容、复现步骤与截图，能帮助更快定位问题。
-
----
-
-## 📜 开源与许可
-
-本应用使用并致谢以下上游：ScenarioSimulator 演出引擎（PRTS Wiki）、jQuery、PreloadJS / CreateJS、Tauri、React、React Router、Noto Sans CJK 字体。各组件许可证全文见应用内 **设置 → 关于 → 开源许可**。
-
-项目源码托管于 GitHub：**https://github.com/djkcyl/arkstage** 。仓库当前尚未指定开源许可证，在补充 `LICENSE` 之前默认保留所有权利。
-
----
-
-## 🛠 参与开发
-
-构建、调试、项目结构、CI / 发版等开发者文档见 [`docs/DEVELOPMENT.md`](https://github.com/djkcyl/arkstage/blob/master/docs/DEVELOPMENT.md)。
+The code and original modifications in this repository are released under the **MIT License**. This license does not apply to Arknights game assets, story text, artwork, music, audio or other copyrighted content owned by Hypergryph or other rights holders.
