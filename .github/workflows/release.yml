@@ -1,0 +1,188 @@
+name: Release
+
+# Triggered by pushing a version tag (e.g. v1.0.0 or v1.0.0-beta.1).
+# Tags containing a hyphen (e.g. -beta, -rc) are published as pre-releases.
+# Builds for Windows / macOS (Intel + Apple Silicon) / Linux and uploads the
+# installers to the GitHub Release assets.
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Release (${{ matrix.platform }} ${{ matrix.args }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: macos-latest
+            args: "--target aarch64-apple-darwin"
+            rust-targets: aarch64-apple-darwin
+          - platform: macos-latest
+            args: "--target x86_64-apple-darwin"
+            rust-targets: x86_64-apple-darwin
+          - platform: ubuntu-22.04
+            args: ""
+            rust-targets: ""
+          - platform: windows-latest
+            args: ""
+            rust-targets: ""
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Linux dependencies
+        if: matrix.platform == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libwebkit2gtk-4.1-dev build-essential curl wget file \
+            libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.rust-targets }}
+
+      - uses: swatinem/rust-cache@v2
+        with:
+          workspaces: "./src-tauri -> target"
+
+      # Use the repaired cross-platform lockfile tested for this release.
+      - name: Install dependencies (locked)
+        shell: bash
+        run: npm ci --no-audit --no-fund
+
+      - name: Build and publish to the release
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # The official release ships with the debug console OFF by default
+          # (users can still enable it in Settings).
+          VITE_DEBUG_DEFAULT: "false"
+        with:
+          tagName: ${{ github.ref_name }}
+          releaseName: "方舟剧场 ${{ github.ref_name }}"
+          releaseBody: "从下方 Assets 下载对应平台的安装包。"
+          releaseDraft: true
+          prerelease: ${{ contains(github.ref_name, '-') }}
+          args: ${{ matrix.args }}
+
+  # Android isn't a tauri-action target, so build the per-ABI APKs separately and
+  # attach it to the same release. Ships arm64-v8a only (real 64-bit phones);
+  # x86_64 (emulator) and 32-bit are dropped — no real target needs them. Signed
+  # with the real keystore when the ANDROID_KEYSTORE_* secrets are set, otherwise
+  # debug-signed (still installs).
+  android:
+    name: Release (Android arm64-v8a)
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install NDK + platform/build-tools, export NDK env
+        run: |
+          yes | sdkmanager "ndk;27.2.12479018" "platforms;android-35" "build-tools;35.0.0"
+          echo "NDK_HOME=$ANDROID_HOME/ndk/27.2.12479018" >> "$GITHUB_ENV"
+          echo "ANDROID_NDK_HOME=$ANDROID_HOME/ndk/27.2.12479018" >> "$GITHUB_ENV"
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-linux-android
+
+      - uses: swatinem/rust-cache@v2
+        with:
+          workspaces: "./src-tauri -> target"
+
+      - name: Install dependencies (locked)
+        shell: bash
+        run: npm ci --no-audit --no-fund
+
+      # Restore the signing keystore from a secret when present. Unset → the Gradle
+      # release type falls back to debug signing (build.gradle.kts), so the APK
+      # still installs on a device. To enable real signing, set repo secrets:
+      # ANDROID_KEYSTORE_BASE64 (`base64 -w0 prts-release.jks`), ANDROID_KEYSTORE_PASSWORD,
+      # ANDROID_KEY_ALIAS, ANDROID_KEY_PASSWORD.
+      - name: Restore release keystore (optional)
+        id: keystore
+        env:
+          KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/release.jks"
+            echo "path=$RUNNER_TEMP/release.jks" >> "$GITHUB_OUTPUT"
+            echo "Release keystore restored — signing with the real key."
+          else
+            echo "No ANDROID_KEYSTORE_BASE64 secret — falling back to debug signing."
+          fi
+
+      - name: Build arm64-v8a release APK
+        env:
+          # The official release ships with the debug console OFF by default
+          # (users can still enable it in Settings) — matches the desktop release.
+          VITE_DEBUG_DEFAULT: "false"
+          ANDROID_KEYSTORE_PATH: ${{ steps.keystore.outputs.path }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: npm run tauri android build -- --apk --target aarch64 --split-per-abi
+
+      - name: Collect and rename APK
+        run: |
+          out=src-tauri/gen/android/app/build/outputs/apk
+          mkdir -p dist-apk
+          arm=$(find "$out" -path '*arm64*' -name '*release*.apk' | head -1)
+          test -n "$arm" || { echo "::error::arm64-v8a APK not found under $out"; find "$out" -name '*.apk'; exit 1; }
+          cp "$arm" "dist-apk/arkstage-${{ github.ref_name }}-android-arm64-v8a.apk"
+          ls -lh dist-apk
+
+      - name: Attach APKs to the release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          draft: true
+          prerelease: ${{ contains(github.ref_name, '-') }}
+          files: dist-apk/*.apk
+
+  publish:
+    name: Publish complete release
+    needs: [release, android]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish release notes and installers
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: ${{ github.ref_name }}
+          IS_PRERELEASE: ${{ contains(github.ref_name, '-') }}
+        run: |
+          notes="docs/releases/$RELEASE_TAG.md"
+          if [ ! -f "$notes" ]; then
+            printf '%s\n' '从下方 Assets 下载对应平台的安装包。' > "$RUNNER_TEMP/release-notes.md"
+            notes="$RUNNER_TEMP/release-notes.md"
+          fi
+          latest=true
+          if [ "$IS_PRERELEASE" = true ]; then latest=false; fi
+          gh release edit "$RELEASE_TAG" --draft=false --latest="$latest" --notes-file "$notes"

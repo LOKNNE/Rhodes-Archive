@@ -1,0 +1,937 @@
+[HEADER(key="title_test", is_skippable=true, fit_mode="BLACK_MASK")]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=0, block=true)]
+[stopmusic]
+[Dialog]
+[Background(image="77_g5_corridor",screenadapt="coverall")]
+[Delay(time=1)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[delay(time=1.5)]
+[playMusic(intro="$m_avg3_act54side_intro",key="$m_avg3_act54side_loop", volume=0.6)]
+[charslot(slot="m",name="avg_npc_2379_1#1$1",focus="m")]
+[name="Giulio"]Después de mudarme a Columbia, nunca pensé que volvería a esta escuela...
+[charslot(slot="m",name="avg_npc_2377_1#4$1",focus="m")]
+[name="Estudiante"]¿Sois de Columbia? He visto algunas películas colombianas. ¿De verdad es tan mala la seguridad en Tkaronto?
+[charslot(slot="m",name="avg_4217_makoto_1#13$4",focus="m")]
+[name="Makoto Yuki"]……
+[charslot(slot="m",name="avg_npc_2377_1#3$1",focus="m")]
+[name="Estudiante"]Ah, quizá he hecho una pregunta tonta. Después de todo, los lateranos tampoco van a la escuela montados sobre sus armas...
+[charslot(slot="m",name="avg_npc_2379_1#3$1",focus="m")]
+[name="Giulio"]Jajaja. Comparada con Laterano, cualquier ciudad de Terra podría decirse que tiene «mala seguridad».
+[charslot(slot="m",name="avg_4217_makoto_1#13$4",focus="m")]
+[name="Makoto Yuki"]Pero esas explosiones y disparos de antes...
+[charslot(slot="m",name="avg_npc_2378_1#10$1",focus="m")]
+[name="Giada"]Ah.
+[name="Giada"]Se me olvidó explicártelo.
+[charslot(slot="m",name="avg_npc_2377_1#7$1",focus="m")]
+[name="Estudiante"]¿Los disparos? Era la clase de armas de fuego. El profesor me llamó desde el campo de tiro para venir a recibiros.
+[charslot(slot="m",name="avg_4217_makoto_1#13$4",focus="m")]
+[name="Makoto Yuki"]¿Qué es una clase de armas de fuego...? ¿Y qué pasa con las explosiones...?
+[charslot(slot="m",name="avg_npc_2379_1#1$1",focus="m")]
+[name="Giulio"]Es una actividad para socios de una tienda de profiteroles. Cada semana cambian el sabor de la estatua de profiterol de la entrada, y los socios participan en un sorteo para hacer explotar la de la semana anterior.
+[charslot(slot="m",name="avg_npc_2378_1#10$1",focus="m")]
+[name="Giada"]Laterano es así. Las explosiones siempre cuentan con la supervisión de un Ejecutor, así que no son peligrosas.
+[charslot(slot="m",name="avg_npc_2377_1#1$1",focus="m")]
+[multiline(name="Estudiante")]Mmm... Entiendo. Es tu primera vez en Laterano, Yuki, así que todavía habrá muchas cosas que no conoces, ¿verdad?
+[charslot(slot="m",name="avg_npc_2377_1#7$1",focus="m")]
+[multiline(name="Estudiante")]Si necesitas ayuda o tienes alguna duda, puedes acudir a mí o al profesor.
+[Dialog]
+[curtain(direction = 3,fillfrom = 0.01,fillto = 1, grad=true, fadetime=0.7)]
+[delay(time=1)]
+[charslot]
+[Background(image="bg_black",screenadapt="coverall")]
+[delay(time=1)]
+[curtain(direction = 3,fillfrom = 1,fillto = 0.01, grad=true, fadetime=0)]
+[curtain(direction = 7,fillfrom = 0.01,fillto = 1, grad=true, fadetime=0)]
+[Background(image="77_g4_classroom",screenadapt="coverall")]
+[delay(time=1)]
+[curtain(direction = 7,fillfrom = 1,fillto = 0.01, grad=true, fadetime=0.7)]
+[Delay(time=1.5)]
+[charslot(slot="m",name="avg_npc_2380_1#1$1",bstart=0.2,bend=0.7,afrom=0, ato=1,duration=1.5)]
+[Delay(time=2)]
+[charslot(slot="m",name="avg_npc_2380_1#1$1",bstart=0.2,bend=0.7,focus="m")]
+[name="???"]Buen trabajo, Amiya.
+[Dialog]
+[charslot(slot="r",name="avg_npc_2380_1#1$1",posfrom="0,0", posto="-200,0",afrom=1, ato=0,duration=0)]
+[charslot(slot="r",afrom=0, ato=1,duration=1.5)]
+[Delay(time=2)]
+[charslot(slot="r",name="avg_npc_2380_1#1$1",focus="r")]
+[charslot(slot="m",name="avg_npc_2380_1#1$1",bstart=0.2,bend=0.7,afrom=1, ato=0,duration=0)]
+[name="Tutor"]Makoto Yuki, ¿verdad? Soy tu tutor, LOKNNE. Puedes llamarme Doctor.
+[charslot]
+[charslot(slot="m",name="avg_4217_makoto_1#1$4",focus="m")]
+[name="Makoto Yuki"]¿Doctor... profesor?
+[Dialog]
+[charslot]
+[interlude(maskid = "interlude_dialog_left", channel = 5, style=3, type = 3, name = "avg_npc_2380_1#1$1", icharpos = "0,0", offset="0,150")]
+[interlude(channel = 5, type=2, name="77_g4_classroom")]
+[Decision(options="No hace falta añadir «profesor».;También puedes llamarme Dr. LOKNNE.", values="1;2")]
+[Predicate(references="1;2")]
+[interlude(channel = 5, clear = true, block = true)]
+[Delay(time=0.5)]
+[Predicate(references="1")]
+[charslot]
+[charslot(slot="m",name="avg_4217_makoto_1#1$4",focus="m")]
+[name="Makoto Yuki"]Entendido, Doctor.
+[Predicate(references="2")]
+[charslot]
+[charslot(slot="m",name="avg_4217_makoto_1#1$4",focus="m")]
+[name="Makoto Yuki"]De acuerdo, Dr. LOKNNE.
+[Dialog]
+[Predicate(references="1;2")]
+[charslot]
+El profesor encapuchado señaló un asiento de la segunda fila, en el centro del aula.
+[charslot(slot="m",name="avg_npc_2380_1#1$1",focus="m")]
+[name="Tutor"]Tu asiento está allí.
+[name="Tutor"]Rellena estos formularios. Si hay algo que no entiendas, pregúntale a la delegada... Amiya.
+[charslot(slot="m",name="avg_npc_2377_1#5$1",focus="m")]
+[name="Delegada"]¡Sí!
+[charslot(slot="m",name="avg_npc_2377_1#4$1",focus="m")]
+[name="Delegada"]Eh... profesor, Yuki acaba de llegar. ¿También tiene que rellenar el «Formulario de prácticas voluntarias»?
+[charslot(slot="m",name="avg_npc_2380_1#1$1",focus="m")]
+[name="Tutor"]Si no lo hace, tendrá que quedarse solo en la escuela cuando vosotros vayáis a las prácticas.
+[charslot(slot="m",name="avg_4217_makoto_1#9$4",focus="m")]
+[name="Makoto Yuki"](Eso tampoco suena mal. Podría aprovechar para buscar a los demás.)
+[charslot(slot="m",name="avg_npc_2380_1#1$1",focus="m")]
+[name="Tutor"]Aunque no vayas a las prácticas, tendrás que quedarte en la escuela. Ahora el centro tiene responsabilidad de tutela sobre ti.
+[charslot(slot="m",name="avg_4217_makoto_1#3$4",focus="m")]
+[name="Makoto Yuki"](¿Este Dr. LOKNNE... sabe lo que estoy pensando?)
+[Dialog]
+[charslot(slot="m",name="avg_4217_makoto_1#1$1",focus="n")]
+[charslot]
+[interlude(maskid = "interlude_dialog_left", channel = 5, style=3, type = 3, name = "avg_npc_2380_1#1$1", icharpos = "0,0", offset="0,150")]
+[interlude(channel = 5, type=2, name="77_g4_classroom")]
+[Decision(options="Sí, lo he visto.;No puedo leer la mente.", values="1;2")]
+[Predicate(references="1;2")]
+[interlude(channel = 5, clear = true, block = true)]
+[Delay(time=0.5)]
+[Predicate(references="1")]
+[charslot]
+[charslot(slot="m",name="avg_4217_makoto_1#8$4",focus="m")]
+[name="Makoto Yuki"]¿Qué ha visto?
+[charslot(slot="m",name="avg_npc_2380_1#1$1",focus="m")]
+[name="Tutor"]He visto tu expresión. Las ideas de los estudiantes son fáciles de entender; no te sorprendas. Ah, y no hace falta que seas tan formal conmigo.
+[Predicate(references="2")]
+[charslot]
+[charslot(slot="m",name="avg_4217_makoto_1#5$4",focus="m")]
+[name="Makoto Yuki"]...¿Lo he dicho en voz alta?
+[charslot(slot="m",name="avg_npc_2380_1#1$1",focus="m")]
+[name="Tutor"]No. Las ideas de los estudiantes son fáciles de entender, eso es todo. Ah, y no hace falta que seas tan formal conmigo.
+[Predicate(references="1;2")]
+[charslot(slot="m",name="avg_4217_makoto_1#13$4",focus="m")]
+[name="Makoto Yuki"]De acuerdo. Pero ¿qué son exactamente esas «prácticas voluntarias»?
+[charslot(slot="m",name="avg_npc_2379_1#12$1",focus="m")]
+[name="Giulio"]Eh, Dr. LOKNNE, Makoto creció en el extranjero y no conoce cómo funcionan las escuelas de Laterano. ¿Podría explicárselo...?
+[charslot(slot="m",name="avg_npc_2380_1#1$1",focus="m")]
+[name="Tutor"]Bien. Yuki, has entrado en undécimo curso, el primer año preparatorio. Te corresponde realizar tus primeras prácticas voluntarias para empezar a pensar en tu futura profesión.
+[name="Tutor"]En pocas palabras, debes indicar tres trabajos que te interesen y la escuela os asignará prácticas en puestos relacionados.
+[name="Tutor"]Si escribes algo al azar o una profesión sin plazas de prácticas, el sistema de las Seis Salas te reasignará a un puesto parecido.
+[charslot(slot="m",name="avg_npc_2377_1#1$1",focus="m")]
+[multiline(name="Delegada")]Aunque a veces cuesta entender el criterio... El año pasado una alumna escribió «maníaca de las explosiones incendiarias» y acabó asignada al Salón Notarial.
+[charslot(slot="m",name="avg_npc_2377_1#3$1",focus="m")]
+[multiline(name="Delegada")]Los Ejecutores... no son exactamente eso, ¿verdad...?
+[charslot(slot="m",name="avg_npc_2380_1#1$1",focus="m")]
+[name="Tutor"]En cualquier caso, hoy es el último día para entregar el formulario. Si quieres participar, aún estás a tiempo de rellenarlo.
+[charslot(slot="m",name="avg_npc_2378_1#1$1",focus="m")]
+[name="Giada"]Este chico acaba de llegar a Laterano y además ha pasado por una situación peligrosa. Todavía está confuso. ¿Tiene que decidirlo ahora mismo?
+[charslot(slot="m",name="avg_npc_2380_1#1$1",focus="m")]
+[name="Tutor"]Sería mejor decidirlo ahora.
+[charslot(slot="m",name="avg_4217_makoto_1#9$4",focus="m")]
+[name="Makoto Yuki"]……
+[charslot(slot="m",name="avg_npc_2380_1#1$1",focus="m")]
+[name="Tutor"]En realidad, esta pregunta no debería ser tan difícil para ti, ¿verdad? Supongo que sabes muy bien qué tienes que hacer.
+[charslot(slot="m",name="avg_4217_makoto_1#2$4",focus="m")]
+[name="Makoto Yuki"](Lo que tengo que hacer ahora es... encontrar primero a mis compañeros. Eso significa que necesito tiempo para moverme libremente...)
+[charslot(slot="m",name="avg_4217_makoto_1#1$4",focus="m")]
+[name="Makoto Yuki"]Sí. Entendido.
+[name="Makoto Yuki"]Señorita Giada, ¿puedo poner «agente funerario» como primera opción?
+[name="Makoto Yuki"]Como segunda, quiero poner «diseñador de fiestas que trabaja en un tanatorio».
+[charslot(slot="m",name="avg_4217_makoto_1#1$4",focus="m")]
+[name="Makoto Yuki"](En voz baja) Por favor... Si necesitáis que haga algo, también haré todo lo posible por ayudar.
+[charslot(slot="m",name="avg_npc_2378_1#12$1",focus="m")]
+[name="Giada"]...Tú sí que sabes dar dolores de cabeza.
+[charslot(slot="m",name="avg_npc_2380_1#1$1",focus="m")]
+[name="Tutor"]Tienes que poner tres. ¿Qué pondrás como última opción?
+[charslot(slot="m",name="avg_4217_makoto_1#1$4",focus="m")]
+[name="Makoto Yuki"]Doctor, o delegada, ¿alguna recomendación?
+[charslot(slot="m",name="avg_npc_2380_1#1$1",focus="m")]
+[name="Tutor"]El puesto que más gente elige es dependiente del Salón de Dulces. Si no quieres llamar la atención.
+[charslot(slot="m",name="avg_npc_2377_1#7$1",focus="m")]
+[name="Delegada"]El Salón de Dulces es como un mercado, pero todo lo que venden son postres. Yo también lo he elegido; si tú lo pones, Yuki, quizá nos asignen juntos.
+[charslot(slot="m",name="avg_4217_makoto_1#1$4",focus="m")]
+[name="Makoto Yuki"]Bien, entonces pondré dependiente del Salón de Dulces como última opción.
+[charslot(slot="m",name="avg_4217_makoto_1#1$4",focus="m")]
+[multiline(name="Makoto Yuki")]Con esto ya está...
+[charslot(slot="m",name="avg_4217_makoto_1#13$4",focus="m")]
+[multiline(name="Makoto Yuki")]Espera, ¿hay otro papel?
+[Dialog]
+[PlaySound(key="$d_avg_paper1", volume=1)]
+[Delay(time=1)]
+[charslot(slot="m",name="avg_4217_makoto_1#5$4",focus="m")]
+[name="Makoto Yuki"]«Solicitud de alojamiento en residencia»...
+[charslot(slot="m",name="avg_npc_2380_1#1$1",focus="m")]
+[name="Tutor"]Aunque casi ningún alumno local solicita plaza en la residencia, dadas tus circunstancias te he traído una solicitud.
+[name="Tutor"]¿Qué dices, Makoto Yuki? ¿Quieres vivir en la residencia?
+[charslot(slot="m",name="avg_4217_makoto_1#2$4",focus="m")]
+[name="Makoto Yuki"]……
+[Dialog]
+[stopmusic(fadetime=2)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot]
+[Delay(time=2)]
+[Background(image="77_g1_dorm",xScale=1.5, yScale=1.5,screenadapt="coverall")]
+[backgroundTween(xFrom = -200, xTo = -150, duration=10, block=false)]
+[PlaySound(key="$dooropenquite", volume=1)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[Delay(time=2)]
+[PlayMusic(key="$normal_loop", volume=0.6)]
+[Background(image="77_g1_dorm",xScale=1.7, yScale=1.7,fadetime=1,screenadapt="coverall")]
+[backgroundTween(xFrom = 380, xTo = 250, duration=10, block=false)]
+[Delay(time=2)]
+[Background(image="77_g1_dorm",xScale=1, yScale=1,fadetime=1,screenadapt="coverall")]
+[Delay(time=1.5)]
+[charslot(slot="m",name="avg_npc_2379_1#10$1",focus="m")]
+[name="Giulio"]Oh, es la primera vez que entro en la residencia de la escuela. ¡No está nada mal! Aunque parece que no vive mucha gente... ¿no?
+[charslot(slot="m",name="avg_npc_2377_1#7$1",focus="m")]
+[name="Delegada"]Sí. Hasta ahora muy pocos alumnos solicitaban residencia, porque casi todos son de aquí.
+[charslot(slot="m",name="avg_npc_2379_1#11$1",focus="m")]
+[name="Giulio"]En realidad, si Makoto quisiera vivir conmigo...
+[charslot(slot="m",name="avg_npc_2378_1#1$1",focus="m")]
+[name="Giada"]Eso lo dice alguien que todavía vive en los apartamentos para repatriados.
+[charslot(slot="m",name="avg_4217_makoto_1#1$4",focus="m")]
+[name="Makoto Yuki"]Me quedaré en la residencia. Estoy acostumbrado.
+[charslot(slot="m",name="avg_npc_2377_1#1$1",focus="m")]
+[multiline(name="Delegada")]Tu habitación está en la segunda planta, Yuki. Puedes cambiar la contraseña desde el terminal.
+[charslot(slot="m",name="avg_npc_2377_1#4$1",focus="m")]
+[multiline(name="Delegada")]Mmm... ¿Traerás tu equipaje más tarde?
+[charslot(slot="m",name="avg_4217_makoto_1#5$4",focus="m")]
+[name="Makoto Yuki"]Mi equipaje...
+[charslot(slot="m",name="avg_npc_2378_1#10$1",focus="m")]
+[name="Giada"]¿No deberíamos ayudar a Yuki a comprar algunas cosas básicas? Ya que se ha matriculado, tendrá que tener lo necesario.
+[charslot(slot="m",name="avg_npc_2379_1#12$1",focus="m")]
+[name="Giulio"]Te has convertido completamente en su tutora...
+[charslot(slot="m",name="avg_npc_2378_1#10$1",focus="m")]
+[name="Giada"]Delegada, puedes volver y descansar. A partir de aquí nos ocupamos nosotros.
+[charslot(slot="m",name="avg_npc_2377_1#7$1",focus="m")]
+[name="Delegada"]De acuerdo, entonces vuelvo a la escuela.
+[charslot(slot="m",name="avg_npc_2378_1#6$1",focus="m")]
+[name="Giada"]Ya casi es la hora de salir. ¿No vas directamente a casa?
+[charslot(slot="m",name="avg_npc_2377_1#5$1",focus="m")]
+[name="Delegada"]¡Voy a recoger al profesor cuando termine!
+[Dialog]
+[curtain(direction = 3,fillfrom = 0.01,fillto = 1, grad=true, fadetime=1.1)]
+[delay(time=1)]
+[charslot]
+[Background(image="bg_black",screenadapt="coverall")]
+[delay(time=0.3)]
+[curtain(direction = 3,fillfrom = 1,fillto = 0.01, grad=true, fadetime=0)]
+[curtain(direction = 7,fillfrom = 0.01,fillto = 1, grad=true, fadetime=0)]
+[Background(image="26_g9_laterano_street",screenadapt="coverall")]
+[delay(time=0.3)]
+[curtain(direction = 7,fillfrom = 1,fillto = 0.01, grad=true, fadetime=1.1)]
+[Delay(time=1.5)]
+[charslot(slot="m",name="avg_4217_makoto_1#1$4",focus="m")]
+[name="Makoto Yuki"]Señorita Giada, señor Giulio, muchas gracias por todo lo de hoy.
+[name="Makoto Yuki"]Os dejo en vuestras manos lo de las prácticas voluntarias.
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="l")]
+[charslot(slot="r",name="avg_npc_2379_1#1$1",focus="l")]
+[name="Giada"]Ay... Quieres que nosotros dos hagamos la vista gorda durante tus prácticas para que puedas ir a buscar a tus compañeros, ¿verdad?
+[charslot(slot="r",name="avg_npc_2379_1#1$1",focus="r")]
+[name="Giulio"]Lo has dicho tan de repente que por un momento pensé que de verdad te habías interesado por los funerales después de trabajar con nosotros...
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="l")]
+[name="Giada"]Pero todavía nos ocultas algo, ¿verdad, Yuki?
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="l")]
+[name="Giada"]Si quieres encontrar a tus compañeros... ¿por qué no nos dejas informar a los Ejecutores?
+[charslot]
+[charslot(slot="m",name="avg_4217_makoto_1#1$4",focus="m")]
+[name="Makoto Yuki"]……
+[charslot(slot="m",name="avg_4217_makoto_1#2$4",focus="m")]
+[name="Makoto Yuki"](Ya es casi seguro que este no es el mundo del que vengo... Nunca había oído los nombres de estas ciudades, países ni razas.)
+[name="Makoto Yuki"](Por lo que vi en el Salón Notarial, Laterano parece tener leyes y normas muy estrictas...)
+[charslot(slot="m",name="avg_4217_makoto_1#9$4",focus="m")]
+[name="Makoto Yuki"](De momento he conseguido ocultar que vengo de otro mundo, pero si los Ejecutores investigan en serio... no sé cómo trataría Laterano un caso como el nuestro.)
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="l")]
+[charslot(slot="r",name="avg_npc_2379_1#1$1",focus="l")]
+[name="Giada"]¿Te asustó lo que dijeron antes sobre la deportación?
+[charslot]
+[charslot(slot="m",name="avg_4217_makoto_1#1$4",focus="m")]
+[name="Makoto Yuki"]...Volveré a casa cuando encuentre a mis compañeros.
+[charslot(slot="m",name="avg_4217_makoto_1#1$4",focus="m")]
+[name="Makoto Yuki"]Pero... primero quiero intentar encontrarlos por mis propios medios. ¿Puede ser?
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="r")]
+[charslot(slot="r",name="avg_npc_2379_1#10$1",focus="r")]
+[name="Giulio"]Claro que sí.
+[charslot(slot="l",name="avg_npc_2378_1#9$1",focus="l")]
+[name="Giada"]¿No has respondido demasiado rápido?
+[charslot(slot="r",name="avg_npc_2379_1#11$1",focus="r")]
+[name="Giulio"]¿Acaso tú se lo negarías?
+[charslot(slot="l",name="avg_npc_2378_1#12$1",focus="l")]
+[name="Giada"]……
+[charslot]
+[charslot(slot="m",name="avg_4217_makoto_1#9$4",focus="m")]
+[name="Makoto Yuki"]Si de verdad no encuentro ninguna pista...
+[charslot]
+Las palabras del joven fueron interrumpidas por una sucesión de gritos que se acercaban desde lejos, mezclados con voces de sorpresa y desconcierto.
+Los tres volvieron la atención hacia el ruido. Giulio se puso de puntillas para mirar, mientras Giada fruncía el ceño y hacía un gesto a Yuki para que se quedara atrás.
+[Dialog]
+[PlaySound(key="$rungeneral", volume=0.7,channel="7")]
+[StopSound(channel="7",fadetime=1.5)]
+[Delay(time=2)]
+[playsound(key="$d_avg_dogbarknormal", volume=0.3)]
+Los gritos se acercaban cada vez más, acompañados por disculpas lejanas y el golpeteo de unas pisadas que corrían a toda velocidad. Como si hubiera percibido algo, Makoto dio un paso hacia la calle...
+Una silueta gris se lanzó directamente hacia él...
+[Dialog]
+[PlaySound(key="$runsand", volume=1)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot]
+[Image(image="77_i02",xScale=1.9, yScale=1.9,x=-550,y=320,screenadapt="coverall")]
+[Delay(time=2)]
+[ImageTween(xFrom=-550, xTo=-500, duration=20, block=false)]
+[playsound(key="$d_avg_dogbarknormal", volume=0.5)]
+[name="???"]¡Guau! ¡Guaau...!
+[name="???"]¡Koromaru, más despacio! ¿Dónde estamos? Parece que ya no estamos en el Tártaro...
+[dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[Delay(time=1)]
+[name="???"]¿Estamos en una calle...? Esa gente... ¿son humanos? Qué extraño...
+[name="???"]¡Koromaru! ¿Por qué corres cada vez más? ¿Acaso has encontrado...?
+[name="???"]——！
+[dialog]
+[CameraShake(duration=0.6, xstrength=50, ystrength=20, vibrato=30, randomness=30, fadeout=true, block=false)]
+[playsound(key="$d_avg_dogbarknormal", volume=1)]
+[PlaySound(key="$d_avg_clothmovement", volume=1)]
+[PlaySound(key="$d_avg_runstop", volume=0.6)]
+[Image(image="77_i02",xScale=1.2, yScale=1.2,fadetime=1, screenadapt="coverall")]
+[ImageTween(xScaleFrom=1.2, yScaleFrom=1.2,xScaleTo=1, yScaleTo=1, duration=20, block=false)]
+[delay(time=2)]
+[name="???"]¡¿Yuki?!
+[name="???"]Yuki... ¿eres tú?
+[name="Makoto Yuki"]¡Koromaru... y Amada!
+[name="???"]¡Qué alivio...! ¡Koromaru de verdad te ha encontrado, Yuki!
+[name="Giada"]¿Yuki...?
+[name="Makoto Yuki"]Sí. Son dos de mis compañeros. Él es Ken Amada y el otro... se llama Koromaru.
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot]
+[Image]
+[Background(image="26_g9_laterano_street",screenadapt="coverall")]
+[Delay(time=2)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[Delay(time=1)]
+[charslot(slot="m",name="avg_npc_2388_1#1$3",focus="m",duration=1)]
+[delay(time=2)]
+[name="Ken Amada"]...¿Hola?
+[dialog]
+[charslot]
+[charslot(slot="m",name="avg_4220_kormr_1#4$1",focus="m",duration=1)]
+[delay(time=2)]
+[playsound(key="$d_avg_dogbarknormal", volume=1)]
+[name="Koromaru"]¡Guau, guau!
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="r")]
+[charslot(slot="r",name="avg_npc_2379_1#5$1",focus="r")]
+[name="Giulio"]……
+[charslot(slot="r",name="avg_npc_2379_1#1$1",focus="r")]
+[name="Giulio"]Jajaja... Menos mal que aún no habíamos comprado las cosas. Así no tendremos que hacer otro viaje...
+[charslot(slot="l",name="avg_npc_2378_1#12$1",focus="l")]
+[name="Giada"](En voz baja) Giulio, ¿esto es... una bestia de compañía?
+[charslot(slot="r",name="avg_npc_2379_1#12$1",focus="r")]
+[name="Giulio"](En voz baja) ...Parece más bien un pariente de los Perro. Mmm... ¿los parientes de los Perro comen pienso para bestias de compañía?
+[dialog]
+[charslot]
+[charslot(slot="m",name="avg_4220_kormr_1#6$1",focus="m")]
+[name="Koromaru"]¿Guau?
+[Dialog]
+[stopmusic(fadetime=2)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot]
+[Image]
+[Background(image="77_g1_dorm",screenadapt="coverall")]
+[Delay(time=2)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[Delay(time=1)]
+[playMusic(intro="$m_avg2_act54side_intro",key="$m_avg2_act54side_loop", volume=0.6)]
+[charslot(slot="l",name="avg_npc_2378_1#10$1",focus="l")]
+[charslot(slot="r",name="avg_npc_2379_1#1$1",focus="l")]
+[name="Giada"]...Bien. Ya he hablado con el profesor de Yuki. Amada puede quedarse hoy en la residencia. Después también tendrá que registrarse en el Salón Notarial y en la escuela.
+[charslot(slot="r",name="avg_npc_2379_1#12$1",focus="r")]
+[name="Giulio"]Jajaja... Otro primo más...
+[charslot(slot="r",name="avg_npc_2379_1#12$1",focus="r")]
+[name="Giulio"]Makoto, ¿podrías contarnos un poco sobre tus compañeros? Por ejemplo... ¿cuántos sois en total?
+[name="Giulio"]Así sabré cuántos familiares tengo.
+[charslot]
+[charslot(slot="m",name="avg_4217_makoto_1#5$4",focus="m")]
+[multiline(name="Makoto Yuki")]Contándome a mí, esta vez viajábamos juntos...
+[charslot(slot="m",name="avg_4217_makoto_1#1$4",focus="m")]
+[multiline(name="Makoto Yuki")]Deberíamos ser cinco compañeros que llegamos a Laterano, más Koromaru.
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#10$1",focus="r")]
+[charslot(slot="r",name="avg_npc_2379_1#12$1",focus="r")]
+[name="Giulio"]Entonces... Giada, ¿nos los repartimos?
+[charslot(slot="l",name="avg_npc_2378_1#11$1",focus="l")]
+[name="Giada"]...No hace falta que todos finjan ser familiares. También deberían poder registrarse como amigos de un pariente de un ciudadano.
+[charslot]
+[charslot(slot="l",name="avg_4217_makoto_1#1$4",focus="r")]
+[charslot(slot="r",name="avg_npc_2388_1#13$3",focus="r")]
+[name="Ken Amada"](En voz baja) Yuki, ¿qué está pasando...?
+[charslot(slot="l",name="avg_4217_makoto_1#2$4",focus="l")]
+[name="Makoto Yuki"](Niega ligeramente con la cabeza)
+[charslot(slot="l",name="avg_4217_makoto_1#1$4",focus="l")]
+[name="Makoto Yuki"]Hagámoslo como dice la señorita Giada.
+[charslot(slot="r",name="avg_npc_2388_1#1$3",focus="r")]
+[name="Ken Amada"]Entonces... ¡muchísimas gracias!
+[charslot]
+[charslot(slot="m",name="avg_4220_kormr_1#3$1",focus="m")]
+[name="Koromaru"]¡Guau!
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#10$1",focus="l")]
+[charslot(slot="r",name="avg_npc_2379_1#1$1",focus="l")]
+[name="Giada"]Debéis de estar agotados. Descansad pronto.
+[charslot(slot="r",name="avg_npc_2379_1#5$1",focus="r")]
+[name="Giulio"]¿Eh? ¿No podemos quedarnos un poco más? Yo también estoy cansado...
+[charslot(slot="l",name="avg_npc_2378_1#2$1",focus="l")]
+[name="Giada"]Esto es una residencia de estudiantes.
+[charslot(slot="r",name="avg_npc_2379_1#12$1",focus="r")]
+[multiline(name="Giulio")]Vale, vale...
+[charslot(slot="r",name="avg_npc_2379_1#10$1",focus="r")]
+[multiline(name="Giulio")]Volveré a veros otro día. ¡Hasta luego!
+[Dialog]
+[PlaySound(key="$d_gen_walk_n",volume=1)]
+[charslot(slot="l",afrom=1, ato=0,duration=1.5)]
+[charslot(slot="r",afrom=1, ato=0,duration=1.5)]
+[delay(time=3)]
+[charslot]
+[charslot(slot="m",name="avg_4217_makoto_1#1$4",focus="m")]
+[name="Makoto Yuki"]...Amada, Koromaru, vamos a hablar a mi habitación.
+[charslot]
+[stopmusic(fadetime=2)]
+[charslot(slot="l",name="avg_npc_2388_1#3$3")]
+[charslot(slot="r",name="avg_4220_kormr_1#6$1")]
+[name="Ken Amada y Koromaru"]¡Sí! / ¡Guau!
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot]
+[Image]
+[Background(image="77_g14_alley_night",screenadapt="coverall")]
+[Delay(time=2)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[Delay(time=1)]
+[PlayMusic(key="$darkness_03_loop", volume=0.6)]
+[PlaySound(key="$d_gen_walk_n",volume=1)]
+[charslot(slot="l",name="avg_npc_2378_1#2$1",afrom=0, ato=1,duration=1.5)]
+[charslot(slot="r",name="avg_npc_2379_1#1$1",afrom=0, ato=1,duration=1.5)]
+[delay(time=2)]
+[charslot(slot="l",name="avg_npc_2378_1#2$1",focus="l")]
+[name="Giada"]Giulio.
+[charslot(slot="r",name="avg_npc_2379_1#10$1",focus="r")]
+[name="Giulio"]¿Qué más puedo hacer por usted, señorita Giada?
+[charslot(slot="l",name="avg_npc_2378_1#9$1",focus="l")]
+[name="Giada"]...Voy a decirlo directamente. ¿No estás poniéndote demasiado del lado de Yuki?
+[name="Giada"]Iba a decir que lo estás «consintiendo demasiado», pero resulta raro tener esta conversación contigo... No eres realmente su primo y nosotros tampoco somos sus verdaderos tutores.
+[charslot(slot="r",name="avg_npc_2379_1#12$1",focus="r")]
+[name="Giulio"]¿Crees que Yuki es un mal chico? No hay necesidad de desconfiar de él.
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="l")]
+[name="Giada"]No digo que haya que desconfiar de él. Pero ¿no confías demasiado fácilmente en la gente?
+[charslot(slot="r",name="avg_npc_2379_1#8$1",focus="r")]
+[name="Giulio"]¿No fuiste tú quien dijo que responderías por Yuki aunque no nos ayudara?
+[name="Giulio"]Solo quiere encontrar a sus compañeros. En todo el día no he percibido ni una pizca de mala intención en él.
+[charslot(slot="l",name="avg_npc_2378_1#11$1",focus="l")]
+[name="Giada"]Él no es Sankta. Además, vosotros ahora tampoco...
+[charslot(slot="r",name="avg_npc_2379_1#11$1",focus="r")]
+[name="Giulio"]……
+[charslot(slot="r",name="avg_npc_2379_1#8$1",focus="r")]
+[name="Giulio"]¿Qué tiene que ver que sea Sankta? No entiendo qué te preocupa... ¿por qué darle tantas vueltas?
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="l")]
+[name="Giada"]Tengo un funeral que organizar. Para ser sincera, tu aparición ya me ha dado suficientes quebraderos de cabeza...
+[charslot(slot="r",name="avg_npc_2379_1#2$1",focus="r")]
+[name="Giulio"]...Vale, vale. Lo entiendo. No quieres que me entrometa en el primer funeral del que eres responsable. Me ha quedado bastante claro estos días; no hace falta que lo repitas.
+[charslot(slot="r",name="avg_npc_2379_1#11$1",focus="r")]
+[name="Giulio"]Pero es el testamento de mi tía. Déjame cumplirlo y después ya no volveré a molestarte, señorita Giada.
+[charslot(slot="l",name="avg_npc_2378_1#11$1",focus="l")]
+[name="Giada"]……
+[charslot(slot="r",name="avg_npc_2379_1#8$1",focus="r")]
+[name="Giulio"]Oh. Siempre pones esa cara cuando menciono «el testamento de mi tía».
+[charslot(slot="r",name="avg_npc_2379_1#7$1",focus="r")]
+[name="Giulio"]Claro, yo no era su sobrino más cercano... bueno, sobrino segundo. Después del divorcio de mis padres no volví a ver a esa tía lejana.
+[charslot(slot="r",name="avg_npc_2379_1#11$1",focus="r")]
+[name="Giulio"]Pero aunque fuera el encargo de un cliente cualquiera, querría dedicarme por completo a organizarle la mejor fiesta posible.
+[charslot(slot="r",name="avg_npc_2379_1#7$1",focus="r")]
+[name="Giulio"]Señorita Giada, ¿puedes entender que yo también tengo mis principios...? Aunque no sé por qué estoy explicando tanto.
+[charslot(slot="l",name="avg_npc_2378_1#9$1",focus="l")]
+[name="Giada"]Yo tampoco lo sé. No debería haber sacado el tema. Tengo que ir a comprobar lo del ataúd.
+[charslot(slot="r",name="avg_npc_2379_1#12$1",focus="r")]
+[name="Giulio"]¿Qué queda por comprobar? Al final Makoto eligió hoy el ataúd que te gustaba, ¿no?
+[charslot(slot="l",name="avg_npc_2378_1#9$1",focus="l")]
+[name="Giada"]...Elegir el modelo no es el final. Hay que organizar el transporte, la colocación del cuerpo, reservar las instalaciones del tanatorio...
+[charslot(slot="l",name="avg_npc_2378_1#11$1",focus="l")]
+[name="Giada"]Déjalo. ¿Por qué estoy explicándolo yo también? Te enviaré lo que necesites saber. Hasta mañana.
+[Dialog]
+[PlaySound(key="$d_gen_walk_n",volume=1)]
+[charslot(slot="l",afrom=1, ato=0,duration=1.5,focus="l")]
+[Delay(time=2)]
+[charslot(slot="r",name="avg_npc_2379_1#11$1",focus="r")]
+[name="Giulio"]...Hasta mañana, señorita Giada.
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot]
+[Image]
+[Background(image="77_g2_dormroom",screenadapt="coverall")]
+[Delay(time=2)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot(slot="l",name="avg_4217_makoto_1#1$4",focus="r")]
+[charslot(slot="r",name="avg_npc_2388_1#9$3",focus="r")]
+[name="Ken Amada"]...Entonces puede que ya no estemos en nuestro mundo, sino en un país llamado Laterano.
+[charslot(slot="r",name="avg_npc_2388_1#13$3",focus="r")]
+[name="Ken Amada"]Aquí viven los «Sankta», que tienen «halos» sobre la cabeza, y los «Liberi», que tienen plumas...
+[name="Ken Amada"]¿Un halo sobre la cabeza significa que son ángeles...? Pero ¿en qué parte se dice que todos los ángeles lleven armas consigo...?
+[charslot(slot="l",name="avg_4217_makoto_1#9$4",focus="l")]
+[name="Makoto Yuki"]Si este no es nuestro mundo, quizá los Sankta tampoco tengan relación con nuestros «ángeles»...
+[charslot(slot="r",name="avg_npc_2388_1#3$3",focus="r")]
+[name="Ken Amada"]Es verdad... Por suerte podemos comunicarnos con ellos sin problemas. Eso sí que es una suerte.
+[name="Ken Amada"]Nosotros y los «humanos» de aquí nos parecemos bastante por fuera... y su forma de vida tampoco parece tan distinta.
+[name="Ken Amada"]También hay tiendas, escuelas y sitios así...
+[charslot(slot="l",name="avg_4217_makoto_1#1$4",focus="l")]
+[name="Makoto Yuki"]Amada, te has fijado en muchas cosas.
+[charslot(slot="r",name="avg_npc_2388_1#8$3",focus="r")]
+[name="Ken Amada"]N-no es para tanto. Como es un mundo desconocido, cuando ves algo familiar es imposible no fijarte...
+[charslot(slot="l",name="avg_4217_makoto_1#13$4",focus="l")]
+[name="Makoto Yuki"]Ahora que lo pienso, esta ciudad no es precisamente pequeña. No esperaba que me encontrarais tan rápido.
+[charslot(slot="r",name="avg_npc_2388_1#2$3",focus="r")]
+[name="Ken Amada"]¡Todo fue gracias a Koromaru! Siguió tu olor y consiguió encontrarte.
+[charslot(slot="r",name="avg_npc_2388_1#3$3",focus="r")]
+[name="Ken Amada"]Cuando desperté, Koromaru y yo ya estábamos en Laterano... Estaba tan confundido que tardé un poco en reaccionar.
+[charslot(slot="r",name="avg_npc_2388_1#10$3",focus="r")]
+[name="Ken Amada"]Después fui recordándolo poco a poco. Habíamos salido de la residencia y nos dirigíamos al Tártaro...
+[charslot(slot="l",name="avg_4217_makoto_1#9$4",focus="l")]
+[name="Makoto Yuki"]Yo también lo recuerdo así. Tú, yo, Fuuka, Yukari, Aigis y Koromaru fuimos a investigar las Sombras como siempre.
+[charslot(slot="r",name="avg_npc_2388_1#3$3",focus="r")]
+[name="Ken Amada"]No recuerdo nada extraño de camino al Tártaro... pero después de entrar encontramos en la primera planta una puerta que había aparecido de la nada.
+[charslot(slot="r",name="avg_npc_2388_1#6$3",focus="r")]
+[name="Ken Amada"]Recuerdo que nos acercamos para examinarla, pero no recuerdo nada de lo que pasó después de acercarnos a la puerta...
+[charslot(slot="r",name="avg_npc_2388_1#13$3",focus="r")]
+[name="Ken Amada"]Menos mal que Akihiko, Mitsuru y Junpei tenían otras cosas que hacer y no vinieron esta vez. Si no, habríamos acabado todos envueltos en esto...
+[charslot(slot="l",name="avg_4217_makoto_1#5$4",focus="l")]
+[name="Makoto Yuki"]Sí... Cuando descubran que hemos desaparecido, estarán muy preocupados. Tenemos que volver cuanto antes.
+[charslot(slot="r",name="avg_npc_2388_1#3$3",focus="r")]
+[name="Ken Amada"]Si llegamos aquí atravesando aquella puerta... ¿podríamos regresar si encontramos otra igual?
+[charslot(slot="l",name="avg_4217_makoto_1#1$4",focus="l")]
+[name="Makoto Yuki"]Yo también pensé eso. Incluso busqué cerca del tanatorio...
+[charslot(slot="r",name="avg_npc_2388_1#6$3",focus="r")]
+[multiline(name="Ken Amada")]«Tanatorio»...
+[charslot(slot="r",name="avg_npc_2388_1#1$3",focus="r")]
+[multiline(name="Ken Amada")]Ah, ese es el lugar donde despertaste, ¿no? Allí fue donde conociste a la señorita Giada y al señor Giulio...
+[charslot(slot="l",name="avg_4217_makoto_1#1$4",focus="l")]
+[name="Makoto Yuki"]Sí. Pasé toda la mañana trabajando con ellos en el tanatorio... Pensándolo bien, allí no te encontramos.
+[charslot(slot="l",name="avg_4217_makoto_1#13$4",focus="l")]
+[name="Makoto Yuki"]Amada, ¿dónde despertasteis Koromaru y tú?
+[charslot(slot="r",name="avg_npc_2388_1#3$3",focus="r")]
+[multiline(name="Ken Amada")]Despertamos... dentro de un vehículo.
+[charslot(slot="r",name="avg_npc_2388_1#13$3",focus="r")]
+[multiline(name="Ken Amada")]Digo vehículo, pero por dentro parecía un confesionario. Al principio pensé que estábamos dentro de un edificio...
+[name="Ken Amada"]Cuando abrimos la puerta, Koromaru y yo casi caímos del vehículo en marcha. Por suerte se detuvo a tiempo. Y ese vehículo podía hablar; dijo que se llamaba «Coche Confesionario»...
+[charslot(slot="r",name="avg_npc_2388_1#3$3",focus="r")]
+[name="Ken Amada"]Hasta se despidió de nosotros muy educadamente...
+[charslot(slot="r",name="avg_npc_2388_1#13$3",focus="r")]
+[name="Ken Amada"]Al bajar estábamos en plena calle, pero la gente tenía un aspecto un poco extraño y no me atreví a hablar con nadie.
+[charslot(slot="r",name="avg_npc_2388_1#1$3",focus="r")]
+[name="Ken Amada"]Entonces pensé en pedirle a Koromaru que siguiera el olor de nuestros compañeros. Quizá así podríamos reunirnos... y entonces te encontró a ti.
+[charslot(slot="l",name="avg_4217_makoto_1#2$4",focus="l")]
+[name="Makoto Yuki"]Ya veo... Entramos por la misma puerta, pero despertamos en lugares distintos. Es extraño.
+[charslot(slot="l",name="avg_4217_makoto_1#9$4",focus="l")]
+[name="Makoto Yuki"]Entonces eso podría significar que Fuuka, Yukari y Aigis también están en lugares diferentes...
+[charslot(slot="r",name="avg_npc_2388_1#1$3",focus="r")]
+[name="Ken Amada"]...Es muy posible. ¿Le pedimos otra vez a Koromaru que las busque por el olor?
+[charslot]
+[charslot(slot="m",name="avg_4220_kormr_1#5$1",focus="m")]
+[name="Koromaru"]Guaau...
+[charslot]
+[charslot(slot="l",name="avg_4217_makoto_1#9$4",focus="r")]
+[charslot(slot="r",name="avg_npc_2388_1#13$3",focus="r")]
+[name="Ken Amada"]Koromaru... ¿quieres decir que no has encontrado ningún rastro por el camino?
+[charslot]
+[charslot(slot="m",name="avg_4220_kormr_1#5$1",focus="m")]
+[name="Koromaru"]Guau...
+[charslot]
+[charslot(slot="l",name="avg_4217_makoto_1#9$4",focus="l")]
+[charslot(slot="r",name="avg_npc_2388_1#13$3",focus="l")]
+[name="Makoto Yuki"]...Parece que sí.
+[charslot(slot="r",name="avg_npc_2388_1#6$3",focus="r")]
+[name="Ken Amada"]Mmm...
+[charslot(slot="r",name="avg_npc_2388_1#3$3",focus="r")]
+[name="Ken Amada"]Estaba pensando... ¿y si Yukari y las demás todavía no han llegado a Laterano?
+[name="Ken Amada"]Aunque todavía no sabemos cómo funciona esa puerta...
+[charslot(slot="r",name="avg_npc_2388_1#10$3",focus="r")]
+[name="Ken Amada"]Pero creo que desde que Koromaru y yo despertamos hasta que te encontramos no pasó ni una hora...
+[charslot(slot="r",name="avg_npc_2388_1#13$3",focus="r")]
+[name="Ken Amada"]Y tú dijiste que habías pasado toda la mañana trabajando en el tanatorio...
+[charslot(slot="l",name="avg_4217_makoto_1#1$4",focus="l")]
+[name="Makoto Yuki"]Exacto. Eso significa que, aunque entramos por la puerta al mismo tiempo, yo aparecí en Laterano antes que tú.
+[charslot(slot="r",name="avg_npc_2388_1#10$3",focus="r")]
+[name="Ken Amada"]¡Sí! Por eso pensé que quizá Koromaru no ha encontrado su olor porque Yukari y las demás todavía no han aparecido en Laterano...
+[charslot(slot="r",name="avg_npc_2388_1#6$3",focus="r")]
+[name="Ken Amada"]Entramos juntos por aquella puerta que apareció en el Tártaro y después llegamos aquí...
+[charslot(slot="r",name="avg_npc_2388_1#13$3",focus="r")]
+[name="Ken Amada"]Si detrás de la puerta hay un pasaje que conecta los dos mundos, y Yukari y las demás todavía no han llegado... ¿podrían seguir dentro de ese pasaje?
+[charslot(slot="l",name="avg_4217_makoto_1#5$4",focus="l")]
+[name="Makoto Yuki"]……
+[charslot(slot="l",name="avg_4217_makoto_1#1$4",focus="l")]
+[name="Makoto Yuki"]Entonces tenemos todavía más motivos para encontrar esa puerta.
+[name="Makoto Yuki"]Tenemos que encontrar a todos y regresar juntos a nuestro mundo.
+[charslot(slot="r",name="avg_npc_2388_1#3$3",focus="r")]
+[name="Ken Amada"]Pero ¿dónde está la puerta...? ¿Y si volvemos a buscar por los alrededores del «tanatorio»?
+[charslot(slot="l",name="avg_4217_makoto_1#1$4",focus="l")]
+[name="Makoto Yuki"]Ya busqué bastante por allí. Si una puerta así apareciera de la nada, debería llamar mucho la atención.
+[name="Makoto Yuki"]Pero ni Giulio ni Giada mencionaron nada. Y tampoco había ninguna «puerta» en el lugar donde desperté...
+[charslot(slot="r",name="avg_npc_2388_1#13$3",focus="r")]
+[name="Ken Amada"]Es muy extraño. ¿Puede que la puerta se vuelva invisible?
+[name="Ken Amada"]Aunque, a estas alturas, nada de lo que ha ocurrido puede explicarse con el sentido común...
+[charslot(slot="l",name="avg_4217_makoto_1#1$4",focus="l")]
+[name="Makoto Yuki"]Sí. Si conseguimos reunirnos con Fuuka, quizá podamos usar el poder de las Personas para encontrar alguna pista...
+[charslot(slot="r",name="avg_npc_2388_1#1$3",focus="r")]
+[name="Ken Amada"]Si Koromaru detecta algo, volvamos a pedirle que busque. Si pudo encontrarte a ti, seguro que también podrá encontrar a Fuuka y a las demás.
+[charslot]
+[charslot(slot="m",name="avg_4220_kormr_1#1$1",focus="m")]
+[name="Koromaru"]¡Guau!
+[charslot]
+[charslot(slot="l",name="avg_4217_makoto_1#10$4",focus="r")]
+[charslot(slot="r",name="avg_npc_2388_1#1$3",focus="r")]
+[multiline(name="Ken Amada")]¡Koromaru está muy motivado!
+[charslot(slot="r",name="avg_npc_2388_1#3$3",focus="r")]
+[multiline(name="Ken Amada")]Pero ahora ya no podremos buscar, ¿verdad? Es bastante tarde...
+[charslot]
+Para comprobar la hora, Makoto levantó la vista hacia el reloj de la pared... y de pronto se dio cuenta de algo.
+[charslot(slot="l",name="avg_4217_makoto_1#8$4",focus="l")]
+[charslot(slot="r",name="avg_npc_2388_1#1$3",focus="l")]
+[name="Makoto Yuki"]La hora...
+[charslot]
+Ken siguió la mirada de Makoto. El reloj de doce horas parecía inquietantemente familiar mientras el segundero avanzaba con un leve tic-tac.
+[charslot(slot="l",name="avg_4217_makoto_1#8$4",focus="r")]
+[charslot(slot="r",name="avg_npc_2388_1#9$3",focus="r")]
+[name="Ken Amada"]...¡Está a punto de ser medianoche! ¡La Hora Oscura...!
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot]
+[Background(image="bg_black",screenadapt="coverall")]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+La Hora Oscura es un «tiempo oculto» que existe en el mundo del que proceden Makoto y sus compañeros.
+Es un «tiempo fuera del tiempo» que aparece cada medianoche, cuando las criaturas llamadas Sombras pueden moverse libremente.
+Durante ese periodo el mundo queda detenido. La gente corriente no es consciente de ello y queda indefensa ante los ataques de las Sombras.
+[Dialog]
+[charslot(slot="l",name="avg_4217_makoto_1#1$4",afrom=1, ato=0,posfrom="0,0", posto="-100,0",duration=0)]
+[charslot(slot="l",afrom=0, ato=1,duration=1)]
+[charslot(slot="m",name="avg_4220_kormr_1#1$1",afrom=0, ato=1,duration=1)]
+[charslot(slot="r",name="avg_npc_2388_1#1$3",afrom=1, ato=0,posfrom="0,0", posto="100,0",duration=0)]
+[charslot(slot="r",afrom=0, ato=1,duration=1)]
+[Delay(time=1.5)]
+Solo quienes poseen un poder especial, como Makoto y sus compañeros, pueden actuar durante la Hora Oscura y enfrentarse a las Sombras.
+[Dialog]
+[charslot(slot="l",name="avg_4217_makoto_1#1$4",afrom=1, ato=0,duration=1)]
+[charslot(slot="m",name="avg_4220_kormr_1#1$1",afrom=1, ato=0,duration=1)]
+[charslot(slot="r",name="avg_npc_2388_1#1$3",afrom=1, ato=0,duration=1)]
+[Delay(time=1.01)]
+[charslot]
+[charslot(slot="l",name="avg_4219_yukari_1#1$3",posfrom="0,0", posto="-150,0",bstart=0.2,bend=0.7,afrom=1, ato=0,duration=0)]
+[charslot(slot="m",name="avg_4218_aigis_1#1$2",bstart=0.2,bend=0.7,afrom=1, ato=0,duration=0)]
+[charslot(slot="r",name="avg_npc_2387_1#1$2",posfrom="0,0", posto="150,0",bstart=0.2,bend=0.7,afrom=1, ato=0,duration=0)]
+[charslot(slot="l",afrom=0, ato=1,duration=1)]
+[charslot(slot="m",afrom=0, ato=1,duration=1)]
+[charslot(slot="r",afrom=0, ato=1,duration=1)]
+[Delay(time=1.5)]
+El «Escuadrón Especializado de Ejecución Extracurricular S.E.E.S.» de la Academia Gekkoukan, formado por Makoto y sus compañeros, fue creado precisamente para investigar la Hora Oscura y eliminar a las Sombras.
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot]
+[charslot(slot="l",name="avg_4217_makoto_1#8$4")]
+[charslot(slot="r",name="avg_npc_2388_1#9$3")]
+[Background(image="77_g2_dormroom",screenadapt="coverall")]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot(slot="l",name="avg_4217_makoto_1#8$4",focus="l")]
+[charslot(slot="r",name="avg_npc_2388_1#9$3",focus="l")]
+[name="Makoto Yuki"]...¿Existirá la Hora Oscura en Laterano?
+[charslot]
+Las agujas del reloj siguieron avanzando en silencio.
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot]
+[Background(image="bg_black",screenadapt="coverall")]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[Delay(time=1)]
+……
+[Dialog]
+[PlaySound(key="$d_avg_clocksound_loop", volume=1,channel="clock1")]
+[StopSound(channel="clock1",fadetime=0.5)]
+[Sticker(id="st1",multi = true, text="11:59:58",x=200,y=330, alignment="center", duration=1,size=50, delay=0, width=900,block = true)]
+[Sticker(id="st1")]
+[Delay(time=1)]
+[PlaySound(key="$d_avg_clocksound_loop", volume=1,channel="clock2")]
+[StopSound(channel="clock2",fadetime=0.5)]
+[Sticker(id="st2",multi = true, text="11:59:59",x=200,y=330, alignment="center", duration=1,size=50, delay=0, width=900,block = true)]
+[Sticker(id="st2")]
+[Delay(time=1)]
+[PlaySound(key="$d_avg_churchbell", volume=1,channel="clock3")]
+[StopSound(channel="clock3",fadetime=2.5)]
+[Sticker(id="st3",multi = true, text="12:00:00",x=200,y=330, alignment="center", duration=1,size=50, delay=0, width=900,block = true)]
+[Sticker(id="st3")]
+[Delay(time=2)]
+……
+[Dialog]
+[PlaySound(key="$d_avg_clocksound_loop", volume=1,channel="clock4")]
+[StopSound(channel="clock4",fadetime=0.5)]
+[Sticker(id="st4",multi = true, text="12:00:01",x=200,y=330, alignment="center", aduration=1,size=50, delay=0, width=900,block = true)]
+[Sticker(id="st4")]
+[Delay(time=1)]
+[name="Ken Amada"]...Parece que no. El tiempo ha seguido avanzando con normalidad...
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot]
+[Background(image="77_g2_dormroom",screenadapt="coverall")]
+[Delay(time=2)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[Delay(time=1)]
+Ambos suspiraron aliviados al mismo tiempo. Sin embargo...
+En ese momento, Koromaru giró la cabeza hacia la ventana.
+[charslot(slot="m",name="avg_4220_kormr_1#2$1",focus="m")]
+[playsound(key="$d_avg_dogbarkangry")]
+[name="Koromaru"]¡¡¡Guau, guau!!!
+[name="Koromaru"]Guaau... ¡¡guau!!
+[charslot(slot="m",name="avg_npc_2388_1#9$3",focus="m")]
+[name="Ken Amada"]¿Koromaru?
+[charslot(slot="m",name="avg_4217_makoto_1#8$4",focus="m")]
+[name="Makoto Yuki"]Koromaru, ¿has encontrado algo?
+[charslot(slot="m",name="avg_4220_kormr_1#2$1",focus="m")]
+[playsound(key="$d_avg_dogbarknormal")]
+[name="Koromaru"]¡Guau!
+[charslot(slot="m",name="avg_4217_makoto_1#1$4",focus="m")]
+[name="Makoto Yuki"]Entonces vamos. Koromaru, guíanos.
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, style = "slider", inverse = true, fadetime=2, block=true)]
+[Background(image="77_g14_alley_night",screenadapt="coverall")]
+[charslot]
+[Blocker(a=0, r=0, g=0, b=0, style = "slider", inverse = false, fadetime=2, block=true)]
+[Delay(time=1.5)]
+[PlaySound(key="$rungeneral", volume=1,channel="1")]
+[StopSound(channel="1",fadetime=1.5)]
+[charslot(slot="m",name="avg_npc_2388_1#10$2",afrom=0, ato=1,duration=1.5,focus="m")]
+[Delay(time=1.6)]
+[name="Ken Amada"]La calle parece normal...
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, style = "slider", inverse = true, fadetime=2, block=true)]
+[Background(image="77_g16_square_night",screenadapt="coverall")]
+[charslot]
+[Blocker(a=0, r=0, g=0, b=0, style = "slider", inverse = false, fadetime=2, block=true)]
+[Delay(time=1.5)]
+[PlaySound(key="$rungeneral", volume=1,channel="2")]
+[StopSound(channel="2",fadetime=1.5)]
+[charslot(slot="m",name="avg_npc_2388_1#13$2",afrom=0, ato=1,duration=1.5,focus="m")]
+[Delay(time=1.6)]
+[name="Ken Amada"]Koromaru, ¿qué has encontrado...?
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, style = "slider", inverse = true, fadetime=2, block=true)]
+[Background(image="77_g12_street_night",screenadapt="coverall")]
+[charslot]
+[Blocker(a=0, r=0, g=0, b=0, style = "slider", inverse = false, fadetime=2, block=true)]
+[Delay(time=1.5)]
+[PlaySound(key="$rungeneral", volume=1,channel="3")]
+[StopSound(channel="3",fadetime=1.5)]
+[charslot(slot="m",name="avg_4220_kormr_1#7$1",afrom=0, ato=1,duration=1.5,focus="m")]
+[Delay(time=1.6)]
+[name="Koromaru"]¡Guau! ¡Auu!
+[charslot(slot="m",name="avg_npc_2388_1#10$2",focus="m")]
+[name="Ken Amada"]Aquí tampoco parece haber nada extraño...
+[Dialog]
+[stopmusic(fadetime=2)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, style = "slider", inverse = true, fadetime=2, block=true)]
+[Background(image="77_g13_street_dark",screenadapt="coverall")]
+[charslot]
+[Blocker(a=0, r=0, g=0, b=0, style = "slider", inverse = false, fadetime=2, block=true)]
+[Delay(time=1.5)]
+[playmusic(intro="$jealous_intro", key="$jealous_loop", volume=0.6)]
+[PlaySound(key="$rungeneral", volume=1,channel="4")]
+[StopSound(channel="4",fadetime=1.5)]
+[charslot(slot="l",name="avg_4217_makoto_1#1$3",afrom=0, ato=1,duration=1.5)]
+[charslot(slot="r",name="avg_npc_2388_1#10$2",afrom=0, ato=1,duration=1.5)]
+[Delay(time=1.6)]
+[charslot(slot="r",name="avg_npc_2388_1#9$2",focus="r")]
+[name="Ken Amada"]¡¿?!
+[name="Ken Amada"]¿Cómo puede ser...? ¿Esto es... la Hora Oscura?
+[charslot(slot="r",name="avg_npc_2388_1#10$2",focus="r")]
+[name="Ken Amada"]...Pero el reloj de la plaza sigue funcionando, ¿no?
+[charslot(slot="l",name="avg_4217_makoto_1#1$3",focus="l")]
+[name="Makoto Yuki"]Sí... Esto no parece ser la Hora Oscura.
+[name="Makoto Yuki"]Mira.
+[Dialog]
+[PlaySound(key="$rungeneral", volume=1,channel="5")]
+[StopSound(channel="5",fadetime=1.5)]
+[charslot(slot="l",afrom=1, ato=0,duration=1.5)]
+[Delay(time=2)]
+[charslot(slot="r",name="avg_npc_2388_1#9$2",focus="r")]
+[name="Ken Amada"]Yuki, ¿hay algo por allí...?
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, style = "slider", inverse = true, fadetime=2, block=true)]
+[Background(image="77_g16_square_night",screenadapt="coverall")]
+[charslot]
+[charslot(slot="l",name="avg_4217_makoto_1#1$3")]
+[Blocker(a=0, r=0, g=0, b=0, style = "slider", inverse = false, fadetime=2, block=true)]
+[Delay(time=1.5)]
+[PlaySound(key="$rungeneral", volume=1,channel="6")]
+[StopSound(channel="6",fadetime=1.5)]
+[charslot(slot="r",name="avg_npc_2388_1#10$2",afrom=0, ato=1,duration=1.5)]
+[Delay(time=1.6)]
+[charslot(slot="r",name="avg_npc_2388_1#9$2",focus="r")]
+[name="Ken Amada"]¡Eh! Al llegar hasta aquí, la calle vuelve a verse normal...
+[charslot(slot="l",name="avg_4217_makoto_1#1$3",focus="l")]
+[name="Makoto Yuki"]Sí. Y desde aquí tampoco se ve lo que acabamos de ver.
+[charslot(slot="r",name="avg_npc_2388_1#13$2",focus="r")]
+[name="Ken Amada"]¿Qué está pasando...? ¿Una «Hora Oscura» localizada?
+[charslot(slot="l",name="avg_4217_makoto_1#9$3",focus="l")]
+[name="Makoto Yuki"]……
+[charslot(slot="l",name="avg_4217_makoto_1#8$3",focus="l")]
+[name="Makoto Yuki"]En cualquier caso, investiguemos un poco más.
+[charslot]
+[charslot(slot="m",name="avg_4220_kormr_1#6$1",focus="m")]
+[name="Koromaru"]¡Guau!
+[Dialog]
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, style = "slider", inverse = false, fadetime=2, block=true)]
+[Background(image="77_g13_street_dark",screenadapt="coverall")]
+[charslot]
+[Blocker(a=0, r=0, g=0, b=0, style = "slider", inverse = true, fadetime=2, block=true)]
+[Delay(time=1.5)]
+[charslot(slot="m",name="avg_4220_kormr_1#2$1",focus="m")]
+[playsound(key="$d_avg_dogbarkangry")]
+[name="Koromaru"]¡Guaau... guau, guau!
+[charslot(slot="m",name="avg_npc_2388_1#9$2",focus="m")]
+[name="Ken Amada"]¡Eso es...!
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot]
+[Image(image="77_i03_1", xScale=1.6, yScale=1.6, screenadapt="coverall")]
+[ImageTween(xFrom = 0, xTo = 320, yFrom=0, yTo=180,duration=0, block=false)]
+[ImageTween(xFrom = 320, xTo = 200,duration=30, block=false)]
+[Delay(time=1)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=1, block=false)]
+[Delay(time=2)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=1, block=true)]
+[bgeffect(name="$eb_yukari", layer=1)]
+[Image(image="77_i03_1", xScale=1, yScale=1,fadetime=0, screenadapt="coverall")]
+[PlaySound(key="$d_avg_bowstring_tightened", volume=1)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=false)]
+[Delay(time=1.2)]
+[PlaySound(key="$d_avg_tornado_arrow_launch", volume=1,channel="1")]
+[Delay(time=1.2)]
+[Blocker(a=0, r=1, g=1, b=1, fadetime=0, block=true)]
+[PlaySound(key="$d_avg_magic_1")]
+[PlaySound(key="$d_avg_arrowshot", volume=0.4)]
+[CameraShake(duration=0.3, xstrength=30, ystrength=30, vibrato=30, randomness=90, fadeout=true, block=false)]
+[Blocker(a=1, r=1, g=1, b=1, fadetime=0.2, block=true)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=false)]
+[Delay(time=0.3)]
+[Blocker(a=0, r=1, g=1, b=1, fadetime=0, block=true)]
+[PlaySound(key="$d_avg_magic_1")]
+[PlaySound(key="$d_avg_arrowshot", volume=0.4)]
+[CameraShake(duration=0.3, xstrength=30, ystrength=30, vibrato=30, randomness=90, fadeout=true, block=false)]
+[Blocker(a=1, r=1, g=1, b=1, fadetime=0.2, block=true)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=false)]
+[Delay(time=0.3)]
+[Blocker(a=0, r=1, g=1, b=1, fadetime=0, block=true)]
+[PlaySound(key="$d_avg_magic_1")]
+[PlaySound(key="$d_avg_arrowshot", volume=0.4)]
+[CameraShake(duration=0.3, xstrength=30, ystrength=30, vibrato=30, randomness=90, fadeout=true, block=false)]
+[Blocker(a=1, r=1, g=1, b=1, fadetime=0.2, block=true)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=false)]
+[Delay(time=0.2)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[charslot]
+[bgeffect]
+[curtain(direction = 0,fillfrom = 0.01,fillto = 0.3, grad=true, fadetime=0.5)]
+[curtain(direction = 4,fillfrom = 0.01,fillto = 0.3, grad=true, fadetime=0.5)]
+[PlaySound(key="$d_avg_tornado_arrow_conclusion", volume=1,channel="2")]
+[Image(image="77_i03_1", xScale=1.7, yScale=1.7,x=200,y=-200,fadetime=0.6, screenadapt="coverall")]
+[bgeffect(name="$eb_yukari", x=700, layer=1)]
+[delay(time=1.3)]
+[PlaySound(key="$d_avg_arrowshot", volume=1)]
+[curtain(direction = 0,fillfrom = 0.3,fillto = 0.01, grad=true, fadetime=0.5)]
+[curtain(direction = 4,fillfrom = 0.3,fillto = 0.01, grad=true, fadetime=0.5)]
+[Blocker(a=0, r=1, g=1, b=1, fadetime=0, block=true)]
+[CameraShake(duration=5, xstrength=20, ystrength=20, vibrato=40, randomness=90, fadeout=true, block=false)]
+[Blocker(a=1, r=1, g=1, b=1, fadetime=2, block=true)]
+[delay(time=0.3)]
+[bgeffect]
+[Background(image="77_g13_street_dark",screenadapt="coverall")]
+[Image]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=3, block=false)]
+[delay(time=3)]
+En aquella extraña noche, la silueta familiar de una chica combatía contra algo que nunca habían visto...
+[charslot(slot="m",name="avg_npc_2388_1#9$2",focus="m")]
+[name="Ken Amada"]...¿Una Sombra?
+[dialog]
+[charslot]
+[Dialog]
+[charslot(slot="m",name="avg_4220_kormr_1#2$2",posfrom="80,0",posto="100,0",duration=0.4,focus="m")]
+[delay(time=0.5)]
+[PlaySound(key="$runsand", volume=1)]
+[charslot(slot="m",name="avg_4220_kormr_1#2$2",focus="m",afrom=1,ato=0,posfrom="100,0",posto="-50,0",duration=1)]
+[delay(time=1)]
+[PlaySound(key="$e_skill_skulsrsword", volume=1)]
+[Effect(name="$e_spark_01_large",layer=2)]
+[Blocker(a=1, r=255, g=255, b=255, fadetime=0.01, block=true)]
+[Blocker(a=0, r=255, g=255, b=255, fadetime=1, block=false)]
+[Effect(name="$e_bladeline_01_large",x =116.1, y =0,rox =-60.2, roy =145, roz =16, layer = 1)]
+[delay(time=2)]
+Koromaru saltó hacia delante y rechazó al monstruo, que parecía una Sombra, situado detrás de la chica.
+[dialog]
+[charslot(slot="m",name="avg_4219_yukari_1#6$2",focus="m",duration=2)]
+[delay(time=3)]
+[name="???"]No puede ser... ¿Koromaru?
+[charslot(slot="m",name="avg_4220_kormr_1#2$2",focus="m")]
+[playsound(key="$d_avg_dogbarkangry")]
+[name="Koromaru"]¡Guau, guau!
+[Dialog]
+[charslot]
+[PlaySound(key="$rungeneral", volume=1,channel="5")]
+[StopSound(channel="5",fadetime=1.5)]
+[charslot(slot="l",name="avg_4217_makoto_1#1$3",afrom=0, ato=1,duration=1.5)]
+[charslot(slot="r",name="avg_npc_2388_1#2$2",afrom=0, ato=1,duration=1.5)]
+[Delay(time=2)]
+[charslot(slot="l",name="avg_4217_makoto_1#1$3",focus="l")]
+[name="Makoto Yuki"]¡Yukari!
+[charslot]
+[charslot(slot="m",name="avg_4219_yukari_1#1$2",focus="m")]
+[name="Yukari Takeba"]¡Yuki...! ¡Y Amada!
+[charslot]
+Yukari se distrajo apenas un instante. La Sombra esquivó la flecha y acortó rápidamente la distancia con ella.
+[charslot(slot="m",name="avg_4217_makoto_1#6$3",focus="m")]
+[name="Makoto Yuki"]¡Yukari, cuidado!
+[Dialog]
+[Delay(time=1)]
+[dialog]
+[Blocker(a=0, r=0,g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0,g=0, b=0, fadetime=2, block=true)]
+[stopmusic(fadetime=2)]
+[charslot]
+[Background]
+[Image]
+[bgeffect]
+[gridbg]
+[Image]
+[charslot]

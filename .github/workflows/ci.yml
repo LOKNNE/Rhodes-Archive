@@ -1,0 +1,156 @@
+name: CI
+
+# Runs on every push and pull request: static checks always, and on pushes it
+# also builds installable "CI" artifacts for each platform (attached to the run).
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch: # manual run — pick any branch in the Actions UI to build it
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ---- static checks: type-check, frontend build, Rust tests + build ----------
+  check:
+    name: Static checks
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Linux dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libwebkit2gtk-4.1-dev build-essential curl wget file \
+            libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: swatinem/rust-cache@v2
+        with:
+          workspaces: "./src-tauri -> target"
+
+      # Use the repaired cross-platform lockfile tested for this release.
+      - name: Install dependencies (locked)
+        shell: bash
+        run: npm ci --no-audit --no-fund
+      - name: Run static test suite (tsc + vite build + cargo test/build)
+        run: bash scripts/test-static.sh
+
+  # ---- CI build: produce installers per platform on every push ----------------
+  build:
+    name: Build (${{ matrix.platform }})
+    needs: check
+    # Auto-build only on master pushes; manual workflow_dispatch can build any branch.
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/master')
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [ubuntu-22.04, windows-latest, macos-latest]
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Linux dependencies
+        if: matrix.platform == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libwebkit2gtk-4.1-dev build-essential curl wget file \
+            libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: swatinem/rust-cache@v2
+        with:
+          workspaces: "./src-tauri -> target"
+
+      # Use the repaired cross-platform lockfile tested for this release.
+      - name: Install dependencies (locked)
+        shell: bash
+        run: npm ci --no-audit --no-fund
+      - name: Build the app (native target)
+        # CI/script builds ship with the on-screen debug console enabled by default
+        # (users can turn it off in Settings). Ordinary local builds default off.
+        env:
+          VITE_DEBUG_DEFAULT: "true"
+        run: npm run tauri:build
+
+      - name: Upload installers
+        uses: actions/upload-artifact@v4
+        with:
+          name: arkstage-${{ matrix.platform }}-${{ github.sha }}
+          if-no-files-found: warn
+          path: |
+            src-tauri/target/release/bundle/**/*.deb
+            src-tauri/target/release/bundle/**/*.rpm
+            src-tauri/target/release/bundle/**/*.dmg
+            src-tauri/target/release/bundle/**/*.msi
+            src-tauri/target/release/bundle/**/*-setup.exe
+
+  # ---- CI build: per-ABI Android APKs (arm64-v8a + x86_64) --------------------
+  # Same gating as the desktop build job. Debug-signed (no keystore in CI) but
+  # installable for testing; the release workflow signs with the real key.
+  build-android:
+    name: Build (Android arm64-v8a + x86_64)
+    needs: check
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/master')
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install NDK + platform/build-tools, export NDK env
+        run: |
+          yes | sdkmanager "ndk;27.2.12479018" "platforms;android-35" "build-tools;35.0.0"
+          echo "NDK_HOME=$ANDROID_HOME/ndk/27.2.12479018" >> "$GITHUB_ENV"
+          echo "ANDROID_NDK_HOME=$ANDROID_HOME/ndk/27.2.12479018" >> "$GITHUB_ENV"
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-linux-android,x86_64-linux-android
+      - uses: swatinem/rust-cache@v2
+        with:
+          workspaces: "./src-tauri -> target"
+
+      - name: Install dependencies (locked)
+        shell: bash
+        run: npm ci --no-audit --no-fund
+
+      - name: Build per-ABI release APKs (arm64-v8a + x86_64)
+        env:
+          VITE_DEBUG_DEFAULT: "true"
+        run: npm run tauri android build -- --apk --target aarch64 --target x86_64 --split-per-abi
+
+      - name: Upload APKs
+        uses: actions/upload-artifact@v4
+        with:
+          name: arkstage-android-${{ github.sha }}
+          if-no-files-found: warn
+          path: src-tauri/gen/android/app/build/outputs/apk/**/release/*.apk

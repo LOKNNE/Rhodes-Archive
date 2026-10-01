@@ -1,0 +1,10 @@
+{
+  "name": "arkstage-gen-storylines",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Regenerate the StoryLine taxonomy (storylines.json) from prts.wiki (full rebuild).",
+  "bin": { "gen-storylines": "gen-storylines.mjs" },
+  "scripts": { "start": "node gen-storylines.mjs" },
+  "dependencies": { "cheerio": "^1.0.0" }
+}

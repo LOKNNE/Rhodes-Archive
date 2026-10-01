@@ -1,0 +1,641 @@
+[HEADER(key="title_test", is_skippable=true, fit_mode="BLACK_MASK")]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=0, block=true)]
+[stopmusic]
+[Dialog]
+[Background(image="bg_black",screenadapt="coverall")]
+[Delay(time=1)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[PlayMusic(intro="$drift_intro", key="$drift_loop", volume=0.6)]
+[delay(time=1)]
+[Sticker(id="st1", multi = true, text="Hoy le regalé mi jarra de cerveza al tío Carlo, el de abajo. Tiene una memoria terrible: cada dos semanas me pregunta en qué taller compré la jarra.", x=300,y=250, alignment="left", size=24, delay=0.04, width=700,block = true)]
+[Sticker(id="st1", multi = true, text="\n\nClaro que no quería ocultárselo, pero el dueño de aquel taller se niega rotundamente a fabricar dos jarras iguales. Ahí no puedo hacer nada.",block = true)]
+[Sticker(id="st1")]
+[delay(time=0.5)]
+[Sticker(id="st1", multi = true, text="Antes de darle la jarra, le pedí una bebida gratis a cambio. Carlo sonrió de oreja a oreja y...", x=300,y=250, alignment="left", size=24, delay=0.04, width=700,block = true)]
+[Sticker(id="st1", multi = true, text="\n\nCon una sonrisa, cerró un ojo con cierta incomodidad y, en un tono de voz inusualmente bajo, me preguntó a escondidas, algo avergonzado:",block = true)]
+[Sticker(id="st1", multi = true, text="\n\n«¿Qué te apetece beber hoy?»",block = true)]
+[Sticker(id="st1")]
+[delay(time=0.5)]
+[Sticker(id="st1", multi = true, text="Debí de sonreír, porque pareció aliviado. «Entonces, ¿ya estás mejor? ¿Una cerveza de leche caliente con mantequilla y menta fina, con cinco de azúcar?»", x=300,y=250, alignment="left", size=24, delay=0.04, width=700,block = true)]
+[Sticker(id="st1", multi = true, text="\n\nLe dije que sí, cogí un vaso de cartón grueso del mostrador y me llevé aquella bebida gratis a casa.",block = true)]
+[Sticker(id="st1")]
+[delay(time=0.5)]
+[Sticker(id="st1", multi = true, text="Anocheció. La luz de la luna entraba por la ventana, acumulándose como capas de hielo. El vapor de la bebida se hacía cada vez más tenue, pero la habitación bañada por la luna parecía cada vez más cálida. Me hizo recordar aquel día.", x=300,y=250, alignment="left", size=24, delay=0.04, width=700,block = true)]
+[Sticker(id="st1", multi = true, text="\n\nAquel día, una emoción ardiente e interminable calentó mi corazón. Como mantequilla en una sartén, se derritió felizmente.",block = true)]
+[Sticker(id="st1", multi = true, text="\n\nUna canción tarareaba junto a mis oídos mientras sorbía el dulce líquido. «La, la, la... la, la...»",block = true)]
+[Sticker(id="st1")]
+[delay(time=1)]
+[Blocker(a=0.7, r=0, g=0, b=0, fadetime=0, block=true)]
+[Subtitle(text="«Hace tiempo... ríos... laderas...»", x=300, y=350, alignment="center", size=25, delay=0.04, width=700)]
+[Subtitle(text="«He visto... todos los rincones de la tierra...»", x=300, y=350, alignment="center", size=25, delay=0.04, width=700)]
+[focusout(duration=0, type="bg", from=0, to=0.8, block=true)]
+[Background(image="bg_ibtownd",xScale=1.2, yScale=1.2, fadetime=1,screenadapt="coverall")]
+[backgroundTween(xFrom = 100, xTo = -100, duration=40, block=false)]
+[Subtitle(text="«...las salinas de Iberia... la grava de Sargon...»", x=300, y=350, alignment="center", size=25, delay=0.04, width=700)]
+[Delay(time=0.5)]
+[Background(image="bg_desert_1",xScale=1.2, yScale=1.2, fadetime=1,screenadapt="coverall")]
+[backgroundTween(xFrom = 100, xTo = -100, duration=40, block=false)]
+[Delay(time=2.5)]
+[Background(image="bg_wilderness_1",xScale=1.2, yScale=1.2, fadetime=1,screenadapt="coverall")]
+[backgroundTween(xFrom = 100, xTo = -100, duration=40, block=false)]
+[Subtitle(text="«...el viento frío de Columbia... las raíces del año pasado...»", x=300, y=350, alignment="center", size=25, delay=0.04, width=700)]
+[Delay(time=0.5)]
+[Background(image="28_g3_slumstreets_night",xScale=1.2, yScale=1.2, fadetime=1,screenadapt="coverall")]
+[backgroundTween(xFrom = 100, xTo = -100, duration=40, block=false)]
+[Subtitle(text="«En las tabernas de Leithanien... nunca cesa el sonido de los bailes...»", x=300, y=350, alignment="center", size=25, delay=0.04, width=700)]
+[Delay(time=0.5)]
+[Background(image="bg_23_G01",xScale=1.2, yScale=1.2, fadetime=1,screenadapt="coverall")]
+[backgroundTween(xFrom = 100, xTo = -100, duration=40, block=false)]
+[Subtitle(text="«El sol abrasador de Kazimierz corta como una espada...»", x=300, y=350, alignment="center", size=25, delay=0.04, width=700)]
+[Delay(time=0.5)]
+[Background(image="bg_iceforest_2",xScale=1.2, yScale=1.2, fadetime=1,screenadapt="coverall")]
+[backgroundTween(xFrom = 100, xTo = -100, duration=40, block=false)]
+[Subtitle(text="«En primavera, el deshielo de Ursus hierve y se alza como humo de cocina...»", x=300, y=350, alignment="center", size=25, delay=0.04, width=700)]
+[Delay(time=0.5)]
+[Background(image="26_g1_laterano_cathedralfront",xScale=1.2, yScale=1.2, fadetime=1,screenadapt="coverall")]
+[backgroundTween(xFrom = 100, xTo = -100, duration=40, block=false)]
+[Subtitle(text="«Y al final llegué a Laterano...»", x=300, y=350, alignment="center", size=25, delay=0.04, width=700)]
+[Subtitle(text="«No hay lugar comparable a Laterano.»", x=300, y=350, alignment="center", size=25, delay=0.04, width=700)]
+[Subtitle(text="«Azúcar, armas de fuego y fe...»", x=300, y=350, alignment="center", size=25, delay=0.04, width=700)]
+[Subtitle(text="«Me beberé Laterano de un trago.»", x=300, y=350, alignment="center", size=25, delay=0.04, width=700)]
+[Dialog]
+[Subtitle]
+[stopmusic(fadetime=2)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot]
+[Background(image="26_g1_laterano_cathedralfront",screenadapt="coverall")]
+[focusout(duration=0, type="bg", from=0.8, to=0, block=true)]
+[Delay(time=3)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=4, block=true)]
+[PlayMusic(key="$normal_loop", volume=0.6)]
+[Delay(time=1)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot]
+[Background(image="26_g9_laterano_street",screenadapt="coverall")]
+[Delay(time=0.5)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[Delay(time=1)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot]
+[Background(image="77_g9_gate",screenadapt="coverall")]
+[Delay(time=0.5)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[Delay(time=2)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot]
+[Background(image="77_g6_funeralhome",xScale=1, yScale=1,screenadapt="coverall")]
+[Delay(time=2)]
+[charslot(slot="l",name="avg_npc_2378_1#1$1")]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[Delay(time=2)]
+[charslot(slot="l",name="avg_npc_2378_1#11$1")]
+[Delay(time=2)]
+[charslot(slot="l",name="avg_npc_2378_1#2$1")]
+[Delay(time=2)]
+[PlaySound(key="$d_gen_dooropen")]
+[delay(time=2)]
+[PlaySound(key="$rungeneral", volume=1,channel="1")]
+[delay(time=1)]
+[charslot(slot="r",name="avg_npc_2379_1#2$1",afrom=0, ato=1,duration=0.5)]
+[charslot(slot="r",name="avg_npc_2379_1#1$1",posfrom="40,0", posto="0,0",duration=1.5)]
+[Delay(time=2)]
+[charslot(slot="r",name="avg_npc_2379_1#1$1",focus="r")]
+[name="Giulio"]¡Ya llegaron! Solo han tardado veinte minutos más. Tenemos toda la mañana. ¡Digamos que simplemente hemos visto una opción descartada más!
+[charslot(slot="l",name="avg_npc_2378_1#9$1",focus="l")]
+[name="Giada"]«Ver una opción descartada más»... Eso se llama perder el tiempo, ¿no?
+[charslot(slot="r",name="avg_npc_2379_1#11$1",focus="r")]
+[multiline(name="Giulio")]No he dicho que no...
+[charslot(slot="r",name="avg_npc_2379_1#10$1",focus="r")]
+[multiline(name="Giulio")]Pero en vez de regañarme, será mejor que miremos esto primero porque si no perderemos todavía más tiempo, ¿verdad, señorita Giada?
+[charslot(slot="l",name="avg_npc_2378_1#9$1",focus="l")]
+[name="Giada"]...Adelante, señor Giulio. No hace falta que presuma de hablar tan rápido. No está presentando una fiesta y yo tampoco tengo tanta prisa.
+[Dialog]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=1, block=true)]
+[charslot]
+[charslot]
+[Background(image="bg_black",screenadapt="coverall")]
+[multiline(name="Giada")]Teniendo en cuenta que dijo que ha pasado seis días enteros con esto,
+[multiline(name="Giada")]tengo muchas expectativas.
+[dialog]
+[Background(image="77_g6_funeralhome",xScale=1.9, yScale=1.9,screenadapt="coverall")]
+[backgroundTween(xFrom = -400, xTo = -550,y=-360, duration=40, block=false)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[name="Giulio"]Sé que no lo dices de corazón, pero no importa. ¡Empecemos por este modelo con tracción a las cuatro ruedas y toldo ajustable!
+[name="Giada"]¿Perdón?
+[charslot]
+[Dialog]
+[PlaySound(key="$d_avg_awning_adjust", volume=1)]
+[delay(time=1)]
+[name="Giulio"]Tracción a las cuatro ruedas, asiento del conductor con toldo ajustable y apto para cualquiera mayor de doce años. Aunque la velocidad máxima es de solo veinticinco kilómetros por hora...
+[name="Giulio"]Pero yo diría que eso también es una ventaja. Si fuese más rápido, los invitados necesitarían licencia para conducirlo.
+[name="Giada"]¿También pensabas dejar que lo condujeran?
+[multiline(name="Giulio")]Bueno, en realidad pensaba que los invitados podrían sentarse al volante y hacerse una foto con mi tía. ¿No crees que quedaría genial?
+[multiline(name="Giulio")]Y sobre dejar que los invitados lo conduzcan, si tú estás de acuerdo...
+[name="Giada"]……
+[multiline(name="Giulio")]Vale, no estás de acuerdo. ¡Entendido!
+[charslot]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=1, block=true)]
+[charslot]
+[charslot]
+[Background(image="bg_black",screenadapt="coverall")]
+[multiline(name="Giulio")]Siguiente.
+[Dialog]
+[PlaySound(key="$d_gen_walk_n",volume=1)]
+[delay(time=2)]
+[Background(image="77_g6_funeralhome",xScale=2, yScale=2,screenadapt="coverall")]
+[backgroundTween(xFrom = 100, xTo = 380,yTo = 50, duration=40, block=false)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[PlaySound(key="$d_avg_brilliant_appearance", volume=1)]
+[delay(time=1)]
+[name="Giulio"]¡Una estatua a tamaño real de «Cupcake Boy»! ¡La marca de dulces con la que crecí yo, y seguramente también mi tía e incluso mi abuela! Y lo he comprobado: tiene licencia oficial.
+[name="Giada"]...De acuerdo. He visto modelos con temática de Cupcake Boy, pero normalmente solo llevan un dibujo impreso. Este tuyo...
+[name="Giulio"]¿Crees que un artista al que encontré después de tirar de cuatro cadenas de contactos haría algo de producción en masa? Solo existe una unidad de esta estatua a escala real. Y lo mejor es que...
+[Dialog]
+[PlaySound(key="$d_avg_statue_open", volume=1)]
+[Delay(time=2)]
+[name="Giulio"]Mira, la estatua se puede abrir. El interior se adapta al cuerpo, las extremidades se mueven y se puede controlar y programar a distancia.
+[name="Giulio"]Si quieres, podemos hacer que baile «Vera Jean» durante la ceremonia. Me encanta esa canción, y creo que a mi tía también...
+[name="Giada"]……
+[charslot]
+[dialog]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=0.7, block=true)]
+[curtain(direction = 2,fillfrom = 0.01,fillto = 0.6, grad=true, fadetime=0)]
+[curtain(direction = 6,fillfrom = 0.01,fillto = 0.1, grad=true, fadetime=0)]
+[Background(image="77_g6_funeralhome",xScale=1.9, yScale=1.9,screenadapt="coverall")]
+[backgroundTween(xFrom = 0, xTo = -650, duration=0, block=false)]
+[charslot(slot="l",name="avg_npc_2379_1#12$1", posfrom="0,0", posto="-130,-250",duration=0,focus="l")]
+[charslot(slot = "l",name="avg_npc_2379_1#12$1", action="zoom", poszoom = "0.5,0.5", scale=1.4, duration = 0,focus="l")]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0.7, block=true)]
+[multiline(name="Giulio")]Vale, no quieres. Entendido.
+[multiline(name="Giulio")]Entonces, el siguiente...
+[dialog]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=1, block=true)]
+[curtain(direction = 6,fillfrom = 0.1,fillto = 0.6, grad=true, fadetime=0.5)]
+[Delay(time=0.51)]
+[backgroundTween(xFrom = -650, xTo = 0, duration=0, block=false)]
+[charslot]
+[Delay(time=0.1)]
+[charslot]
+[Dialog]
+[Background(image="bg_black",screenadapt="coverall")]
+[curtain(direction = 2,fillfrom = 0.1,fillto = 0.01, grad=true, fadetime=0)]
+[curtain(direction = 6,fillfrom = 0.6,fillto = 0.01, grad=true, fadetime=0)]
+[delay(tim=0.5)]
+[Dialog]
+[PlaySound(key="$d_avg_button")]
+[delay(time=1.5)]
+[PlaySound(key="$d_avg_circulating_refrigeration_loop", volume=1, loop=true,channel="cold")]
+[Background(image="77_g6_funeralhome",screenadapt="coverall")]
+[Dialog]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=1, block=true)]
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="all")]
+[charslot(slot="r",name="avg_npc_2379_1#10$1",focus="all")]
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=1, block=true)]
+[charslot(slot="r",name="avg_npc_2379_1#10$1",focus="r")]
+[name="Giulio"]¡Oh! Un diseño funcional, justo como le gustan a la señorita Giada: tiene forma de recipiente hermético y conserva de verdad. Lleva un módulo de Artes de Originium de congelación fabricado en Leithanien y refrigeración de cuatro ciclos.
+[name="Giulio"]¡El material transparente también facilita que los invitados se hagan fotos con mi tía! Aunque, por el diseño interior, quizá haya que escoger bien qué recuerdos meter en el ataúd...
+[charslot(slot="l",name="avg_npc_2378_1#12$1",focus="l")]
+[name="Giada"]Ah, así que todavía recuerdas que estamos eligiendo un ataúd.
+[dialog]
+[charslot(slot="l",name="avg_npc_2378_1#12$1",focus="l")]
+[PlaySound(key="$d_avg_button")]
+[delay(time=1.5)]
+[StopSound(channel="cold", fadetime=1)]
+[name="Giada"]Meter el cuerpo en un recipiente hermético... y eso del diseño interior... ¿qué diseño? ¿Convertirlo en una caja de Sankta con leche de soja?
+[charslot(slot="r",name="avg_npc_2379_1#3$1",focus="r")]
+[multiline(name="Giulio")]¡Buena idea!
+[charslot(slot="r",name="avg_npc_2379_1#2$1",focus="r")]
+[multiline(name="Giulio")]...Supongo que esa no era la respuesta que querías oír.
+[charslot(slot="r",name="avg_npc_2379_1#12$1",focus="r")]
+[name="Giulio"]Vamos, señorita Giada, ¿puede pensar un poco en mi fiesta? El ataúd es el centro de la decoración; su estilo prácticamente define el ambiente de toda la fiesta. Es importante.
+[charslot(slot="l",name="avg_npc_2378_1#9$1",focus="l")]
+[name="Giada"]Para empezar, es el lugar de un «funeral», no de una «fiesta». El funeral es la esencia de esta ceremonia. La fiesta es solo un añadido, señor Giulio; podríamos prescindir de ella...
+[charslot(slot="r",name="avg_npc_2379_1#8$1",focus="r")]
+[name="Giulio"]No, no, no. Tiene que haberla y lo sabes. Es un testamento legal de cumplimiento obligatorio por el Salón Notarial. Un Ejecutor me trajo expresamente de Columbia a Laterano por eso.
+[name="Giulio"]¡Por la Ley, organizar bien esta fiesta en el funeral de mi tía es lo más importante de mi vida! Al menos durante este mes.
+[charslot(slot="l",name="avg_npc_2378_1#9$1",focus="l")]
+[name="Giada"]No estoy rechazando la fiesta. Digo que, por su propia naturaleza, una «fiesta» no es una parte necesaria de un funeral...
+[charslot(slot="r",name="avg_npc_2379_1#7$1",focus="r")]
+[name="Giulio"]Señorita Giada, sé que este funeral te importa mucho. Sé que para una Liberi no debe de ser fácil convertirse en agente funeraria. Antes de conocerte ni siquiera sabía que una Liberi podía dedicarse a esto...
+[charslot(slot="l",name="avg_npc_2378_1#2$1",focus="l")]
+[name="Giada"](Respira hondo)
+[charslot(slot="r",name="avg_npc_2379_1#5$1",focus="r")]
+[name="Giulio"]¡Perdón! ¡Perdón! He vuelto a meter la pata, ¿verdad? ¿Te has enfadado?
+[charslot(slot="l",name="avg_npc_2378_1#11$1",focus="l")]
+[name="Giada"]No.
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="l")]
+[multiline(name="Giada")]Y eso no importa. Sé que necesitas preparar cosas...
+[charslot(slot="l",name="avg_npc_2378_1#2$1",focus="l")]
+[multiline(name="Giada")]eh... interesantes,
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="l")]
+[multiline(name="Giada")]es tu trabajo. No tengo nada en contra.
+[charslot(slot="l",name="avg_npc_2378_1#9$1",focus="l")]
+[name="Giada"]Pero espero que el señor Giulio entienda que el ataúd y la persona fallecida son, ante todo, el centro del funeral. Solo después pueden ser... elementos de tu escenario para la fiesta.
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="l")]
+[name="Giada"]No hace falta que me mires con tanto nerviosismo... Sí, es el primer funeral del que me ocupo yo sola, pero también soy de Laterano. Sé cómo son los funerales de Laterano.
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="l")]
+[multiline(name="Giada")]Pero podemos elegir algo un poco más... moderado, ¿no?
+[charslot(slot="l",name="avg_npc_2378_1#11$1",focus="l")]
+[multiline(name="Giada")]Por ejemplo, veamos...
+[Dialog]
+[Delay(time=1.5)]
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="l")]
+[name="Giada"]Este ataúd con forma de galleta de chocolate está bastante bien. Tampoco tiene ninguna función especial. ¿No te parece justo lo adecuado?
+[charslot(slot="r",name="avg_npc_2379_1#12$1",focus="r")]
+[multiline(name="Giulio")]Pero este es solo un modelo de moda que el taller nos envió para promocionarlo...
+[charslot(slot="r",name="avg_npc_2379_1#10$1",focus="r")]
+[multiline(name="Giulio")]Es tu primer funeral. ¿No quieres algo un poco más especial, señorita Giada?
+[charslot(slot="l",name="avg_npc_2378_1#2$1",focus="l")]
+[name="Giada"]No es mi funeral...
+[charslot(slot="l",name="avg_npc_2378_1#11$1",focus="l")]
+[name="Giada"]Déjalo. Está claro que hoy no vamos a ponernos de acuerdo con lo del ataúd. Antes quiero aclarar contigo otra cosa.
+[charslot(slot="l",name="avg_npc_2378_1#9$1",focus="l")]
+[name="Giada"]Ese «método de entrada de los invitados» que diseñaste...
+[name="Giada"]bajar por un tobogán hasta una caja de regalo llena de bolas, lanzar las bolas a unas cestas de fuera y sortear premios según el resultado...
+[name="Giada"]Todavía no lo había aprobado, ¿verdad?
+[charslot(slot="l",name="avg_npc_2378_1#11$1",focus="l")]
+[name="Giada"]Entonces, ¿por qué la caja de regalo ya está hecha?
+[charslot]
+Giada, con expresión de impotencia, señaló la caja de regalo con forma de pastel que ocupaba una esquina de la sala de preparación y era casi tan grande como una piscina hinchable infantil.
+[charslot(slot="l",name="avg_npc_2378_1#11$1",focus="r")]
+[charslot(slot="r",name="avg_npc_2379_1#10$1",focus="r")]
+[name="Giulio"]¡Ah, ya la has visto! Pensaba hablar de esto cuando hubiéramos decidido el ataúd. Como dijiste que no acababas de entenderlo, quería hacerte una demostración en directo...
+[charslot]
+[Dialog]
+[stopmusic(fadetime=2)]
+[PlaySound(key="$d_avg_chairrub", volume=1)]
+[Delay(time=1)]
+Como si quisiera colaborar con la promesa de Giulio de hacer una «demostración en directo», la parte superior del «pastel» se movió de repente.
+[charslot(slot="l",name="avg_npc_2378_1#12$1",focus="l")]
+[charslot(slot="r",name="avg_npc_2379_1#10$1",focus="l")]
+[name="Giada"]...¿Esta caja de regalo es eléctrica?
+[charslot(slot="r",name="avg_npc_2379_1#12$1",focus="r")]
+[name="Giulio"]Supongo que no... No pedí nada de eso cuando hice el encargo al taller. Además, esta tapa tampoco tiene que abrirse muchas veces...
+[name="Giulio"]Eh... ¿voy a echar un vistazo...?
+[Dialog]
+[charslot]
+[Delay(time=1)]
+[PlaySound(key="$d_avg_chairrub", volume=1)]
+[Delay(time=1)]
+Pero no pudo dar ni un paso. Giada le agarraba con fuerza de la manga y miraba la caja de regalo con impotencia. Se estaba moviendo otra vez.
+La tapa, adornada con un elaborado glaseado, volvió a levantarse. Después se inclinó y resbaló, produciendo un largo y agudo chirrido...
+Y entonces ambos vieron la mano que asomaba de la caja de regalo.
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot]
+[PlaySound(key="$d_avg_pushcoffinlid", volume=1)]
+[Delay(time=1.5)]
+[Image(image="77_i01", xScale=2.4, yScale=2.4, screenadapt="coverall")]
+[ImageTween(xFrom = 0, xTo = 320, yFrom=0, yTo=-100,duration=0, block=false)]
+[ImageTween(xFrom = 320, xTo =240,duration=20, block=false)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[Delay(time=2)]
+[PlayMusic(intro="$farce_intro", key="$farce_loop", volume=0.6)]
+[name="???"]...¿Dónde... estoy?
+[Dialog]
+[Image(image="77_i01", xScale=2.4, yScale=2.4, screenadapt="coverall",fadetime=2)]
+[ImageTween(xFrom = 0, xTo = -620, yFrom=0, yTo=280,duration=0, block=false)]
+[ImageTween(xFrom = -620, xTo =-570,duration=30, block=false)]
+[Delay(time=2)]
+[name="???"]Un lugar desconocido... ¿Esto no es el Tártaro?
+[name="???"]……
+[name="???"]¿Y los demás...?
+[Dialog]
+[PlaySound(key="$d_avg_clothmovement", volume=1)]
+[Image(image="77_i01", xScale=1, yScale=1,fadetime=2.5, screenadapt="coverall")]
+[Delay(time=1.5)]
+El joven que se incorporó dentro de la caja parecía aún algo mareado y miró alrededor con el ceño fruncido...
+Los tres se quedaron mirándose.
+[name="???"]...¿Gente? No... ¿eso es un halo... y también plumas...?
+[name="Giada"]...Giulio, ¿esto también lo has preparado tú?
+[name="Giulio"]¿Preparado? ¿Preparado qué? ¿Este chico?
+[name="Giulio"]No, no. Cuando dije demostración quería decir que la haría yo mismo. No llegaría tan lejos como para encerrar a un niño en una caja de regalo para... eh... ¡darte una «sorpresa»!
+[name="???"]……
+[name="???"](Un idioma extraño... pero puedo entenderlo...)
+[name="???"](¿Las Sombras del Tártaro... pueden hablar?)
+[name="Giada"]¿Estás bien?
+[name="???"]...Sí.
+[name="Giulio"]¿Eres aprendiz del taller? ¿Te encerraste sin querer en la caja? Menos mal que no estaba sellada...
+[name="Giulio"]Será mejor que salgas primero, chico. Voy a traerte una taza de chocolate caliente... Eh, ¿dónde está la sala de descanso, Giada?
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot]
+[Image]
+[Background(image="77_g6_funeralhome",screenadapt="coverall")]
+[Delay(time=2)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[PlaySound(key="$d_avg_clothmovement", volume=1)]
+[charslot(slot="m",name="avg_4217_makoto_1#9$4",focus="m",duration=2)]
+[delay(time=3)]
+[charslot]
+[charslot(slot="r",name="avg_npc_2379_1#1$1",focus="l")]
+[charslot(slot="l",name="avg_npc_2378_1#12$1",focus="l")]
+[name="Giada"]...A ver si lo he entendido. Te llamas Makoto Yuki, viniste a Laterano con unos amigos, os atacaron unas bestias fuera de la ciudad y, cuando despertaste, estabas dentro de esta caja. ¿Es así?
+[charslot]
+[charslot(slot="m",name="avg_4217_makoto_1#9$4",focus="m")]
+[name="Makoto Yuki"](Todo esto... «Laterano», estas dos personas...)
+[name="Makoto Yuki"](Será mejor que actúe con cautela hasta entender qué está pasando.)
+[charslot(slot="m",name="avg_4217_makoto_1#1$4",focus="m")]
+[name="Makoto Yuki"]...Más o menos.
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#12$1",focus="r")]
+[charslot(slot="r",name="avg_npc_2379_1#12$1",focus="r")]
+[name="Giulio"]He revisado el lugar y no parece haber ningún otro chico.
+[charslot(slot="l",name="avg_npc_2378_1#11$1",focus="l")]
+[name="Giada"]Quizá alguien del taller lo rescató y hubo algún problema al volver a la ciudad...
+[charslot]
+[charslot(slot="m",name="avg_4217_makoto_1#1$4",focus="m")]
+[name="Makoto Yuki"]...Perdonad. En realidad, todavía hay algunas cosas que no entiendo.
+[charslot(slot="m",name="avg_4217_makoto_1#13$4",focus="m")]
+[name="Makoto Yuki"]He llegado a... «Laterano». Esa parte la entiendo. Pero este lugar exactamente es...?
+[charslot(slot="m",name="avg_4217_makoto_1#5$4",focus="m")]
+[name="Makoto Yuki"]Parece que he visto muchas atracciones. ¿Esto es... un parque temático? ¿Vosotros dos trabajáis aquí...?
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#12$1",focus="l")]
+[charslot(slot="r",name="avg_npc_2379_1#12$1",focus="l")]
+[name="Giada"]Puede resultar un poco difícil de entender para un extranjero... En realidad, todas esas cosas son... ataúdes.
+[charslot]
+[charslot(slot="m",name="avg_4217_makoto_1#13$4",focus="m")]
+[name="Makoto Yuki"]...¿De los que se usan en los funerales?
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="l")]
+[charslot(slot="r",name="avg_npc_2379_1#12$1",focus="l")]
+[name="Giada"]Sí. Este es el nuevo tanatorio de Laterano. Yo trabajo aquí como agente funeraria.
+[charslot(slot="r",name="avg_npc_2379_1#1$1",focus="r")]
+[name="Giulio"]Yo soy diseñador de fiestas. Ahora mismo podría decirse que trabajo temporalmente en el tanatorio.
+[charslot(slot="r",name="avg_npc_2379_1#10$1",focus="r")]
+[name="Giulio"]Sí, estamos preparando un funeral. Hoy tenemos que escoger el ataúd.
+[name="Giulio"]¡Antes de encontrarte, la señorita Giada y yo estábamos discutiendo precisamente por eso!
+[charslot(slot="l",name="avg_npc_2378_1#4$1",focus="l")]
+[name="Giada"]¡¿Qué quieres decir con «discutiendo»?! ¡Solo estaba hablando contigo de trabajo!
+[charslot]
+[charslot(slot="m",name="avg_4217_makoto_1#5$4",focus="m")]
+[name="Makoto Yuki"]No está bien pelearse...
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#8$1",focus="l")]
+[charslot(slot="r",name="avg_npc_2379_1#10$1",focus="l")]
+[name="Giada"]...Lo siento. No debería haber perdido los nervios delante de un menor.
+[charslot(slot="r",name="avg_npc_2379_1#10$1",focus="r")]
+[multiline(name="Giulio")]Oh, oh. Así que admites que estabas enfadada...
+[charslot(slot="r",name="avg_npc_2379_1#3$1",focus="r")]
+[multiline(name="Giulio")]¡Eh, tengo una idea!
+[name="Giulio"]Makoto, ¿te importaría echarnos una mano?
+[charslot(slot="r",name="avg_npc_2379_1#10$1",focus="r")]
+[name="Giulio"]Voy a probar estos ataúdes dentro de un momento. Te agradecería que los miraras junto con Giada y vieras qué tal quedan. Al fin y al cabo, si estoy tumbado dentro no puedo juzgarlo desde fuera.
+[charslot(slot="r",name="avg_npc_2379_1#3$1",focus="r")]
+[name="Giulio"]Se nota a simple vista que eres un chico honrado. Seguro que darás una opinión imparcial, ¿verdad...?
+[charslot(slot="l",name="avg_npc_2378_1#12$1",focus="l")]
+[name="Giada"]Giulio, ¿qué tonterías estás diciendo? Ahora mismo deberíamos llevarlo al Salón Notarial.
+[charslot(slot="r",name="avg_npc_2379_1#12$1",focus="r")]
+[name="Giulio"]¿Llevarlo directamente al Salón Notarial? Es extranjero y no tiene documentación. En menos de tres días lo deportarán.
+[charslot(slot="l",name="avg_npc_2378_1#9$1",focus="l")]
+[name="Giada"]...¿Y qué tiene eso que ver con pedirle ayuda a Yuki? Es menor. Aunque lo trajeras a trabajar con nosotros, el tanatorio no podría contratarlo...
+[charslot(slot="r",name="avg_npc_2379_1#3$1",focus="r")]
+[name="Giulio"]¡No es tan complicado! Es solo un poco de ayuda mutua entre personas...
+[charslot(slot="r",name="avg_npc_2379_1#10$1",focus="r")]
+[multiline(name="Giulio")]Makoto, si estás dispuesto a ayudarme...
+[charslot(slot="r",name="avg_npc_2379_1#11$1",focus="r")]
+[multiline(name="Giulio")]eh... a ayudarnos,
+[charslot(slot="r",name="avg_npc_2379_1#3$1",focus="r")]
+[multiline(name="Giulio")]le diré al Salón Notarial que eres pariente mío. ¿Qué te parece? Si un ciudadano responde por ti, podrás quedarte.
+[charslot(slot="l",name="avg_npc_2378_1#9$1",focus="l")]
+[name="Giada"]...¿Estás enseñando a ese «chico honrado» a mentirle a un Ejecutor?
+[charslot(slot="l",name="avg_npc_2378_1#2$1",focus="l")]
+[name="Giada"]Chantajear a un menor es bastante lamentable.
+[charslot(slot="r",name="avg_npc_2379_1#5$1",focus="r")]
+[name="Giulio"]¿C-chantajear a un menor?! Espera, ¿cómo has llegado a esa conclusión? No quería decir eso...
+[charslot]
+[charslot(slot="m",name="avg_4217_makoto_1#9$4",focus="m")]
+[name="Makoto Yuki"](Aunque su aspecto es un poco peculiar... por lo que dicen, no parecen malas personas.)
+[name="Makoto Yuki"](«Laterano» parece ser el nombre de algún país, aunque nunca he oído hablar de él... Si mis compañeros de S.E.E.S. también han acabado aquí, tengo que encontrarlos cuanto antes.)
+[charslot(slot="m",name="avg_4217_makoto_1#1$4",focus="m")]
+[name="Makoto Yuki"]De acuerdo. Puedo ayudar.
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#12$1",focus="l")]
+[charslot(slot="r",name="avg_npc_2379_1#5$1",focus="l")]
+[name="Giada"]Yuki, no le hagas caso. Aunque no quieras ayudarnos, yo puedo responder por ti. Ya pensaremos luego qué hacer con lo demás.
+[charslot]
+[charslot(slot="m",name="avg_4217_makoto_1#10$4",focus="m")]
+[name="Makoto Yuki"]Los dos habéis sido muy amables conmigo. Si hay algo en lo que pueda ayudar, lo haré encantado.
+[name="Makoto Yuki"]Después, ¿podríais explicarme un poco más lo del «Salón Notarial»?
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#12$1",focus="r")]
+[charslot(slot="r",name="avg_npc_2379_1#3$1",focus="r")]
+[name="Giulio"]¡Claro, claro! ¿Ves, Giada? Esto es lo que se llama ayuda mutua.
+[charslot(slot="l",name="avg_npc_2378_1#11$1",focus="l")]
+[name="Giada"]……
+[charslot]
+[charslot(slot="m",name="avg_4217_makoto_1#10$4",focus="m")]
+[name="Makoto Yuki"]También le estoy muy agradecido, señorita Giada.
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#12$1",focus="l")]
+[charslot(slot="r",name="avg_npc_2379_1#3$1",focus="l")]
+[name="Giada"]Vosotros dos...
+[charslot(slot="r",name="avg_npc_2379_1#10$1",focus="r")]
+[multiline(name="Giulio")]Vale, vale. Giada, Makoto, ¿nos ponemos manos a la obra? A ver...
+[charslot(slot="r",name="avg_npc_2379_1#3$1",focus="r")]
+[multiline(name="Giulio")]¡Empecemos por el modelo que se llama «Regreso al Espíritu Santo a toda velocidad»!
+[Dialog]
+[stopmusic(fadetime=2)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=4, block=true)]
+[charslot]
+[Background(image="26_g12_laterano_office",screenadapt="coverall")]
+[Delay(time=3)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=3, block=true)]
+[playMusic(key="$normal_loop", volume=0.6)]
+[Delay(time=1.5)]
+[charslot(slot="m",name="avg_npc_372_1#10$1",focus="m")]
+[name="Ejecutor"]Bien... Los datos básicos ya están registrados. Este es tu código de identificación temporal y tu terminal.
+[charslot(slot="m",name="avg_npc_372_1#3$1",focus="m")]
+[name="Ejecutor"]Lo siguiente es... a ver... ¿ya habéis elegido escuela o la escogerá el propio Yuki?
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="r")]
+[charslot(slot="r",name="avg_npc_2379_1#12$1",focus="r")]
+[name="Giulio"]¿Escuela?
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="l")]
+[name="Giada"]...Solo ha venido a visitar a unos familiares. No tenía intención de matricularse en Laterano.
+[charslot]
+[charslot(slot="m",name="avg_npc_372_1#8$1",focus="m")]
+[name="Ejecutor"]Eso no puede ser. Aún es menor y habéis registrado que «por ahora no tiene previsto abandonar el país», así que tiene que escolarizarse. Además, estamos en marzo; es un buen momento.
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#2$1",focus="l")]
+[charslot(slot="r",name="avg_npc_2379_1#12$1",focus="l")]
+[name="Giada"]……
+[charslot(slot="r",name="avg_npc_2379_1#10$1",focus="r")]
+[name="Giulio"]¡Sin problema! Los niños tienen que ir a la escuela. Señor Ejecutor, ¿podría dejarme ver la lista de centros?
+[charslot(slot="r",name="avg_npc_2379_1#11$1",focus="r")]
+[multiline(name="Giulio")]...Mmm...
+[charslot(slot="r",name="avg_npc_2379_1#10$1",focus="r")]
+[multiline(name="Giulio")]¡Encontrado!
+[name="Giulio"]Escuela Integral de San Marso. Esta misma.
+[charslot(slot="l",name="avg_npc_2378_1#12$1",focus="l")]
+[name="Giada"]...¿Por qué has ido expresamente hasta mi escuela?
+[charslot(slot="r",name="avg_npc_2379_1#5$1",focus="r")]
+[name="Giulio"]¿Eh? Esta es la escuela a la que fui de pequeño.
+[charslot]
+[charslot(slot="m",name="avg_npc_372_1#3$1",focus="m")]
+[name="Ejecutor"]¿Ya está decidido? Entonces lo registro. Esperad un momento.
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, style = "slider", inverse = true, fadetime=2, block=true)]
+[Background(image="26_g12_laterano_office",screenadapt="coverall")]
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#1$1")]
+[charslot(slot="r",name="avg_npc_2379_1#1$1")]
+[Blocker(a=0, r=0, g=0, b=0, style = "slider", inverse = false, fadetime=2, block=true)]
+[charslot(slot="l",name="avg_npc_2378_1#12$1",focus="l")]
+[name="Giada"](En voz baja) ¿Yuki no tiene que buscar a sus compañeros? ¿Cómo va a hacerlo si tiene que ir a clase...?
+[charslot(slot="r",name="avg_npc_2379_1#10$1",focus="r")]
+[name="Giulio"](En voz baja) Que los busque después de clase. Y si hace falta, siempre puede hacer novillos.
+[charslot(slot="r",name="avg_npc_2379_1#3$1",focus="r")]
+[name="Giulio"](En voz baja) Makoto, no serás de esos alumnos tan buenos que no se atreven a faltar a clase, ¿verdad? También puedes venir a ayudar al tanatorio haciendo novillos.
+[charslot]
+[charslot(slot="m",name="avg_4217_makoto_1#5$4",focus="m")]
+[name="Makoto Yuki"](En voz baja) Nunca he faltado a clase... Solo me he dormido alguna vez durante las clases.
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#4$1",focus="l")]
+[charslot(slot="r",name="avg_npc_2379_1#3$1",focus="l")]
+[name="Giada"](En voz baja) ...Si vas a la escuela, no puedes hacer novillos. ¡Ni faltar a clase ni dormirte durante las clases!
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, style = "slider", inverse = true, fadetime=2, block=true)]
+[Background(image="26_g12_laterano_office",screenadapt="coverall")]
+[charslot]
+[Blocker(a=0, r=0, g=0, b=0, style = "slider", inverse = false, fadetime=2, block=true)]
+[charslot(slot="m",name="avg_npc_372_1#3$1",focus="m")]
+[name="Ejecutor"]Ya está registrado y la escuela también lo ha confirmado. Puedes presentarte hoy mismo.
+[charslot(slot="m",name="avg_npc_372_1#10$1",focus="m")]
+[name="Ejecutor"]Al principio pensé que este chico venía al funeral. No esperaba que fuese a quedarse aquí una temporada. Nunca había oído que la señora Vivetta tuviera familiares en Higashi.
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="r")]
+[charslot(slot="r",name="avg_npc_2379_1#5$1",focus="r")]
+[name="Giulio"]...¿Conoce a mi tía?
+[charslot]
+[charslot(slot="m",name="avg_npc_372_1#10$1",focus="m")]
+[name="Ejecutor"]No. Solo conozco al compañero que ejecuta su testamento. Oí que había traído de Columbia a un diseñador de fiestas para organizar el funeral de la señora Vivetta... Perdón, la fiesta.
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#2$1",focus="l")]
+[charslot(slot="r",name="avg_npc_2379_1#5$1",focus="l")]
+[name="Giada"]……
+[charslot]
+[charslot(slot="m",name="avg_npc_372_1#3$1",focus="m")]
+[name="Ejecutor"]Siempre me ha dado curiosidad. Ese testamento se registró hace veinte años; usted solo tenía seis, ¿verdad, señor Giulio? ¿Por qué lo designó específicamente para organizar una fiesta en su funeral?
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#2$1",focus="r")]
+[charslot(slot="r",name="avg_npc_2379_1#11$1",focus="r")]
+[name="Giulio"]Yo... tampoco lo recuerdo.
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="l")]
+[name="Giada"]Disculpe, señor Ejecutor. ¿Podemos irnos ya?
+[charslot]
+[charslot(slot="m",name="avg_npc_372_1#10$1",focus="m")]
+[name="Ejecutor"]Claro, claro. ¡Todo en orden! Acuérdense de dejarme una buena valoración~
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot]
+[Background(image="26_g11_laterano_alley",screenadapt="coverall")]
+[Delay(time=2)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot(slot="m",name="avg_4217_makoto_1#1$4",focus="m")]
+[name="Makoto Yuki"]Entonces, ¿la escuela a la que voy ahora es la misma a la que fuisteis vosotros dos?
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="r")]
+[charslot(slot="r",name="avg_npc_2379_1#1$1",focus="r")]
+[name="Giulio"]Sí, jaja. Qué casualidad. No esperaba que la señorita Giada y yo fuéramos antiguos alumnos del mismo centro... No consigo imaginarla con nuestro uniforme.
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="l")]
+[name="Giada"]La verdad es que casi nunca lo llevaba. Yo era de ir a clase con ropa de calle.
+[charslot(slot="r",name="avg_npc_2379_1#5$1",focus="r")]
+[name="Giulio"]¿Eh? ¿En nuestra escuela se podía hacer eso...?
+[charslot(slot="l",name="avg_npc_2378_1#12$1",focus="l")]
+[name="Giada"]¿De verdad estudiaste en la misma escuela que yo?
+[charslot(slot="r",name="avg_npc_2379_1#10$1",focus="r")]
+[name="Giulio"]Sí, sí, de verdad. Casi todos los niños del distrito de San Marso estudian en esta escuela, ¿no? Yo vivía aquí de pequeño.
+[name="Giulio"]Por la avenida principal de San Marso pasaban a menudo los coches fúnebres de la Iglesia del Réquiem. Si te sentabas al borde de la calle, los sentimientos de los monjes y de las familias te rozaban en oleadas, como el viento... ¿verdad?
+[charslot(slot="l",name="avg_npc_2378_1#11$1",focus="l")]
+[name="Giada"]Creo que sí... Antes, cuando la ciudad hacía una parada, todos iban a la Iglesia del Réquiem para celebrar los funerales...
+[Dialog]
+[charslot(slot="l",name="avg_npc_2378_1#11$1",focus="n")]
+[Delay(time=1)]
+[PlaySound(key="$d_sp_ballista", volume=0.4)]
+[PlaySound(key="$grenade_explosion", volume=0.4)]
+[Delay(time=2)]
+[charslot]
+[charslot(slot="m",name="avg_4217_makoto_1#3$4",focus="m")]
+[name="Makoto Yuki"]¿Qué ha sido ese ruido?
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#11$1",focus="r")]
+[charslot(slot="r",name="avg_npc_2379_1#1$1",focus="r")]
+[name="Giulio"]Una explosión.
+[charslot(slot="r",name="avg_npc_2379_1#3$1",focus="r")]
+[name="Giulio"]Debe de ser la calle San Rocco. Han abierto allí una nueva pastelería de profiteroles y está teniendo muchísimo éxito.
+[Dialog]
+[charslot]
+[PlaySound(key="$d_avg_bulletbarrage", volume=0.4)]
+[Delay(time=4)]
+[charslot(slot="m",name="avg_4217_makoto_1#13$4",focus="m")]
+[name="Makoto Yuki"]...Estás muy tranquilo. Y ese sonido de ahora... ¿han sido disparos?
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="l")]
+[charslot(slot="r",name="avg_npc_2379_1#3$1",focus="l")]
+[name="Giada"]Sí. Ya casi hemos llegado a la escuela.
+[charslot]
+[charslot(slot="m",name="avg_4217_makoto_1#13$4",focus="m")]
+[name="Makoto Yuki"]……？
+[charslot]
+[charslot(slot="l",name="avg_npc_2378_1#1$1",focus="r")]
+[charslot(slot="r",name="avg_npc_2379_1#10$1",focus="r")]
+[name="Giulio"]Esos estudiantes de ahí deben de haber venido a recibirte.
+[Dialog]
+[stopmusic(fadetime=1)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=1, g=1, b=1, fadetime=2, block=true)]
+[charslot]
+[Background(image="77_g3_schoolgate",xScale=1.8, yScale=1.8,screenadapt="coverall")]
+[backgroundTween(xFrom = 0, xTo = -70,yFrom = 0, yTo = -250, duration=0, block=false)]
+[Delay(time=2)]
+[playMusic(intro="$m_avg3_act54side_intro",key="$m_avg3_act54side_loop", volume=0.6)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[backgroundTween(yFrom = -250, yTo = 100, duration=10, block=false)]
+[Delay(time=4)]
+[Blocker(a=0, r=1, g=1, b=1, fadetime=0, block=true)]
+[Blocker(a=1, r=1, g=1, b=1, fadetime=2, block=true)]
+[curtain(direction = 0,fillfrom = 0.01,fillto = 0.2, grad=true, fadetime=1.5)]
+[curtain(direction = 4,fillfrom = 0.01,fillto = 0.2, grad=true, fadetime=1.5)]
+[delay(time=1.5)]
+[Background(image="77_g3_schoolgate",xScale=1.9, yScale=1.9, fadetime=1.5,screenadapt="coverall")]
+[backgroundTween(xFrom = 0, xTo = -250,yFrom = 0, yTo = 200, duration=0, block=false)]
+[backgroundTween(xFrom = -250, xTo = -350, duration=30, block=false)]
+[charslot(slot="r",name="avg_npc_2377_1#4$1", posfrom="0,0", posto="0,30",afrom=1, ato=0,duration=0,focus="r")]
+[charslot(slot = "r", action="zoom", poszoom = "0.5,0.5", scale=1.4, duration = 0)]
+[charslot(slot="r",afrom=0,ato=1,duration=2)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=1, block=false)]
+[Delay(time=2.5)]
+[name="???"]……
+[charslot(slot="r",name="avg_npc_2377_1#8$1", posfrom="0,0", posto="0,30",duration=0,focus="r")]
+[charslot(slot = "r",name="avg_npc_2377_1#8$1", action="zoom", poszoom = "0.5,0.5", scale=1.4, duration = 0)]
+[name="???"]¡Ah, ya está aquí!
+[name="???"]¡Compañero, por aquí!
+[Dialog]
+[charslot]
+[curtain(direction = 0,fillfrom = 0.2,fillto = 0.01, grad=true, fadetime=1.5)]
+[Background(image="77_g3_schoolgate",screenadapt="coverall",fadetime=1.5)]
+[curtain(direction = 4,fillfrom = 0.2,fillto = 0.01, grad=true, fadetime=1.5)]
+[Delay(time=2)]
+[PlaySound(key="$rungeneral", volume=1,channel="2")]
+[StopSound(channel="2",fadetime=1.5)]
+[charslot(slot="m",name="avg_npc_2377_1#2$1",afrom=0, ato=1,duration=1.5,focus="m")]
+[Delay(time=2)]
+[charslot(slot="m",name="avg_npc_2377_1#5$1",focus="m")]
+[name="???"]¡Hola! Disculpa, ¿eres Makoto Yuki?
+[Dialog]
+[Delay(time=1)]
+[Blocker(a=1, r=0,g=0, b=0, fadetime=2, block=true)]
+[bgeffect]
+[gridbg]
+[stopmusic(fadetime=2)]
+[Image]
+[charslot]

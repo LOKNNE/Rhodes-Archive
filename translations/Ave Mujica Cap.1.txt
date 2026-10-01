@@ -1,0 +1,619 @@
+#ARKSTAGE_TITLE=SR-1_月出/BEG
+[HEADER(key="title_test", is_skippable=true, fit_mode="BLACK_MASK")]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=0, block=true)]
+[stopmusic]
+[Dialog]
+[Background(image="65_g1_rainystreet",screenadapt="coverall", block=true)]
+[Delay(time=1)]
+[PlaySound(key="$d_avg_traffic_amb", volume=1, loop=true, channel="a")]
+[PlayMusic(key="$calm_loop", volume=0.6)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=3, block=true)]
+[delay(time=0.5)]
+[PlaySound(key="$d_avg_sidewalklight_red", volume=1, loop=true, channel="bgs")]
+[StopSound(channel="bgs", fadetime=3.5)]
+[StopSound(channel="a", fadetime=2)]
+[delay(time=2.5)]
+[PlaySound(key="$d_gen_walk_n")]
+[delay(time=1.5)]
+[charslot(slot="m",name="avg_4185_amoris_1#1$1",duration=1)]
+[delay(time=1.5)]
+[charslot(slot="m",name="avg_4185_amoris_1#1$1",focus="m")]
+[name="Nyamu Yutenji"]¡Ajá! ¡El baile de disfraces de hoy también ha sido todo un éxito!
+[name="Nyamu Yutenji"]¿Os habéis fijado en los gritos durante el bis? ¡Había una niña que se notaba que era una súper fan de Nyamu!
+[charslot(slot="m",name="avg_4185_amoris_1#3$1",focus="m")]
+[name="Nyamu Yutenji"]¡Cuando salí, sus ojos empezaron a brillar! ¡Me hizo muchísima ilusión~
+[name="Nyamu Yutenji"]Para el próximo baile, ¿qué tal si interactuamos todavía más con los fans~?
+[Dialog]
+[charslot]
+[delay(time=0.5)]
+[charslot(slot="m",name="avg_4182_oblvns_1#12$1",duration=1)]
+[delay(time=1.5)]
+[charslot(slot="m",name="avg_4182_oblvns_1#12$1",focus="m")]
+[name="Sakiko Togawa"]Señorita Yutenji, no me importa que estudies cómo aumentar tu encanto, pero espero que no olvides respetar la imagen de Ave{@nbs}Mujica.
+[charslot(slot="m",name="avg_4185_amoris_1#10$1",focus="m")]
+[name="Nyamu Yutenji"]Eh… Sakiko, ¿tanto miedo tienes de que te robe el cariño del público?
+[name="Nyamu Yutenji"]Mis fans simplemente se dejaron llevar por el baile de disfraces de Ave{@nbs}Mujica. ¿No es bueno que ellos también se enamoren de Mujica?
+[charslot(slot="m",name="avg_4182_oblvns_1#3$1",focus="m")]
+[name="Sakiko Togawa"]Incluso la forma de estar de pie forma parte de la actuación. No podemos bajar la guardia hasta el último segundo.
+[charslot(slot="m",name="avg_4182_oblvns_1#12$1",focus="m")]
+[name="Sakiko Togawa"]Nuestra misión es hacer que los invitados se sumerjan por completo en este baile.
+[name="Sakiko Togawa"]Para ello, tenemos que mostrarles de principio a fin una imagen de nuestro mundo que resulte convincente——
+[charslot(slot="m",name="avg_4185_amoris_1#5$1",focus="m")]
+[name="Nyamu Yutenji"]Sí, sí, ya lo entiendo.
+[charslot(slot="m",name="avg_4185_amoris_1#8$1",focus="m")]
+[name="Nyamu Yutenji"]Pero~ cuando Mutsumi salió fue cuando más fuerte se escucharon los gritos, ¿no?
+[name="Nyamu Yutenji"]«Qué divertido~», «Ojalá tuviera más fans~». ¿De verdad Mutsumi nunca piensa cosas así?
+[charslot]
+[charslot(slot="r",name="avg_4183_mortis_1#10$1",focus="r")]
+[name="Mutsumi Wakaba"]Yo… no…
+[Dialog]
+[PlaySound(key="$d_avg_runstop", volume=1)]
+[charslot(slot="m",name="avg_4182_oblvns_1#9$1",afrom=0,ato=1,duration=0.7,focus="m",isblock=true)]
+[Delay(time=1)]
+[name="Sakiko Togawa"]Por favor, no incites a Mutsumi.
+[Dialog]
+[charslot]
+[charslot(slot="m",name="avg_4184_dolris_1#13$1",focus="m",duration=1)]
+[delay(time=1)]
+[name="Uika Misumi"]Jajaja… No os pongáis así…
+[charslot(slot="m",name="avg_4185_amoris_1#1$1",focus="m")]
+[name="Nyamu Yutenji"]Solo digo que seguramente todos estén esperando con ganas nuestra próxima actuación~
+[charslot(slot="m",name="avg_4185_amoris_1#1$1",focus="m")]
+[name="Nyamu Yutenji"]Ahora que hay tanta gente a la que le gustamos, deberíamos aprovechar el impulso y responderles dando el cien por cien.
+[charslot(slot="m",name="avg_4184_dolris_1#13$1",focus="m")]
+[name="Uika Misumi"]La lámpara del ático lleva varios días encendida hasta muy tarde… Sakiko está esforzándose al máximo para componer una canción nueva.
+[charslot(slot="m",name="avg_4182_oblvns_1#7$1",focus="m")]
+[name="Sakiko Togawa"]Todos los miembros de Ave{@nbs}Mujica llevamos un tiempo esforzándonos al máximo. ¿Cómo iba yo a relajarme?
+[charslot(slot="m",name="avg_4184_dolris_1#9$1",focus="m")]
+[name="Uika Misumi"]Sakiko…
+[charslot(slot="m",name="avg_4185_amoris_1#3$2",focus="m")]
+[name="Nyamu Yutenji"]¡Sakiko, no te vayas a matar a trabajar!
+[charslot(slot="m",name="avg_4184_dolris_1#1$1",focus="m")]
+[name="Uika Misumi"]Todas podemos sentir cuánto te importa, Sakiko. Yo también me esforzaré para escribir una letra que esté a la altura de la nueva canción.
+[charslot(slot="m",name="avg_4186_tmoris_1#11$1",focus="m")]
+[name="Umiri Yahata"]Antes de la actuación de hace un rato, Toyokawa me enseñó una demo. Es una buena canción.
+[charslot(slot="m",name="avg_4184_dolris_1#1$1",focus="m")]
+[name="Uika Misumi"]Yo creo que… el ritmo podría ser un poco más lento.
+[charslot(slot="m",name="avg_4185_amoris_1#4$1",focus="m")]
+[CameraShake(duration=0.5, xstrength=8, ystrength=10, vibrato=30, randomness=90, fadeout=true, block=false)]
+[name="Nyamu Yutenji"]¡¿Eh?! ¡¿Vosotras ya la habíais escuchado?! ¡¿Cuándo?!
+[charslot(slot="m",name="avg_4184_dolris_1#1$1",focus="m")]
+[name="Uika Misumi"]Justo antes de empezar. Creo que tú no estabas en la sala de descanso.
+[charslot(slot="m",name="avg_4182_oblvns_1#1$1",focus="m")]
+[name="Sakiko Togawa"]Quería recoger la opinión de todas, pero como íbamos justas de tiempo, primero se la hice escuchar a quienes estaban allí.
+[charslot(slot="m",name="avg_4183_mortis_1#6$1",focus="m")]
+[name="Mutsumi Wakaba"]Nyamu me llevó a su canal de directos como invitada… Yo tampoco la escuché.
+[charslot(slot="m",name="avg_4185_amoris_1#3$2",focus="m")]
+[name="Nyamu Yutenji"]Eh… ¡!
+[charslot(slot="m",name="avg_4182_oblvns_1#6$1",focus="m")]
+[name="Sakiko Togawa"]¡¿Qué?!
+[charslot(slot="m",name="avg_4182_oblvns_1#4$1",focus="m")]
+[name="Sakiko Togawa"]Yutenji, ¿no te dije que no podías——
+[Dialog]
+[charslot]
+[PlaySound(key="$d_avg_sidewalklight_green", volume=1, loop=true, channel="bgs1")]
+[StopSound(channel="bgs1", fadetime=2)]
+[Delay(time=1.5)]
+[charslot(slot="m",name="avg_4185_amoris_1#4$2",focus="m")]
+[name="Nyamu Yutenji"]¡El semáforo se va a poner en verde! ¡Vamos, crucemos y seguimos hablando!
+[Dialog]
+[PlaySound(key="$d_avg_walkfast", volume=0.7)]
+[charslot(duration=0.6)]
+[Delay(time=0.8)]
+[charslot(slot="m",name="avg_4183_mortis_1#9$1",focus="m")]
+[Delay(time=0.2)]
+[PlaySound(key="$d_gen_walk_n",volume=0.6)]
+[charslot(duration=1)]
+[Delay(time=1.5)]
+[charslot(slot="m",name="avg_4186_tmoris_1#11$1",focus="m")]
+[Delay(time=0.2)]
+[PlaySound(key="$d_avg_footstep_stonestep",volume=0.6,channel="step",loop=false)]
+[stopsound(channel="step",fadetime=2)]
+[charslot(duration=1)]
+[Delay(time=2)]
+[charslot(slot="m",name="avg_4182_oblvns_1#2$1",focus="m")]
+[name="Sakiko Togawa"]Uf, qué dolor de cabeza…
+[charslot(slot="m",name="avg_4184_dolris_1#4$1",focus="m")]
+[name="Uika Misumi"]…Qué bonito.
+[charslot(slot="m",name="avg_4182_oblvns_1#12$1",focus="m")]
+[name="Sakiko Togawa"]¿Hmm? ¿Por qué dices eso de repente?
+[charslot(slot="m",name="avg_4184_dolris_1#1$1",focus="m")]
+[name="Uika Misumi"]Después de escuchar lo que acabas de decir, Sakiko, me he quedado pensando.
+[name="Uika Misumi"]Después de todo lo que hemos pasado, incluso con nuestras discusiones, seguimos las cinco juntas formando una banda… Qué bonito.
+[name="Uika Misumi"]Nunca os lo he preguntado, pero creo que todas pensamos lo mismo… Yo, al menos, sí.
+[charslot(slot="m",name="avg_4184_dolris_1#1$1",focus="m")]
+[name="Uika Misumi"]Todas estamos muy agradecidas a Sakiko. Mutsumi también lo está pasando bien, y Umiri y Nyamu dicen que han cumplido sus sueños en Mujica.
+[charslot(slot="m",name="avg_4182_oblvns_1#14$1",focus="m")]
+[name="Sakiko Togawa"]…Sueños.
+[Dialog]
+[charslot(duration=0.3)]
+[Delay(time=0.5)]
+Sakiko siguió la mirada de Uika y vio a varias chicas cruzando el paso de peatones entre risas.
+Parecían despreocupadas, como si todo fuera tan perfecto como en un cuento de hadas.
+[charslot(slot="m",name="avg_4184_dolris_1#4$1",focus="m")]
+[name="Uika Misumi"]En cuanto a mí, estoy muy feliz de que confíes en mí así, Sakiko.
+[name="Uika Misumi"]¡Quiero dedicar toda mi vida a Mujica!
+[charslot(slot="m",name="avg_4184_dolris_1#1$1",focus="m")]
+[name="Uika Misumi"]Todo vuelve a ser como antes… Es como si estuviera viviendo un sueño.
+[stopmusic(fadetime=1)]
+[charslot(slot="m",name="avg_4182_oblvns_1#14$1",focus="m")]
+[name="Sakiko Togawa"]Eh…
+[name="Sakiko Togawa"]…¿Un sueño?
+[dialog]
+[charslot(duration=0.3)]
+[Delay(time=1)]
+[playMusic(intro="$loneliness_intro", key="$loneliness_loop", volume=0.6)]
+[focusout(duration=1.5, type="bg", from=0, to=1, block=true)]
+[Delay(time=0.5)]
+[charslot(slot="m",name = "avg_4184_dolris_1#9$1", afrom = 0, ato = 0.8,duration = 0.7, end = true)]
+[Delay(time=1)]
+[name="Uika Misumi"]No os peleéis aquí…
+[charslot(slot="m",name="avg_4182_oblvns_1#4$1",afrom = 0, ato = 0.8,duration = 0, end = true)]
+[name="Sakiko Togawa"]¡¿Quieres que abandone nuestra identidad como banda?!
+[charslot(slot="m",name="avg_4185_amoris_1#4$2",afrom = 0, ato = 0.8,duration = 0, end = true)]
+[name="Nyamu Yutenji"]A mí me da igual si somos una banda o no.
+[charslot(slot="m",name="avg_4182_oblvns_1#14$1",afrom = 0, ato = 0.8,duration = 0, end = true)]
+[name="Sakiko Togawa"]¡¿Eh?!
+[charslot(slot="m",name="avg_4185_amoris_1#2$2",afrom = 0, ato = 0.8,duration = 0, end = true)]
+[name="Nyamu Yutenji"]Después de todo, ¿qué motivo tenemos para aferrarnos a la forma de una banda?
+[charslot(slot="m",name="avg_4182_oblvns_1#9$1",afrom = 0, ato = 0.8,duration = 0, end = true)]
+[name="Sakiko Togawa"]¿Qué estás diciendo——
+[charslot(slot="m",name="avg_4185_amoris_1#2$2",afrom = 0, ato = 0.8,duration = 0, end = true)]
+[name="Nyamu Yutenji"]Además, la propia Mutsumi no parece tener ningún problema. En la televisión dijo que «no duraría para siempre».
+[name="Nyamu Yutenji"]A este paso, parece que no le importa ni la idea de ser una banda ni siquiera abandonar Mujica.
+[charslot(slot="m",name="avg_4183_mortis_1#6$1",afrom = 0, ato = 0.8,duration = 0, end = true)]
+[name="Mutsumi Wakaba"]……
+[charslot(slot="m",name="avg_4182_oblvns_1#7$1",afrom = 0, ato = 0.8,duration = 0, end = true)]
+[name="Sakiko Togawa"]Eso——
+[charslot(slot="m",name="avg_4184_dolris_1#9$1",afrom = 0, ato = 0.8,duration = 0, end = true)]
+[name="Uika Misumi"]…No dejaré que Mujica se disuelva.
+[charslot(slot="m",name="avg_4185_amoris_1#3$2",afrom = 0, ato = 0.8,duration = 0, end = true)]
+[name="Nyamu Yutenji"]¿Cómo hemos acabado hablando de esto? Yo no he dicho que quiera disolvernos.
+[charslot(slot="m",name="avg_4184_dolris_1#9$1",afrom = 0, ato = 0.8,duration = 0, end = true)]
+[name="Uika Misumi"]Si un miembro se marcha, significa que la banda se disuelve. Eso sería traicionar a los invitados que nos apoyan.
+[charslot(slot="m",name="avg_4185_amoris_1#4$2",afrom = 0, ato = 0.8,duration = 0, end = true)]
+[name="Nyamu Yutenji"]Yo quería decir que ya los traicionaste hace un rato. Además, Uika, hablas como si te importara muchísimo, pero casi no has podido venir a ensayar, ¿no?
+[charslot(slot="m",name="avg_4184_dolris_1#12$1",afrom = 0, ato = 0.8,duration = 0, end = true)]
+[name="Uika Misumi"]……
+[charslot(slot="m",name="avg_4185_amoris_1#4$2",afrom = 0, ato = 0.8,duration = 0, end = true)]
+[name="Nyamu Yutenji"]¿No crees que eso es bastante irresponsable?
+[charslot(slot="m",name="avg_4184_dolris_1#9$1",afrom = 0, ato = 0.8,duration = 0, end = true)]
+[name="Uika Misumi"]¡¿Cómo puedes decir eso…?!
+[charslot(slot="m",name="avg_4182_oblvns_1#4$1",afrom = 0, ato = 0.8,duration = 0, end = true)]
+[name="Sakiko Togawa"]Si hablamos de responsabilidad, ¡tú, señorita Yutenji, deberías practicar más!
+[charslot(slot="m",name="avg_4186_tmoris_1#9$1",afrom = 0, ato = 0.8,duration = 0, end = true)]
+[name="Umiri Yahata"]Nunca he pensado que a la señorita Yutenji le falte práctica. Toyokawa, ¿no será que eres tú quien no presta atención a las demás?
+[dialog]
+[charslot(duration=0.7)]
+[Delay(time=1)]
+[focusout(duration=1, type="bg", from=1, to=0, block=true)]
+[Delay(time=1)]
+Cuando Uika aceleró el paso para alcanzar a sus compañeras, Sakiko se quedó atrás, aturdida entre la multitud.
+Miraba distraída las luces del semáforo, que se encendían y apagaban alternativamente, mientras sus piernas parecían pesar toneladas y no podía dar ni un paso.
+[dialog]
+[PlaySound(key="$d_avg_sidewalklight_green", volume=1, loop=true, channel="bgs2")]
+[StopSound(channel="bgs2", fadetime=3)]
+[Delay(time=1)]
+[Image(image="65_i01_1", screenadapt="coverall", fadetime=2,block=true)]
+[Delay(time=1)]
+[name="Nyamu Yutenji"]Oye—— ¿qué haces ahí parada como una estatua?
+[name="Umiri Yahata"]¿Te has olvidado de recoger algo?
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=0.6, r=0, g=0, b=0, fadetime=1, block=true)]
+[Subtitle(text="«¿Aun así sigues sin confiar en mí?!»", x=300, y=370, alignment="center", size=24, delay=0.04, width=700)]
+[subtitle]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=1, block=true)]
+[Delay(time=0.5)]
+[name="Mutsumi Wakaba"]…Sakiko, el semáforo está a punto de cambiar.
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=0.6, r=0, g=0, b=0, fadetime=1, block=true)]
+[Subtitle(text="«Sakiko, ¿lo del Budokan va bien?»", x=300, y=370, alignment="center", size=24, delay=0.04, width=700)]
+[subtitle]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=1, block=true)]
+[Delay(time=0.5)]
+[name="Uika Misumi"]¿Sakiko?
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=0.6, r=0, g=0, b=0, fadetime=1, block=true)]
+[Subtitle(text="«Sakiko, deberías volver. Será mejor que no vuelvas a verme…»", x=300, y=370, alignment="center", size=24, delay=0.04, width=700)]
+[subtitle]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=1, block=true)]
+[Delay(time=0.5)]
+[name="Nyamu Yutenji"]¡Eres una despistada! ¡Nosotras no vamos a esperarte!
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=0.6, r=0, g=0, b=0, fadetime=1, block=true)]
+[Subtitle(text="«…Qué asco.»", x=300, y=370, alignment="center", size=24, delay=0.04, width=700)]
+[subtitle]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=1, block=true)]
+[Delay(time=0.5)]
+[dialog]
+[PlaySound(key="$d_avg_sidewalklight_green", volume=1, loop=true, channel="bgs2")]
+[StopSound(channel="bgs2", fadetime=1.5)]
+[Delay(time=2)]
+[PlaySound(key="$d_avg_sidewalklight_red", volume=1, loop=true, channel="bgs3")]
+[StopSound(channel="bgs3", fadetime=2)]
+[Delay(time=1)]
+[PlaySound(key="$d_avg_rainlight_loop", volume=0, loop=true, channel="c")]
+[SoundVolume(volume=0.6, channel="c",fadetime=6)]
+[Image(image="65_i01_2", screenadapt="coverall", fadetime=1,block=true)]
+[Delay(time=1)]
+El sonido que indicaba a los peatones que podían cruzar repiqueteó con urgencia. Sakiko quiso seguir el paso de las demás, pero el semáforo ya se había puesto en rojo.
+[Dialog]
+[PlaySound(key="$d_avg_carhorn", volume=1)]
+[Delay(time=1)]
+Los coches pasaban a toda velocidad. Sakiko se apartó el cabello despeinado por el viento, mientras la luz del semáforo dibujaba el contorno de su rostro.
+Algo cayó en la palma de su mano.
+[name="Sakiko Togawa"]Agua… ¿Está lloviendo?
+[dialog]
+[SoundVolume(volume=1, channel="c",fadetime=6)]
+[PlaySound(key="$d_avg_traffic_amb", volume=1, loop=true, channel="amb")]
+[SoundVolume(volume=1, channel="amb",fadetime=6)]
+[Delay(time=2)]
+Las gotas empezaron a caer del cielo, cada vez más rápido y en mayor cantidad.
+De repente, pareció recordar muchas cosas——
+[Dialog]
+[focusout(duration=3, type="cg", from=0, to=1, block=false)]
+Los sonidos a su alrededor se hicieron cada vez más fuertes: el bullicio de la gente y los cláxones de los coches atravesaban sus oídos sin piedad.
+La lluvia empapó su ropa y se mezcló con sus lágrimas.
+No podía contarle a nadie su tristeza ni su impotencia, pero su llanto descontrolado, con el rostro alzado hacia el cielo, lo decía todo.
+Una profunda sensación de tristeza y pérdida la envolvió, y su visión se volvió cada vez más borrosa junto con sus recuerdos.
+[Dialog]
+[stopmusic(fadetime=2)]
+[StopSound(channel="c", fadetime=2)]
+[StopSound(channel="amb", fadetime=2)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=2, block=true)]
+[image]
+[Background(image="bg_black",screenadapt="coverall")]
+[delay(time=2)]
+[PlaySound(key="$d_avg_powerengine_run", volume=0.6)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[Delay(time=0.5)]
+Clanc, clanc.
+[name="???"]Sakiko, ¿Sakiko?
+[name="Sakiko Togawa"]Mmm… ¿Mmm?
+[name="???"]¡Que ya te está dando el sol! ¡Hora de levantarse!
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=0.5, block=true)]
+[charslot]
+[Background(image="bg_room_2", screenadapt="coverall", block=true)]
+[bgeffect]
+[bgeffect(name="$eb_dim_openeye",layer=1)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=4, block=true)]
+[Delay(time=1)]
+[bgeffect]
+[PlaySound(key="$d_avg_cloakmovement", volume=1)]
+[charslot(slot="m",name="avg_4182_oblvns_1#14$2",duration=2)]
+[delay(time=2)]
+[PlayMusic(key="$normal_loop", volume=0.6)]
+[charslot(slot="m",name="avg_4182_oblvns_1#14$2",focus="m")]
+[name="Sakiko Togawa"]¿Vigna? ¿Eres tú? ¿Ha sido un sueño…?
+[charslot(slot="m",name="avg_290_vigna_1#8$1",focus="m")]
+[name="Vigna"]No ha sido un sueño.
+[Dialog]
+[charslot(duration=0.5)]
+[delay(time=0.7)]
+[charslot(slot="m",name="avg_4182_oblvns_1#6$2",focus="m")]
+[charslot(slot = "m", action="shake",random=true, power=5, times=60,duration=0.5)]
+[name="Sakiko Togawa"]¡Vigna, no me pellizques la cara!
+[charslot(slot="m",name="avg_290_vigna_1#1$1",focus="m")]
+[name="Vigna"]Solo estaba ayudándote a comprobarlo. Además, no he apretado tanto, ¿no?
+[name="Vigna"](Se pellizca la mejilla.) ¿Ves? ¿Estoy bien?
+[charslot(slot="m",name="avg_4182_oblvns_1#14$2",focus="m")]
+[name="Sakiko Togawa"]¡A cualquiera le molestaría que le pellizcaran la cara nada más despertarse!
+[charslot(slot="m",name="avg_290_vigna_1#8$1",focus="m")]
+[name="Vigna"]Vale, vale, ya no te molesto. Date prisa, prepárate. Te espero fuera.
+[Dialog]
+[PlaySound(key="$d_avg_footstep_stonestep",volume=1,channel="step1",loop=false)]
+[stopsound(channel="step1",fadetime=2)]
+[charslot(duration=1)]
+[delay(time=1.5)]
+[PlaySound(key="$doorclosequite", volume=1)]
+[delay(time=1)]
+[PlaySound(key="$d_avg_powerengine_run", volume=0.8)]
+[delay(time=1.5)]
+Con la oreja pegada a la pared, todavía fría, podía oír débilmente el sonido de los motores de la nave funcionando a toda potencia a través de la estructura que la conectaba.
+Clanc, clanc.
+[charslot(slot="m",name="avg_4182_oblvns_1#3$2",focus="m")]
+[name="Sakiko Togawa"]Así que era el sonido de los motores…
+[charslot(slot="m",name="avg_4182_oblvns_1#10$2",focus="m")]
+[name="Sakiko Togawa"]…
+[name="Sakiko Togawa"]¿Quiénes eran aquellas personas… y qué era aquella extraña escena?
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=1, block=true)]
+[charslot]
+[Background(image="bg_corridor", screenadapt="coverall", block=true)]
+[charslot(slot="l",name="avg_290_vigna_1#11$1")]
+[charslot(slot="r",name="avg_4182_oblvns_1#10$2")]
+[Delay(time=1)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=1, block=true)]
+[Delay(time=0.5)]
+[charslot(slot="l",name="avg_290_vigna_1#11$1",focus="l")]
+[name="Vigna"]¿Quieres decir que soñaste con un grupo de personas que no conocías en absoluto?
+[charslot(slot="r",name="avg_4182_oblvns_1#10$2",focus="r")]
+[name="Sakiko Togawa"]…Sí. Y tampoco había visto nunca aquel lugar del sueño.
+[name="Sakiko Togawa"]Un vehículo que no había visto jamás, edificios desconocidos y la ropa que llevaban…
+[charslot(slot="l",name="avg_290_vigna_1#7$1",focus="l")]
+[name="Vigna"]¿Quizá era una escena de alguna película?
+[name="Vigna"]A veces veo documentales antes de dormir y también sueño que estoy en los lugares que aparecen en ellos…
+[charslot(slot="r",name="avg_4182_oblvns_1#10$2",focus="r")]
+[name="Sakiko Togawa"]Pero nunca me había pasado algo parecido…
+[charslot(slot="l",name="avg_290_vigna_1#11$1",focus="l")]
+[name="Vigna"]¿No será que últimamente estás demasiado cansada?
+[name="Vigna"]Hace unos días, Blade me dijo que entrenas hasta muy tarde todos los días y que solo paras cuando ella viene a recordártelo.
+[name="Vigna"]Además, creo que también vi tu nombre en la lista más reciente de voluntarios del Departamento de Ingeniería…
+[name="Vigna"]Llevas aquí poco tiempo. Todavía tienes mucho tiempo y muchas oportunidades para adaptarte.
+[charslot(slot="l",name="avg_290_vigna_1#8$1",focus="l")]
+[name="Vigna"]Si estás cansada, ¿por qué no te tomas un descanso y te das un poco de tiempo?
+[charslot(slot="r",name="avg_4182_oblvns_1#12$2",focus="r")]
+[name="Sakiko Togawa"]Estoy bien. Solo necesito ajustarme un poco por mi cuenta…
+[Dialog]
+[charslot]
+[Delay(time=0.2)]
+[PlaySound(key="$d_avg_runstop", volume=1)]
+[charslot(slot="m",name="avg_npc_501_1#1$1",duration=0.5)]
+[Delay(time=0.7)]
+[charslot(slot="m",name="avg_npc_501_1#1$1",focus="m")]
+[name="Operador nervioso"]¡Señorita Sakiko! ¿Puede venir a ayudarnos?
+[name="Operador nervioso"]La sección médica acaba de recibir un grupo de pacientes y necesitamos urgentemente ayuda para acomodarlos…
+[charslot(slot="m",name="avg_290_vigna_1#6$1",focus="m")]
+[name="Vigna"]Creo que Sakiko no estaba encargada de esta parte, ¿verdad?
+[name="Vigna"]Y además, para una recién llegada encargarse de un trabajo tan complicado debe ser demasiada presión, ¿no?
+[charslot(slot="m",name="avg_npc_501_1#1$1",focus="m")]
+[name="Operador nervioso"]Lo… lo siento. El responsable me pidió que viniera primero a buscar a la señorita Sakiko…
+[charslot(slot="m",name="avg_4182_oblvns_1#12$2",focus="m")]
+[name="Sakiko Togawa"]¿Dónde es? Voy contigo ahora mismo.
+[charslot(slot="m",name="avg_290_vigna_1#4$1",focus="m")]
+[name="Vigna"]¿Eh?
+[charslot(slot="m",name="avg_4182_oblvns_1#12$2",focus="m")]
+[name="Sakiko Togawa"]Ya las ayudé con esto antes, así que conozco bastante bien el procedimiento.
+[name="Sakiko Togawa"]Si falta personal, haré todo lo posible por ayudar.
+[charslot(slot="m",name="avg_290_vigna_1#11$1",focus="m")]
+[name="Vigna"]Oye…
+[charslot(slot="m",name="avg_4182_oblvns_1#11$2",focus="m")]
+[name="Sakiko Togawa"]Vigna, ¡nos vemos en el sitio de siempre!
+[Dialog]
+[PlaySound(key="$d_avg_walkfast", volume=0.7)]
+[charslot(duration=0.7)]
+[Delay(time=1)]
+[charslot(slot="m",name="avg_290_vigna_1#11$1",focus="m")]
+[name="Vigna"]¡Eh, espera!
+[name="Vigna"]De verdad… ¿cuándo ha aprendido a hacer todas estas cosas…?
+[Dialog]
+[stopmusic(fadetime=2)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot]
+[Background(image="bg_warehouse_2", screenadapt="coverall", block=true)]
+[Delay(time=1)]
+[PlayMusic(intro="$m_dia_street_intro", key="$m_dia_street_loop", volume=0.6)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=1, block=true)]
+[Delay(time=1)]
+[charslot(slot="m",name="avg_290_vigna_1#9$1",focus="m")]
+[name="Vigna"]Cincuenta y tres, cincuenta y cuatro, cincuenta y cinco… cincuenta y seis…
+[name="Vigna"]Ya casi hemos terminado de contar los suministros de esta estantería. En cuanto acabemos de meterlos en las cajas podremos salir.
+[charslot(slot="m",name="avg_290_vigna_1#11$1",focus="m")]
+[name="Vigna"]Mmm… Ya ha pasado una hora. ¿Por qué Sakiko todavía no ha venido?
+[Dialog]
+[charslot]
+[Delay(time=0.2)]
+[charslot(slot="m",name="avg_4182_oblvns_1#2$2",duration=1)]
+[Delay(time=2)]
+[charslot(slot="m",name="avg_290_vigna_1#8$1",focus="m")]
+[name="Vigna"]¡Sakiko, por fin has llegado!
+[charslot(slot="m",name="avg_4182_oblvns_1#2$2",focus="m")]
+[name="Sakiko Togawa"]Lo siento muchísimo, he tardado un poco más con los pacientes…
+[charslot(slot="m",name="avg_290_vigna_1#11$1",focus="m")]
+[name="Vigna"]No pasa nada. Hmm… Pero Sakiko, solo llevas unos meses en Rhodes Island. ¿Por qué tengo la sensación de que llevas aquí muchísimo más tiempo?
+[charslot(slot="m",name="avg_4182_oblvns_1#12$2",focus="m")]
+[name="Sakiko Togawa"]¿Eh? ¿De verdad?
+[charslot(slot="m",name="avg_290_vigna_1#1$1",focus="m")]
+[name="Vigna"]Todo el mundo ya se ha acostumbrado a depender de ti. Parece que cualquier cosa que te encarguemos saldrá bien.
+[name="Vigna"]Incluso yo tengo que recordarme a mí misma que sigues siendo una recién llegada y que no debería presionarte demasiado.
+[name="Vigna"]Vi tu nombre en la lista de inscripción del club de música, pero no has podido asistir ni una sola vez a sus actividades…
+[charslot(slot="m",name="avg_4182_oblvns_1#1$2",focus="m")]
+[name="Sakiko Togawa"]Vigna, no pasa nada.
+[name="Sakiko Togawa"]Me uní a Rhodes Island porque quería ayudar a la gente a luchar contra la Oripathy.
+[charslot(slot="m",name="avg_290_vigna_1#5$1",focus="m")]
+[name="Vigna"]Oripathy… Creo que tu madre murió a causa de la Oripathy, ¿verdad?
+[charslot(slot="m",name="avg_4182_oblvns_1#7$2",focus="m")]
+[name="Sakiko Togawa"]…Sí.
+[name="Sakiko Togawa"]Antes de que muriera, era tan ingenua que creía que podría vivir despreocupadamente todos los días.
+[name="Sakiko Togawa"]…Pero esta tierra no es tan hermosa.
+[name="Sakiko Togawa"]Ver a mi madre luchar por mantenerse con vida hasta morir al final, y todo lo que he visto desde que llegué a Rhodes Island…
+[charslot(slot="m",name="avg_4182_oblvns_1#12$2",focus="m")]
+[name="Sakiko Togawa"]Me di cuenta de que todavía hay mucho sufrimiento en esta tierra y que aún tengo muchísimo que aprender.
+[charslot(slot="m",name="avg_290_vigna_1#5$1",focus="m")]
+[name="Vigna"]Sí, creo que ahora entiendo un poco mejor cómo te sientes…
+[Dialog]
+[charslot]
+[PlaySound(key="$d_gen_transmissionget",volume=0.6)]
+[delay(time=1)]
+[name="???"]Vigna, ¿todavía no has terminado?
+[name="???"]El convoy ya está listo. Solo os estamos esperando a ti y a esos suministros.
+[charslot(slot="m",name="avg_290_vigna_1#4$1",focus="m")]
+[name="Vigna"]¡Eh, no! ¡Me pongo con ello ahora mismo!
+[Dialog]
+[charslot]
+[playsound(key="$transmission", volume=1)]
+[Delay(time=2)]
+[charslot(slot="m",name="avg_4182_oblvns_1#12$2",focus="m")]
+[name="Sakiko Togawa"]¿Estos suministros empaquetados tienen que llevarse urgentemente a algún sitio?
+[charslot(slot="m",name="avg_290_vigna_1#1$1",focus="m")]
+[name="Vigna"]Un pequeño pueblo cercano necesita urgentemente comida y suministros médicos. La zona no es muy segura, así que necesitan una escolta.
+[charslot(slot="m",name="avg_4182_oblvns_1#11$2",focus="m")]
+[name="Sakiko Togawa"]Iré contigo. Seguro que habrá algo en lo que pueda ayudar.
+[charslot(slot="m",name="avg_290_vigna_1#11$1",focus="m")]
+[name="Vigna"]No, tú…
+[Dialog]
+[charslot(slot="m",name="avg_4182_oblvns_1#12$2",focus="m")]
+[Delay(time=1.5)]
+[charslot(slot="m",name="avg_290_vigna_1#1$1",focus="m")]
+[name="Vigna"]Bue… bueno…
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=1, block=true)]
+[charslot]
+[Background(image="46_g1_transporter", screenadapt="coverall", block=true)]
+[charslot(slot="l",name="avg_369_bena_1#1$1")]
+[charslot(slot="r",name="avg_338_iris_1#5$1")]
+[Delay(time=1)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=1, block=true)]
+[Delay(time=1)]
+[charslot(slot="l",name="avg_369_bena_1#1$1",focus="l")]
+[name="Bena"]Alice, no tienes por qué estar tan nerviosa, ni tampoco culparte.
+[charslot(slot="r",name="avg_338_iris_1#5$1",focus="r")]
+[name="Alice"]…Debería haberme dado cuenta antes.
+[charslot(slot="l",name="avg_369_bena_1#1$1",focus="l")]
+[name="Bena"]Es imposible tenerlo todo bajo control. Además, siempre os habéis comunicado por carta, así que es normal que no lo hayas notado.
+[charslot(slot="r",name="avg_338_iris_1#1$1",focus="r")]
+[name="Alice"]Pero… ¡pero ella…!
+[charslot(slot="l",name="avg_369_bena_1#11$1",focus="l")]
+[name="Bena"]Vuelves a respirar demasiado rápido… Vamos, respira hondo y relájate.
+[name="Bena"]Ya he avisado a Vigna. Saldremos dentro de un rato.
+[charslot(slot="r",name="avg_338_iris_1#5$1",focus="r")]
+[name="Alice"]…Tenemos que llegar antes de que anochezca.
+[charslot(slot="l",name="avg_369_bena_1#11$1",focus="l")]
+[name="Bena"]Llegaremos.
+[charslot(slot="l",name="avg_369_bena_1#10$1",focus="l")]
+[name="Bena"]Cuando la veamos, haremos todo tal y como acordamos. No habrá ningún problema.
+[Dialog]
+[charslot(duration=0.3)]
+[Delay(time=0.8)]
+[PlaySound(key="$d_avg_walk_stage", volume=1,loop="false", channel="nw")]
+[stopsound(fadetime=2, channel="nw")]
+[charslot(slot="m",name="avg_4182_oblvns_1#1$2",duration=1)]
+[Delay(time=1.5)]
+[charslot]
+[Delay(time=0.2)]
+[PlaySound(key="$d_avg_walkfast", volume=1)]
+[charslot(slot="m",name="avg_290_vigna_1#1$1",duration=0.7)]
+[delay(time=1)]
+[charslot(slot="m",name="avg_290_vigna_1#1$1",focus="m")]
+[name="Vigna"]¡Perdón! ¡Hemos llegado tarde!
+[charslot(slot="m",name="avg_338_iris_1#2$1",focus="m")]
+[name="Alice"]No pasa nada——
+[charslot(slot="m",name="avg_369_bena_1#11$1",focus="m")]
+[name="Bena"]Justo a tiempo—— ¡Señor conductor, podemos irnos!
+[charslot]
+El motor rugió con fuerza y el vehículo avanzó a toda velocidad por la carretera.
+[charslot(slot="m",name="avg_290_vigna_1#8$1",focus="m")]
+[name="Vigna"]Uf, espero que no hayamos tardado demasiado——
+[name="Vigna"]Ha sido todo tan apresurado que incluso me olvidé de presentaros.
+[name="Vigna"]Ella es Sakiko, una nueva operadora en prácticas. Como vosotras, también viene de Victoria y ahora está ayudándome con tareas de logística.
+[name="Vigna"]Y estas dos operadoras son Alice y Bena… Hmm… ¿Cómo podría explicarlo…?
+[name="Vigna"]¡Ah! ¡Son «hadas»!
+[charslot(slot="m",name="avg_4182_oblvns_1#14$2",focus="m")]
+[name="Sakiko Togawa"]Eh… ¿«Hadas»?
+[charslot(slot="m",name="avg_369_bena_1#11$1",focus="m")]
+[name="Bena"]Déjalo, Vigna. Ya nos presentaremos nosotras. Hemos vivido esta situación muchas veces, así que ya estamos acostumbradas.
+[name="Bena"]Si la señorita Sakiko es de Victoria, supongo que habrá leído bastantes cuentos locales.
+[charslot(slot="m",name="avg_4182_oblvns_1#1$2",focus="m")]
+[name="Sakiko Togawa"]De niña leí algunos en libros de cuentos.
+[charslot(slot="m",name="avg_369_bena_1#1$1",focus="m")]
+[name="Bena"]Entonces, ¿crees que son reales?
+[charslot(slot="m",name="avg_4182_oblvns_1#14$2",focus="m")]
+[name="Sakiko Togawa"]¿Hmm…?
+[charslot(slot="m",name="avg_4182_oblvns_1#10$2",focus="m")]
+[name="Sakiko Togawa"]Si me preguntas si creía en ellos… de pequeña siempre perseguía a mi madre para preguntárselo.
+[charslot(slot="m",name="avg_369_bena_1#1$1",focus="m")]
+[name="Bena"]Entonces ahora ya no te los crees.
+[charslot(slot="m",name="avg_4182_oblvns_1#14$2",focus="m")]
+[name="Sakiko Togawa"]No quería decir eso——
+[charslot(slot="m",name="avg_369_bena_1#10$1",focus="m")]
+[name="Bena"]Pero lo que cuentan los cuentos es real.
+[charslot(slot="m",name="avg_369_bena_1#11$1",focus="m")]
+[name="Bena"]«En los bosques de Victoria se alza un castillo de ensueño, donde viven las hadas que llevan dulces sueños a los niños».
+[charslot(slot="m",name="avg_4182_oblvns_1#6$2",focus="m")]
+[name="Sakiko Togawa"]¿De verdad existe un lugar así?
+[charslot(slot="m",name="avg_290_vigna_1#11$1",focus="m")]
+[name="Vigna"]Sakiko, creo que todavía no eres adulta, ¿verdad? ¿Quizá tus extraños sueños tengan algo que ver con las hadas?
+[charslot(slot="m",name="avg_338_iris_1#1$1",focus="m")]
+[name="Alice"]Para un hada, entrar en los sueños de un niño sin su permiso es imperdonable.
+[name="Alice"]Un sueño no solo refleja los pensamientos de una persona, sino que también forma parte del proceso en el que esos pensamientos toman forma. Esto es aún más importante en los niños sensibles.
+[name="Alice"]Algunos sueños incluso pueden cambiar la vida de un niño para siempre.
+[name="Alice"]Por eso, aunque llevemos dulces sueños a los niños, debemos obtener su consentimiento y considerar cuidadosamente qué sueño tendrán y cuándo se lo ofreceremos.
+[charslot(slot="m",name="avg_4182_oblvns_1#14$2",focus="m")]
+[name="Sakiko Togawa"]En realidad, mis sueños difícilmente podrían llamarse «dulces sueños»… Me han causado más confusión que otra cosa.
+[charslot(slot="m",name="avg_369_bena_1#10$1",focus="m")]
+[name="Bena"]Si Alice está menos ocupada más adelante, quizá pueda ayudarte a interpretar tus sueños.
+[charslot(slot="m",name="avg_290_vigna_1#11$1",focus="m")]
+[name="Vigna"]Alice, hace mucho que no descansáis, ¿verdad?
+[name="Vigna"]Pasáis tan poco tiempo en Rhodes Island que por eso Sakiko no había tenido ocasión de conoceros.
+[charslot(slot="m",name="avg_369_bena_1#11$1",focus="m")]
+[name="Bena"]Alice es la dueña del Castillo de los Sueños y tiene que encargarse personalmente de muchas cosas.
+[charslot(slot="m",name="avg_369_bena_1#9$1",focus="m")]
+[name="Bena"]Ay… Qué pena que no se me dé nada bien eso de «crear sueños». Si no, podría quitarle algo de trabajo a Alice.
+[charslot(slot="m",name="avg_369_bena_1#4$1",focus="m")]
+[name="Bena"](En voz baja) Aunque hay otra persona con talento para crear sueños… pero esa «niña» es demasiado peligrosa.
+[charslot(slot="m",name="avg_4182_oblvns_1#12$2",focus="m")]
+[name="Sakiko Togawa"]Entonces, ¿esta vez también vais a llevar dulces sueños a los niños, como siempre?
+[charslot(slot="m",name="avg_369_bena_1#4$1",focus="m")]
+[multiline(name="Bena")]Sí… y no…
+[charslot(slot="m",name="avg_369_bena_1#3$1",focus="m")]
+[multiline(name="Bena")]Alice, ¿puedo contarlo?
+[charslot(slot="m",name="avg_338_iris_1#1$1",focus="m")]
+[name="Alice"]…Dejad que os lo cuente yo.
+[charslot(slot="m",name="avg_338_iris_1#9$1",focus="m")]
+[name="Alice"]Hace un año, encontré por casualidad un libro de cuentos y su historia me cautivó profundamente.
+[name="Alice"]Siguiendo la dirección que aparecía en la primera página, me hice amiga por correspondencia de la autora. Nos escribíamos sobre nuestras ideas e imaginaciones acerca de los cuentos de hadas.
+[name="Alice"]Pero últimamente sus respuestas eran cada vez menos frecuentes y llevaba mucho tiempo sin tener noticias suyas.
+[name="Alice"]Hasta que hace dos días recibí otra carta suya. En ella había incluido una obra inédita.
+[name="Alice"]La protagonista de la historia tenía un padre de carácter violento y además estaba aislada por todos sus compañeros de la misma edad…
+[name="Alice"]La obra era completamente distinta de las historias que había escrito antes, y ella me dijo… que aquella era su vida real.
+[charslot(slot="m",name="avg_4182_oblvns_1#2$2",focus="m")]
+[name="Sakiko Togawa"]……
+[charslot(slot="m",name="avg_338_iris_1#9$1",focus="m")]
+[name="Alice"]Al final de la carta, ella, que está a punto de hacerse adulta, mencionó su cumpleaños. La fecha es… mañana.
+[charslot(slot="m",name="avg_290_vigna_1#4$1",focus="m")]
+[name="Vigna"]Dios mío, ¡¿todavía no es adulta…?!
+[charslot(slot="m",name="avg_338_iris_1#5$1",focus="m")]
+[name="Alice"]No puedo quitarme de la cabeza la última frase de la carta…
+[name="Alice"]Dijo que no quería crecer…
+[Dialog]
+[charslot]
+<i>«Esta es mi última carta.»</i>
+[Dialog]
+[charslot(slot="m",name="avg_4182_oblvns_1#10$2",focus="m")]
+[name="Sakiko Togawa"]…Faltan menos de doce horas para mañana.
+[charslot(slot="m",name="avg_369_bena_1#3$1",focus="m")]
+[name="Bena"]Sí. Por eso Alice está tan desesperada. Tenemos que llegar al pueblo cuanto antes y encontrar a——
+[stopmusic(fadetime=1)]
+[Dialog]
+[charslot]
+[playsound(key="$d_avg_tyrexplosion",volume=0.8)]
+[playsound(key="$drift",volume=0.6,delay=0.5)]
+[CameraShake(duration=1.5, xstrength=50, ystrength=15, vibrato=30, randomness=90, fadeout=true, block=false)]
+[delay(time=2)]
+[charslot(slot="m",name="avg_290_vigna_1#4$1",focus="m")]
+[name="Vigna"]¡¿Qué ha pasado?!
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=1, block=true)]
+[charslot]
+[Background(image="bg_wilderness_d", screenadapt="coverall", block=true)]
+[charslot(slot="l",name="avg_290_vigna_1#11$1")]
+[charslot(slot="r",name="avg_npc_970_1#1$1")]
+[delay(time=0.5)]
+[Blocker(a=0, r=0, g=0, b=0, style = "slider", inverse = true, fadetime=1.5, block=true)]
+[delay(time=0.5)]
+[charslot(slot="r",name="avg_npc_970_1#1$1",focus="r")]
+[name="Conductor"]La carretera está en muy mal estado. Hemos pinchado…
+[Dialog]
+[charslot]
+[charslot(slot="m",name="avg_338_iris_1#4$1",focus="m")]
+[name="Alice"]…¡¿Qué?!
+[Dialog]
+[charslot]
+Bajo el sol abrasador, las olas de calor consumían la piel de todos.
+Después comenzó una larga espera.
+[Dialog]
+[Blocker(a=1, r=0,g=0, b=0, fadetime=2, block=true)]
+[stopmusic(fadetime=2)]
+[charslot]
+[Image]

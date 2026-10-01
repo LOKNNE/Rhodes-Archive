@@ -1,0 +1,631 @@
+#ARKSTAGE_TITLE=SR-1_月出/BEG
+[HEADER(key="title_test", is_skippable=true, fit_mode="BLACK_MASK")]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=0, block=true)]
+[stopmusic]
+[Dialog]
+[Background(image="25_mini02_victoria_street_n",screenadapt="coverall", block=true)]
+[Delay(time=1)]
+[PlayMusic(intro="$mist_intro", key="$mist_loop", volume=0.6)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[delay(time=0.5)]
+[dialog]
+[animtext(id = "at1", name = "group_location_stamp", style="avg_both", pos = "-400,-200", block = false)]<p=1>Pequeño pueblo apartado de Victoria</><p=2>9:37 P.M.</>
+[delay(time=3)]
+[animtextclean]
+[delay(time=1)]
+[PlaySound(key="$rungeneral", volume=0.6)]
+[PlaySound(key="$d_avg_runstop", volume=1,delay=1.5)]
+[Delay(time=1.5)]
+[charslot(slot="m",name="avg_338_iris_1#5$1",posfrom="200,0",posto="0,0",duration=1)]
+[Delay(time=1.5)]
+[charslot(slot="m",name="avg_338_iris_1#5$1",focus="m")]
+[name="Iris"]Llegamos nada menos que cuatro horas más tarde de lo previsto...
+[name="Iris"]No nos queda mucho tiempo...
+[charslot(slot="m",name="avg_369_bena_1#3$1",focus="m")]
+[name="Bena"]No hay absolutamente nadie en la calle, y en un lugar así tampoco habrá mapas... Esto se complica.
+[charslot(slot="m",name="avg_4182_oblvns_1#12$2",focus="m")]
+[name="Sakiko Togawa"]Será mejor que nos separemos para buscar. Si pasa algo, nos comunicamos por el transmisor.
+[charslot(slot="m",name="avg_369_bena_1#11$1",focus="m")]
+[name="Bena"]Es una buena idea...
+[charslot(slot="m",name="avg_290_vigna_1#6$1",focus="m")]
+[name="Vigna"]Espera. No tengo problema con que los demás vayan solos...
+[name="Vigna"]Pero, Sakiko, tú no tienes experiencia actuando por tu cuenta. No voy a dejar que vayas sola.
+[charslot(slot="m",name="avg_4182_oblvns_1#9$2",focus="m")]
+[name="Sakiko Togawa"]Ahora no es momento de preocuparnos por eso, ¿no?
+[name="Sakiko Togawa"]En su carta ya escribió: «Esta es mi última carta».
+[charslot(slot="m",name="avg_4182_oblvns_1#7$2",focus="m")]
+[name="Sakiko Togawa"]Si le hubiera ocurrido algo, esa chica...
+[charslot(slot="m",name="avg_290_vigna_1#6$1",focus="m")]
+[name="Vigna"]¡Pero...!
+[dialog]
+[charslot(slot="m",name="avg_4182_oblvns_1#1$2",focus="m")]
+[PlaySound(key="$d_avg_slapcloth_light", volume=1)]
+[Delay(time=1.5)]
+[charslot(slot="m",name="avg_4182_oblvns_1#1$2",focus="m")]
+[name="Sakiko Togawa"]...Vigna, estaré bien.
+[name="Sakiko Togawa"]¿No dijo la señorita Whislash que, con mis capacidades actuales, ya puedo formar parte de un equipo de operaciones?
+[name="Sakiko Togawa"](Saca el comunicador) Si tengo algún problema, te contactaré inmediatamente. ¿De acuerdo?
+[charslot(slot="m",name="avg_369_bena_1#1$1",focus="m")]
+[name="Bena"]¡Sí, y también nos tienes a nosotros!
+[charslot(slot="m",name="avg_290_vigna_1#1$1",focus="m")]
+[name="Vigna"]...Está bien. Pero ten mucho cuidado.
+[charslot(slot="m",name="avg_4182_oblvns_1#1$2",focus="m")]
+[name="Sakiko Togawa"]Sí. Señorita Iris, ¿cómo se llama esa chica y cuál es su dirección?
+[charslot(slot="m",name="avg_338_iris_1#9$1",focus="m")]
+[name="Iris"]Se llama «An»... Vive en el número 33 de la calle Jardín.
+[charslot(slot="m",name="avg_4182_oblvns_1#1$2",focus="m")]
+[name="Sakiko Togawa"]Bien. Entonces separémonos y empecemos a buscar desde este cruce.
+[dialog]
+[charslot(duration=0.5)]
+[Delay(time=0.7)]
+[PlaySound(key="$rungeneral", volume=0.7)]
+[PlaySound(key="$d_avg_openftstprun", volume=1, loop=true, channel="step1")]
+[PlaySound(key="$d_avg_keeprunning",volume=1,channel="step2",loop=true,delay=0.2)]
+[PlaySound(key="$d_avg_openftstprun", volume=0.8, loop=true, channel="step3",delay=0.5)]
+[stopsound(channel="step1",fadetime=2.5)]
+[StopSound(channel="step2", fadetime=2)]
+[StopSound(channel="step3", fadetime=3.5)]
+[Delay(time=2.5)]
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=1, block=true)]
+[charslot]
+[Background(image="25_mini02_victoria_street_n",screenadapt="coverall", block=true)]
+[delay(time=1)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=1, block=true)]
+[delay(time=1)]
+[PlaySound(key="$d_avg_openftstprun", volume=1, loop=true, channel="a")]
+[stopsound(channel="a",fadetime=2.5)]
+[delay(time=2)]
+[name="Sakiko Togawa"]Uf... uf... ¿Por qué son tan complicadas todas las calles de aquí?
+[name="Sakiko Togawa"]Parece que hay alguien allí... ¿vendiendo flores?
+[multiline(name="Sakiko Togawa")]¿Por qué habrá alguien vendiendo flores a estas horas...?
+[multiline(name="Sakiko Togawa")]¡Da igual, ahora lo importante es encontrarla!
+[name="Sakiko Togawa"]¡Disculpe!
+[Dialog]
+[stopSound(channel="a", fadetime=1)]
+[PlaySound(key="$d_avg_runstop", volume=1)]
+[charslot(slot="m",name="avg_4182_oblvns_1#14$2",duration=0.5)]
+[Delay(time=0.7)]
+[charslot(slot="m",name="avg_4182_oblvns_1#14$2",focus="m")]
+[name="Sakiko Togawa"]Hola. ¿Sabe dónde está la calle Jardín?
+[charslot(slot="m",name="avg_npc_1255_1#1$1",focus="m")]
+[name="Vendedora de flores"]Esto es la calle Jardín. Jovencita, ¿quieres comprar flores?
+[charslot(slot="m",name="avg_4182_oblvns_1#12$2",focus="m")]
+[name="Sakiko Togawa"]No, no quiero comprar flores... ¿Podría decirme cómo llegar al número 33?
+[charslot(slot="m",name="avg_npc_1255_1#1$1",focus="m")]
+[name="Vendedora de flores"]Mira hacia el cielo, en dirección al sol poniente, y sigue hacia el oeste hasta el final del callejón. La última casa es el número 33.
+[charslot(slot="m",name="avg_4182_oblvns_1#14$2",focus="m")]
+[name="Sakiko Togawa"]Señora, ya es de noche...
+[charslot(slot="m",name="avg_npc_1255_1#1$1",focus="m")]
+[name="Vendedora de flores"]Ay, debo de estar perdiendo la cabeza... Con razón no oía pasos por la calle. Ya debería recoger e irme a casa.
+[charslot(slot="m",name="avg_4182_oblvns_1#6$2",focus="m")]
+[name="Sakiko Togawa"]¿No puede ver...?
+[charslot(slot="m",name="avg_npc_1255_1#1$1",focus="m")]
+[name="Vendedora de flores"]No te preocupes por mí. ¿No estabas buscando un sitio? Anda, ve.
+[name="Vendedora de flores"]Está muy oscuro esta noche. Procura no volver a perderte.
+[charslot(slot="m",name="avg_4182_oblvns_1#1$2",focus="m")]
+[name="Sakiko Togawa"]Gracias... Usted también tenga cuidado.
+[Dialog]
+[stopmusic(fadetime=2)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot]
+[Background(image="25_mini02_victoria_street_n",screenadapt="coverall", block=true)]
+[delay(time=1)]
+[playMusic(intro="$loneliness_intro",key="$loneliness_loop", volume=0.6)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[delay(time=0.5)]
+[dialog]
+[charslot]
+[animtext(id = "at1", name = "group_location_stamp", style="avg_only_heavy", pos = "-400,-200", block = false)]<p=1>Calle Jardín, n.º 33</>
+[delay(time=3)]
+[animtextclean]
+[delay(time=1)]
+[charslot(slot="m",name="avg_4182_oblvns_1#12$2",focus="m")]
+[name="Sakiko Togawa"]Seguir hacia el oeste... Este debe de ser el lugar del que hablaba aquella señora.
+[charslot]
+[dialog]
+[delay(time=1)]
+[PlaySound(key="$dooropenquite", volume=1)]
+[Background(image="bg_snowconutryinside",screenadapt="coverall", fadetime=1.5,block=true)]
+[Delay(time=1)]
+Sakiko empujó lentamente la vieja puerta de madera. El marco dejó escapar un chirrido agudo.
+[charslot(slot="m",name="avg_4182_oblvns_1#14$2",focus="m")]
+[name="Sakiko Togawa"]Uf... ¡¿Qué olor tan fuerte a alcohol?!
+[dialog]
+[charslot]
+[Delay(time=0.2)]
+[charslot(slot="m",name="avg_npc_416_1#1$1",duration=1)]
+[Delay(time=2)]
+[charslot]
+El suelo estaba cubierto de huellas de zapatos llenas de barro y agua, y al fondo de la habitación había un hombre con aspecto desaliñado.
+El hombre miró a su alrededor y empezó a coger, una por una, las botellas ordenadas en un rincón.
+[charslot(slot="m",name="avg_npc_416_1#1$1",focus="m")]
+[name="Hombre borracho"]Vacía...
+[dialog]
+[PlaySound(key="$bottlebroken", volume=1)]
+[Delay(time=1)]
+[charslot(slot="m",name="avg_npc_416_1#1$1",focus="m")]
+[name="Hombre borracho"]Vacía...
+[dialog]
+[PlaySound(key="$bottlebroken", volume=1)]
+[Delay(time=1)]
+[charslot(slot="m",name="avg_npc_416_1#1$1",focus="m")]
+[CameraShake(duration=0.5, xstrength=30, ystrength=30, vibrato=30, randomness=90, fadeout=true, block=false)]
+[name="Hombre borracho"]...¡Esta también está vacía!
+[dialog]
+[PlaySound(key="$bottlebroken", volume=1)]
+[Delay(time=1)]
+[charslot(slot="m",name="avg_npc_416_1#1$1",focus="m")]
+[name="Hombre borracho"]¡Anna! ¡¡Anna!!
+[name="Hombre borracho"]¡¿Dónde te has metido?!
+[name="Hombre borracho"]¡Snif...! ¿Tú también me has abandonado y te has marchado, igual que aquella mujer?
+[charslot(slot="m",name="avg_4182_oblvns_1#14$2",focus="m")]
+[name="Sakiko Togawa"]……
+[charslot(slot="m",name="avg_npc_416_1#1$1",focus="m")]
+[name="Hombre borracho"]Uf... Anna... Anna...
+[name="Hombre borracho"]¡No volveré a beber! ¡A partir de ahora me esforzaré de verdad!
+[dialog]
+[PlaySound(key="$bodyfalldown2", volume=1)]
+[charslot(duration=0.7)]
+[delay(time=1)]
+El hombre cayó de rodillas, retorciéndose de dolor, y soltó un grito.
+Los fragmentos de las botellas que acababa de romper se le clavaron sin piedad en la palma de la mano.
+[CameraShake(duration=0.7, xstrength=30, ystrength=30, vibrato=30, randomness=90, fadeout=true, block=false)]
+[name="Hombre borracho"]¡Ah! Anna, en el suelo... sangre... ¡Estoy sangrando!
+[name="Hombre borracho"]¡Voy a morir! ¡Anna, vuelve! ¡¡Voy a morir!!
+[dialog]
+[PlaySound(key="$d_avg_clothtrailground", volume=1)]
+[Delay(time=1.5)]
+[name="Hombre borracho"]Anna... ¿has vuelto?
+[charslot(slot="m",name="avg_4182_oblvns_1#12$2",focus="m")]
+[name="Sakiko Togawa"]No soy Anna.
+[charslot]
+[dialog]
+[PlaySound(key="$d_avg_crwlstps", volume=1,loop="false", channel="sf")]
+[stopsound(fadetime=4, channel="sf")]
+[Delay(time=1.5)]
+[name="Hombre borracho"]Tú eres Anna... ¡Tú eres Anna!
+[name="Hombre borracho"]¿Ya no me reconoces? Soy yo.
+[dialog]
+El hombre comenzó a arrastrarse hacia Sakiko, pero enseguida volvió a lanzar un grito de dolor.
+Por alguna razón, Sakiko sintió una profunda tristeza.
+Apoyó una mano en el maltrecho marco de la puerta...
+[dialog]
+[PlaySound(key="$d_avg_closedoorheavy", volume=1)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=0.7, block=true)]
+[charslot]
+[Background(image="25_mini02_victoria_street_n",screenadapt="coverall", block=true)]
+[delay(time=0.5)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[delay(time=0.5)]
+[PlaySound(key="$d_avg_runstop", volume=1)]
+[charslot(slot="m",name="avg_4182_oblvns_1#6$2",duration=0.7)]
+[Delay(time=1.5)]
+[charslot(slot="m",name="avg_npc_661_1#1$1",focus="m")]
+[name="Joven harapienta"]……
+[charslot(slot="m",name="avg_4182_oblvns_1#6$2",focus="m")]
+[name="Sakiko Togawa"]……
+[charslot(slot="m",name="avg_npc_661_1#1$1",focus="m")]
+[name="Joven harapienta"]Yo...
+[charslot(slot="m",name="avg_4182_oblvns_1#12$2",focus="m")]
+[name="Sakiko Togawa"]Vámonos.
+[dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=1, block=true)]
+[charslot]
+[Background(image="bg_ibchurch",screenadapt="coverall", block=true)]
+[charslot(slot="l",name="avg_4182_oblvns_1#12$2")]
+[charslot(slot="r",name="avg_npc_661_1#1$1")]
+[delay(time=1)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=1, block=true)]
+[delay(time=1)]
+[charslot(slot="l",name="avg_4182_oblvns_1#12$2",focus="l")]
+[name="Sakiko Togawa"]Entonces, ¿esa historia que nunca publicaste era lo que realmente te había ocurrido?
+[charslot(slot="r",name="avg_npc_661_1#1$1",focus="r")]
+[name="An"]...Sí.
+[name="An"]Me encantaban los cuentos de hadas. Antes de que mamá se marchara, me compraba muchísimos libros.
+[name="An"]En aquella época éramos una familia muy feliz. Yo, mamá... y también papá.
+[name="An"]Pero después de que mamá se fuera, aquella felicidad no volvió a aparecer en mi vida.
+[name="An"]Intenté escribir todo lo que había vivido y enseñárselo a los demás, pero nadie quería leer cosas llenas de dolor y desesperación.
+[name="An"]Por eso invertí el sentido de cada frase y lo convertí todo en los cuentos más hermosos.
+[name="An"]...Pero hace mucho que dejé de leer cuentos de hadas.
+[charslot(slot="l",name="avg_4182_oblvns_1#2$2",focus="l")]
+[name="Sakiko Togawa"]Anna...
+[charslot(slot="r",name="avg_npc_661_1#1$1",focus="r")]
+[name="An"](Tiembla)
+[name="An"]Por... por favor, no me llames así...
+[charslot(slot="l",name="avg_4182_oblvns_1#14$2",focus="l")]
+[name="Sakiko Togawa"]...Lo siento. No era mi intención.
+[charslot(slot="r",name="avg_npc_661_1#1$1",focus="r")]
+[name="An"]Comparada con los demás, tú ya has sido muy amable conmigo.
+[charslot(slot="l",name="avg_4182_oblvns_1#1$2",focus="l")]
+[name="Sakiko Togawa"]También está Iris. Está muy preocupada por ti.
+[charslot(slot="r",name="avg_npc_661_1#1$1",focus="r")]
+[name="An"]¿Conoces a Iris?
+[charslot(slot="l",name="avg_4182_oblvns_1#1$2",focus="l")]
+[name="Sakiko Togawa"]Sí. Vine con ella para buscarte. Acabo de contactar con ella y ya viene hacia aquí.
+[charslot(slot="r",name="avg_npc_661_1#1$1",focus="r")]
+[name="An"]Iris...
+[charslot(slot="l",name="avg_4182_oblvns_1#12$2",focus="l")]
+[name="Sakiko Togawa"]¿No quieres verla?
+[charslot(slot="r",name="avg_npc_661_1#1$1",focus="r")]
+[name="An"]Sé que está muy ocupada, que cada día tiene muchísimas cosas que hacer...
+[charslot(slot="l",name="avg_4182_oblvns_1#1$2",focus="l")]
+[name="Sakiko Togawa"]Eres una amiga muy importante para ella.
+[charslot(slot="r",name="avg_npc_661_1#1$1",focus="r")]
+[name="An"]……
+[dialog]
+[delay(time=1)]
+[charslot(slot="r",name="avg_npc_661_1#1$1",focus="r")]
+[name="An"]La verdad es que... hoy me he asomado desde lugares muy altos incontables veces...
+[name="An"]Pero llevaba los bolsillos llenos de las cartas que me escribió y no dejaba de apretarlas entre las manos.
+[name="An"]Ella me animaba a seguir viviendo y me decía que algún día llegarían los hermosos sueños de mis historias.
+[name="An"]No sé si debería creerme a mí misma... o creer en ella.
+[charslot(slot="l",name="avg_4182_oblvns_1#1$2",focus="l")]
+[name="Sakiko Togawa"]Puedes confiar plenamente en ella.
+[name="Sakiko Togawa"]Al fin y al cabo, es un hada de verdad.
+[charslot(slot="r",name="avg_npc_661_1#1$1",focus="r")]
+[name="An"]¿Un hada?
+[charslot(slot="l",name="avg_4182_oblvns_1#1$2",focus="l")]
+[name="Sakiko Togawa"]Cuando llegue lo entenderás. Dijo que antes de que alcanzaras la mayoría de edad...
+[dialog]
+[charslot]
+[PlaySound(key="$d_avg_clock", volume=1, loop=true, channel="a")]
+[StopSound(channel="a", fadetime=2)]
+Sakiko levantó la vista hacia el reloj de forma instintiva.
+Un enorme reloj antiguo colgaba en lo alto de la pared. Las agujas de las horas y los minutos se acercaban lentamente, a punto de coincidir.
+[dialog]
+[charslot(slot="l",name="avg_4182_oblvns_1#9$2",focus="l")]
+[charslot(slot="r",name="avg_npc_661_1#1$1",focus="l")]
+[name="Sakiko Togawa"]Maldición...
+[charslot(slot="r",name="avg_npc_661_1#1$1",focus="r")]
+[name="An"]¿Qué pasa?
+[charslot(slot="l",name="avg_4182_oblvns_1#1$2",focus="l")]
+[name="Sakiko Togawa"]Iris dijo que tenía que hacerlo antes de que fueras adulta...
+[charslot(slot="r",name="avg_npc_661_1#1$1",focus="r")]
+[name="An"]¿Te refieres a antes de mi cumpleaños? ¿Iris quiere celebrarlo conmigo?
+[charslot(slot="l",name="avg_4182_oblvns_1#7$2",focus="l")]
+[name="Sakiko Togawa"]Sí. Nos estamos quedando sin tiempo...
+[charslot(slot="r",name="avg_npc_661_1#1$1",focus="r")]
+[name="An"]No pasa nada. Hace muchísimo que no celebro mi cumpleaños.
+[name="An"]Además, ya no soy una niña. Cuando uno crece, ya no hace falta celebrarlo.
+[stopmusic(fadetime=1.5)]
+[charslot]
+Mientras Sakiko miraba a su alrededor, sus ojos se detuvieron en un objeto.
+[charslot(slot="l",name="avg_4182_oblvns_1#6$2",focus="l")]
+[charslot(slot="r",name="avg_npc_661_1#1$1",focus="l")]
+[name="Sakiko Togawa"]……
+[charslot(slot="l",name="avg_4182_oblvns_1#13$2",focus="l")]
+[name="Sakiko Togawa"]An, ¿me permitirías felicitarte por tu cumpleaños?
+[charslot(slot="r",name="avg_npc_661_1#1$1",focus="r")]
+[name="An"]...¿Eh?
+[name="An"]……
+[name="An"]……
+[name="An"]...Sí.
+[dialog]
+[charslot]
+[playMusic(intro="$warm_intro", key="$warm_loop", volume=0.6)]
+Era un piano.
+La luz de la luna caía sobre él, como si hubiera estado esperando precisamente esta noche.
+Aunque el hermoso sueño de Iris no pudiera llegar a tiempo, Sakiko quería hacer algo por An a su manera.
+[charslot(slot="l",name="avg_4182_oblvns_1#1$2",focus="l")]
+[charslot(slot="r",name="avg_npc_661_1#1$1",focus="l")]
+[name="Sakiko Togawa"]En el último instante antes de convertirte en «adulta», déjame regalarte esta canción de cuna.
+[charslot(slot="r",name="avg_npc_661_1#1$1",focus="r")]
+[name="An"]...¡Sí!
+[dialog]
+[charslot(slot="r",name="avg_npc_661_1#1$1",focus="all")]
+[delay(time=0.2)]
+[PlaySound(key="$d_avg_walk_stage", volume=1,loop="false", channel="sw")]
+[stopsound(fadetime=2, channel="sw")]
+[charslot(slot = "l", posfrom="0,0", posto="-100,0", afrom=1, ato=0, duration=1)]
+[charslot(slot = "r",afrom=1, ato=0, duration=0.6)]
+[delay(time=1.5)]
+Sakiko subió lentamente los escalones, mientras An se sentaba frente al escenario.
+El ritmo de los latidos y el avance de las agujas de la cuenta atrás se hicieron cada vez más claros entre las dos.
+[dialog]
+[PlaySound(key="$d_avg_intenseheartbeat", volume=1, loop=true, channel="mh")]
+[StopSound(channel="mh", fadetime=3)]
+[PlaySound(key="$d_avg_clock", volume=1, loop=true, channel="t")]
+[StopSound(channel="t", fadetime=3)]
+[delay(time=2)]
+Pum, pum.
+Tic, tac.
+[dialog]
+[musicvolume(volume=0, fadetime=1)]
+[delay(time=1.5)]
+[PlaySound(key="$d_avg_smoothpiano", volume=1)]
+[delay(time=3)]
+Las manos de Sakiko se deslizaban entre las teclas blancas y negras.
+Las notas danzaban con el paso del tiempo, ofreciendo la felicitación más sincera por el milagroso nacimiento de aquella chica.
+Gracias por haber llegado a esta tierra.
+Deseo que todo te vaya bien en el futuro.
+Que nunca desaparezca la niña que llevas dentro.
+Justo cuando sonó la última nota, comenzaron a repicar las campanas de la iglesia.
+[dialog]
+[PlaySound(key="$d_avg_churchbell", volume=0.6)]
+[delay(time=2)]
+[musicvolume(volume=0.6, fadetime=1)]
+[charslot(slot="m",name="avg_4182_oblvns_1#1$2",focus="m")]
+[name="Sakiko Togawa"]Feliz cumpleaños, An...
+[dialog]
+[charslot]
+Sakiko se volvió hacia la chica y descubrió que ya se había quedado dormida sobre la mesa, con una expresión dulce y tranquila.
+[dialog]
+[PlaySound(key="$d_gen_walk_n")]
+[charslot(slot="m",name="avg_338_iris_1#2$1",duration=1)]
+[delay(time=1.5)]
+[charslot(slot="m",name="avg_338_iris_1#2$1",focus="m")]
+[name="Iris"]Feliz cumpleaños, An.
+[Dialog]
+[stopmusic(fadetime=2)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=2, block=true)]
+[charslot]
+[Background(image="25_mini02_victoria_street_n",screenadapt="coverall", block=true)]
+[charslot(slot="l",name="avg_4182_oblvns_1#1$2")]
+[charslot(slot="r",name="avg_338_iris_1#2$1")]
+[delay(time=1)]
+[playMusic(key="$normal_loop", volume=0.6)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=2, block=true)]
+[delay(time=0.5)]
+[charslot(slot="r",name="avg_338_iris_1#2$1",focus="r")]
+[name="Iris"]Bena se ha quedado en la iglesia esperando a que An despierte. Demos un paseo por fuera mientras tanto.
+[charslot(slot="l",name="avg_4182_oblvns_1#1$2",focus="l")]
+[name="Sakiko Togawa"]Por suerte llegamos justo a tiempo.
+[charslot(slot="r",name="avg_338_iris_1#2$1",focus="r")]
+[name="Iris"]Sí. Ha habido algún susto, pero todo ha salido bien. Me alegro muchísimo.
+[charslot(slot="l",name="avg_4182_oblvns_1#1$2",focus="l")]
+[name="Sakiko Togawa"]¿Qué clase de sueño creaste finalmente para ella?
+[charslot(slot="r",name="avg_338_iris_1#2$1",focus="r")]
+[name="Iris"]Una habitación completamente blanca, tan limpia que parecía imposible que existiera en la realidad.
+[name="Iris"]Allí, primero le pregunté si quería entrar en el sueño que había creado para ella.
+[charslot(slot="l",name="avg_4182_oblvns_1#13$2",focus="l")]
+[name="Sakiko Togawa"]Iris realmente parece toda una señorita de la nobleza.
+[charslot(slot="r",name="avg_338_iris_1#1$1",focus="r")]
+[name="Iris"]No hagas caso de las historias que cuenta Bena...
+[name="Iris"]«Antes de entrar en un sueño, hay que obtener el consentimiento del niño».
+[name="Iris"]Es uno de los procedimientos obligatorios establecidos por el Castillo de los Sueños.
+[charslot(slot="l",name="avg_4182_oblvns_1#11$2",focus="l")]
+[name="Sakiko Togawa"]Entiendo...
+[charslot(slot="l",name="avg_4182_oblvns_1#1$2",focus="l")]
+[name="Sakiko Togawa"]¿Y al final le dijiste algo más?
+[charslot(slot="r",name="avg_338_iris_1#2$1",focus="r")]
+[name="Iris"]En el sueño le dije a An que sus textos son realmente preciosos y que espero que siga escribiendo.
+[name="Iris"]No importa el estilo, el tipo de historia ni siquiera si es o no un cuento de hadas.
+[charslot(slot="l",name="avg_4182_oblvns_1#1$2",focus="l")]
+[name="Sakiko Togawa"]Sí. Eso es exactamente lo que yo también quería decirle.
+[charslot(slot="r",name="avg_338_iris_1#2$1",focus="r")]
+[name="Iris"]Hice aparecer ante ella, uno por uno, a los personajes que había escrito.
+[name="Iris"]El señor con caries al que le encanta comer fruta, la señorita muñeca que camina cabeza abajo... Todos organizaron juntos una merienda.
+[charslot(slot="l",name="avg_4182_oblvns_1#1$2",focus="l")]
+[name="Sakiko Togawa"]Qué bonito... Ojalá An pudiera quedarse para siempre en ese sueño.
+[charslot(slot="r",name="avg_338_iris_1#1$1",focus="r")]
+[name="Iris"]Los sueños no existen para quedarse atrapado en ellos.
+[charslot(slot="l",name="avg_4182_oblvns_1#12$2",focus="l")]
+[name="Sakiko Togawa"]……？
+[charslot(slot="r",name="avg_338_iris_1#10$1",focus="r")]
+[name="Iris"]Por hermoso que sea un sueño, al final hay que despertar.
+[charslot(slot="l",name="avg_4182_oblvns_1#14$2",focus="l")]
+[name="Sakiko Togawa"]¿Incluso si la vida real es un completo desastre?
+[name="Sakiko Togawa"]Pero tú y Bena tenéis unas Artes de Originium tan poderosas...
+[charslot(slot="r",name="avg_338_iris_1#10$1",focus="r")]
+[name="Iris"]Sakiko, creo que has entendido mal el poder de los cuentos de hadas y del Castillo de los Sueños. Comparado con la realidad, nuestro poder es muy limitado.
+[name="Iris"]Lo único que podemos hacer es dejar una semilla en lo más profundo del corazón de los niños.
+[name="Iris"]Puede ser algo que consideraban lo más importante cuando eran pequeños, o quizá un objeto.
+[name="Iris"]No les recordará constantemente que está ahí, pero en un momento decisivo, cuando una persona se encuentre en su punto más vulnerable, le dará fuerzas.
+[charslot(slot="l",name="avg_4182_oblvns_1#10$2",focus="l")]
+[name="Sakiko Togawa"]……
+[charslot(slot="r",name="avg_338_iris_1#1$1",focus="r")]
+[name="Iris"]...¿He sonado demasiado seria?
+[charslot(slot="l",name="avg_4182_oblvns_1#1$2",focus="l")]
+[name="Sakiko Togawa"]No. Cuando hablabas de ello, tu mirada era muy firme.
+[name="Sakiko Togawa"]Creo que, a partir de ahora, cada vez que An recuerde el hermoso sueño que creaste para ella, encontrará fuerzas para seguir viviendo.
+[charslot(slot="r",name="avg_338_iris_1#2$1",focus="r")]
+[name="Iris"]Sí, yo también lo creo. Aunque puede que mis motivos sean un poco diferentes a los tuyos.
+[charslot(slot="l",name="avg_4182_oblvns_1#6$2",focus="l")]
+[name="Sakiko Togawa"]¿Eh?
+[charslot(slot="r",name="avg_338_iris_1#2$1",focus="r")]
+[name="Iris"]Antes de crear su sueño, descubrí que ya había una pequeña semilla en su corazón.
+[name="Iris"]Las semillas de la esperanza no solo pueden plantarse mediante los hermosos sueños del Castillo de los Sueños...
+[charslot(slot="r",name="avg_338_iris_1#2$1",focus="r")]
+[name="Iris"]Gracias a ti, Sakiko.
+[dialog]
+[charslot]
+[name="???"]¡Sí! Sakiko, ¡tocas el piano increíblemente bien!
+[dialog]
+[PlaySound(key="$d_avg_runstop", volume=1)]
+[charslot(slot="m",name="avg_290_vigna_1#8$1",duration=0.7)]
+[delay(time=1)]
+[charslot(slot="m",name="avg_290_vigna_1#8$1",focus="m")]
+[name="Vigna"]Ya te dije que seguro que se te daba genial la música. ¡En el próximo espectáculo de Rhodes Island tienes que participar!
+[charslot(slot="m",name="avg_4182_oblvns_1#14$2",focus="m")]
+[name="Sakiko Togawa"]Uf, Vigna, no me pongas en ese compromiso...
+[dialog]
+[charslot]
+Mientras Vigna y Sakiko bromeaban entre ellas, Iris sacó algo de una pequeña caja.
+[charslot(slot="m",name="avg_338_iris_1#2$1",focus="m")]
+[name="Iris"]Sakiko, ¿no dijiste antes que estabas teniendo sueños extraños?
+[name="Iris"]Lleva este collar contigo. A partir de ahora tendrás menos pesadillas.
+[charslot(slot="m",name="avg_4182_oblvns_1#6$2",focus="m")]
+[name="Sakiko Togawa"]Esto... ¿de verdad puedo aceptarlo?
+[charslot(slot="m",name="avg_338_iris_1#11$1",focus="m")]
+[name="Iris"]Claro. No es nada valioso; solo le he aplicado un pequeño hechizo.
+[charslot(slot="m",name="avg_290_vigna_1#4$1",focus="m")]
+[name="Vigna"]¡Eh! ¡Yo también quiero uno!
+[charslot(slot="m",name="avg_338_iris_1#1$1",focus="m")]
+[name="Iris"]¿Tú también tienes pesadillas?
+[charslot(slot="m",name="avg_290_vigna_1#11$1",focus="m")]
+[name="Vigna"]Puede... quizá sí. ¡No me acuerdo!
+[charslot(slot="m",name="avg_338_iris_1#1$1",focus="m")]
+[name="Iris"]No. Puedo notarlo. Desde pequeña siempre has dormido estupendamente.
+[charslot(slot="m",name="avg_290_vigna_1#5$1",focus="m")]
+[name="Vigna"]¡Eh! Tratar con hadas como vosotras es un rollo. ¡No se puede guardar ningún secreto!
+[dialog]
+[charslot]
+Mientras escuchaba conversar a sus compañeras, Sakiko se puso cuidadosamente el collar.
+Una agradable sensación de frescor se extendió rápidamente desde su cuello por todo el cuerpo.
+[charslot(slot="m",name="avg_4182_oblvns_1#6$2",focus="m")]
+[name="Sakiko Togawa"]Ah... qué bonito...
+[charslot(slot="m",name="avg_4182_oblvns_1#1$2",focus="m")]
+[name="Sakiko Togawa"]Iris, Vigna, mirad...
+[dialog]
+[stopmusic(fadetime=1.5)]
+[charslot(duration=0.3)]
+[delay(time=1.5)]
+No había nadie.
+[charslot(slot="m",name="avg_4182_oblvns_1#14$2",focus="m")]
+[name="Sakiko Togawa"]¿Vigna?
+[name="Sakiko Togawa"]¿Iris?
+[dialog]
+[charslot]
+Sakiko miró a su alrededor.
+No había nadie.
+[charslot(slot="m",name="avg_4182_oblvns_1#14$2",focus="m")]
+[name="Sakiko Togawa"]¿Dónde... estáis?
+[dialog]
+[PlaySound(key="$d_avg_walkfast", volume=1)]
+[charslot(duration=1)]
+[delay(time=1.5)]
+[PlayMusic(intro="$ponder_intro", key="$ponder_loop", volume=0.6)]
+Sakiko empezó a caminar hacia la iglesia de antes. Sin darse cuenta, sus pasos fueron acelerándose.
+[name="Sakiko Togawa"]¡Bena!
+[name="Sakiko Togawa"]¡An!
+[dialog]
+[PlaySound(key="$d_avg_openftstprun", volume=1, loop=true, channel="nrun")]
+[StopSound(channel="nrun", fadetime=2.5)]
+[delay(time=2)]
+[PlaySound(key="$d_gen_dooropen",volume=0.6)]
+[Blocker(a=0, r=255, g=255, b=255, fadetime=0, block=true)]
+[Blocker(a=1, r=255, g=255, b=255, fadetime=0.5, block=true)]
+[Background(image="bg_corridor",screenadapt="coverall", block=true)]
+[PlaySound(key="$d_avg_crwddiscuss_outside",volume=0, channel="a", loop=true)]
+[SoundVolume(volume=0.5, fadetime=2,channel="a")]
+[Blocker(a=0, r=255, g=255, b=255, fadetime=1.5, block=true)]
+[StopSound(channel="a", fadetime=1.5)]
+[delay(time=2)]
+[charslot(slot="m",name="avg_4182_oblvns_1#14$2",focus="m")]
+[name="Sakiko Togawa"]¿Eh...? ¿Por qué he vuelto a Rhodes Island...?
+[charslot(slot="m",name="avg_npc_973_1#1$1",focus="m")]
+[name="Operador desconcertado"]¿Señorita Sakiko?
+[name="Operador desconcertado"]¿Se encuentra bien?
+[charslot(slot="m",name="avg_4182_oblvns_1#6$2",focus="m")]
+[name="Sakiko Togawa"]……
+[charslot(slot="m",name="avg_4182_oblvns_1#6$2",focus="n")]
+[name="???"]¿Es... estás... bien?
+[charslot(slot="m",name="avg_4182_oblvns_1#6$2",focus="m")]
+[name="Sakiko Togawa"](Se da la vuelta) ¡...!
+[dialog]
+[charslot]
+[delay(time=0.2)]
+[charslot(slot="m",name="avg_npc_1938_1#1$1",duration=1)]
+[delay(time=1.5)]
+[charslot(slot="m",name="avg_npc_1938_1#1$1",focus="m")]
+[name="???"]¿Ho... hola?
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=0.7, block=true)]
+[charslot]
+[Background(image="65_g1_rainystreet",screenadapt="coverall")]
+[charslot(slot="m",name="avg_4184_dolris_1#1$1",focus="m")]
+[CameraEffect(effect="Grayscale", amount=0.8, keep=true)]
+[delay(time=0.5)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0.7, block=true)]
+[delay(time=0.5)]
+[name="Uika Misumi"]Sí. Todo sigue exactamente igual que antes... Es como si hubiera sido un sueño.
+[charslot(slot="m",name="avg_4182_oblvns_1#14$1",focus="m")]
+[name="Sakiko Togawa"]¿Eh...? ¿Un sueño?
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=0.7, block=true)]
+[charslot]
+[Background(image="bg_room_2",screenadapt="coverall")]
+[charslot(slot="m",name="avg_290_vigna_1#8$1")]
+[delay(time=0.5)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0.7, block=true)]
+[delay(time=0.5)]
+[charslot(slot="m",name="avg_290_vigna_1#8$1",focus="m")]
+[name="Vigna"]¿Sakiko? ¿Sakiko?
+[charslot(slot="m",name="avg_290_vigna_1#8$1",focus="n")]
+[name="Sakiko Togawa"]Mmm... ¿eh?
+[charslot(slot="m",name="avg_290_vigna_1#8$1",focus="m")]
+[name="Vigna"]¡Ya ha salido el sol! ¿No va siendo hora de levantarte?
+[Dialog]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=0, block=true)]
+[Blocker(a=1, r=0, g=0, b=0, fadetime=1, block=true)]
+[stopmusic(fadetime=2)]
+[charslot]
+[Background(image="bg_black",screenadapt="coverall")]
+[CameraEffect(effect="Grayscale", amount=0, keep=true)]
+[delay(time=0.5)]
+[Blocker(a=0, r=0, g=0, b=0, fadetime=1, block=true)]
+[name="Sakiko Togawa"]Qué frío...
+[name="Sakiko Togawa"]Me duele mucho la cabeza...
+[charslot(slot="m",name="avg_npc_1938_1#1$1",focus="m")]
+[name="???"]Sa... kiko.
+[charslot(slot="m",name="avg_npc_1938_1#2$1",focus="m")]
+[name="???"]¡Sa... ki... ko!
+[Dialog]
+[charslot]
+[delay(time=0.5)]
+[PlaySound(key="$d_avg_cloakmovement", volume=1)]
+[charslot(slot="m",name="avg_4182_oblvns_1#14$1",duration=1)]
+[delay(time=1.5)]
+[charslot(slot="m",name="avg_4182_oblvns_1#14$1",focus="m")]
+[name="Sakiko Togawa"]Uf... ¿Dónde estoy?
+[Dialog]
+[charslot(duration=0.5)]
+[delay(time=1.5)]
+[playMusic(intro="$mist_intro",key="$mist_loop", volume=0.6)]
+[Background(image="65_g2_dreamcastlehall",xScale=1.4, yScale=1.4,y=-60,screenadapt="coverall",fadetime=2.5)]
+[backgroundTween(yFrom=-60, yTo=60, duration=40, block=false)]
+[delay(time=4)]
+En aquel momento, se encontraba en el interior de un enorme castillo.
+Al mirar hacia el cielo a través de los gigantescos ventanales, vio dos lunas suspendidas en la noche.
+[Dialog]
+[delay(time=2)]
+[Background(image="65_g2_dreamcastlehall",screenadapt="coverall",fadetime=2,block=true)]
+[delay(time=1)]
+La fría temperatura de la estancia despejó un poco su mente y empezó a observar su alrededor.
+[Dialog]
+[PlaySound(key="$d_avg_yingying_ked_1", volume=1)]
+[charslot(slot="m",name="avg_npc_1937_1#1$1",duration=1)]
+[name="???"](Emite un sonido de curiosidad)
+[Dialog]
+[PlaySound(key="$d_avg_runstop", volume=1)]
+[CameraShake(duration=0.3, xstrength=20, ystrength=20, vibrato=30, randomness=90, fadeout=true, block=false)]
+[charslot(slot="m",name="avg_4182_oblvns_1#14$1",focus="m")]
+[name="Sakiko Togawa"]¡¿Qué clase de monstruos son estos?!
+[Dialog]
+[charslot(slot="m",name="avg_npc_1937_1#1$1",focus="m,l")]
+[Delay(time=0.5)]
+[charslot(slot = "l", name = "avg_npc_1937_1#5$1",posfrom = "200,0", posto = "200,0",duration=0.5,focus="m,l")]
+[Delay(time=1.5)]
+[PlaySound(key="$d_avg_yingying_ked_2", volume=1)]
+[charslot(duration=1)]
+[Delay(time=2.5)]
+[Dialog]
+[PlaySound(key="$d_avg_marblefootsteps_loop", volume=0.8, loop=true, channel="walk")]
+[StopSound(channel="walk", fadetime=5)]
+[Delay(time=1.5)]
+[name="???"]Vaya... ¿alguien se ha despertado?
+[charslot(slot="m",name="avg_4182_oblvns_1#14$1",focus="m")]
+[name="Sakiko Togawa"]——！
+[Dialog]
+[charslot]
+Desde las sombras llegó el sonido claro de unos tacones golpeando el suelo.
+La persona oculta entre las sombras se acercaba lentamente a Sakiko.
+Clac, clac.
+[Dialog]
+[charslot(slot="m",name="avg_npc_1942_1#18$1",duration=1.5)]
+[delay(time=2)]
+[charslot(slot="m",name="avg_npc_1942_1#18$1",focus="m")]
+[name="???"]Hmph. Qué aburrido.
+[Dialog]
+[Blocker(a=1, r=0,g=0, b=0, fadetime=3, block=true)]
+[stopmusic(fadetime=2)]
+[charslot]
+[Image]

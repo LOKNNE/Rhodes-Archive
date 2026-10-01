@@ -1,0 +1,967 @@
+.story-browser {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.browser-header {
+  padding: 16px 24px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.browser-header h1 {
+  font-size: 20px;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.search-input {
+  flex: 1;
+  max-width: 400px;
+  padding: 8px 12px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.search-input::placeholder {
+  color: var(--text-secondary);
+}
+
+/* Unified small back button (matches the reader's): a compact ◀ icon. */
+.back-icon {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.browser-content {
+  flex: 1;
+  overflow-y: auto;
+  /* Bottom inset so the last story rows clear the edge-to-edge nav bar. */
+  padding: 16px 24px calc(16px + var(--safe-bottom));
+}
+
+.category {
+  margin-bottom: 24px;
+}
+
+.category-header {
+  font-size: 18px;
+  color: var(--accent);
+  padding: 8px 0;
+  border-bottom: 2px solid var(--accent);
+  margin-bottom: 12px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.category-header .arrow {
+  transition: transform 0.2s;
+  font-size: 12px;
+}
+
+.category-header .arrow.open {
+  transform: rotate(90deg);
+}
+
+.chapter {
+  margin-bottom: 16px;
+  margin-left: 16px;
+}
+
+.chapter-name {
+  font-size: 15px;
+  color: var(--text-secondary);
+  padding: 4px 0;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chapter-activity {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent, var(--text-primary));
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1px 8px;
+}
+
+.chapter-label {
+  font-weight: bold;
+}
+
+.story-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 4px 0;
+}
+
+.story-link {
+  display: inline-block;
+  padding: 4px 10px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--text-primary);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.story-link:hover {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+}
+
+.story-link.cached {
+  border-color: var(--success);
+}
+
+.story-link.cached::before {
+  content: "● ";
+  color: var(--success);
+  font-size: 8px;
+}
+
+/* Nav bar */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-btn {
+  padding: 6px 14px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-size: 13px;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+
+.nav-btn:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+.nav-btn.active {
+  background: var(--accent);
+  color: #000;
+}
+
+/* Loading states */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+.error-msg {
+  color: var(--error);
+  padding: 16px;
+  text-align: center;
+}
+
+/* Settings page */
+/* Full-width scroll container (scrollbar sits at the window edge) ... */
+.settings-page {
+  /* Safe-area top baked into the shorthand: a separate `padding-top` rule in
+     global.css would be clobbered by this shorthand (equal specificity, later
+     import), so the inset must live here to survive on Android. */
+  padding: calc(24px + var(--safe-top)) 24px calc(24px + var(--safe-bottom));
+  width: 100%;
+  overflow-y: auto;
+  height: 100%;
+}
+
+/* ... with a centered, width-capped content column so the page stays readable
+   on wide windows and uses the available space on narrow ones. */
+.settings-content {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.settings-page h1 {
+  font-size: 20px;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+/* Tighten spacing on small windows. */
+@media (max-width: 640px) {
+  .settings-page {
+    padding: calc(16px + var(--safe-top)) 16px calc(16px + var(--safe-bottom));
+  }
+  .setting-group {
+    margin-bottom: 18px;
+  }
+}
+
+.setting-group {
+  margin-bottom: 24px;
+}
+
+.setting-group label {
+  display: block;
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.setting-group input[type="text"] {
+  padding: 8px 12px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-size: 14px;
+  width: 100%;
+  flex: 1;
+  min-width: 160px;
+}
+
+.cache-info {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+
+.btn-primary {
+  padding: 8px 20px;
+  background: var(--accent);
+  color: #000;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+
+.btn-danger {
+  padding: 8px 20px;
+  background: var(--error);
+  color: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.btn-danger:hover {
+  background: #d32f2f;
+}
+
+/* =========================================================================
+   Cinematic ebook bookshelf
+   ========================================================================= */
+
+.shelf-content {
+  /* Extra bottom room so the last shelf clears the SelectionBar/DownloadBar. */
+  padding: 20px 24px calc(40px + var(--safe-bottom));
+}
+
+.shelf {
+  margin-bottom: 36px;
+}
+
+.shelf-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  position: relative;
+}
+
+.shelf-icon {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  flex: none;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.5));
+}
+
+/* Whole-category select checkbox (only shown in selection mode). */
+.shelf-check {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: var(--bg-tertiary);
+  border: 1.5px solid var(--border);
+  color: #000;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shelf-check.on {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.shelf-check.partial {
+  background: rgba(244, 196, 48, 0.5);
+}
+
+.shelf-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 56px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.shelf-title {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+}
+
+.shelf-count {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.cover-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+@media (max-width: 560px) {
+  .cover-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+  }
+  .shelf-content {
+    padding: 16px 16px calc(40px + var(--safe-bottom));
+  }
+}
+
+/* ----- Cover card ----- */
+.cover-card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #000;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.cover-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.65);
+  border-color: var(--accent);
+}
+
+.cover-card.selected {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent), 0 10px 26px rgba(0, 0, 0, 0.6);
+}
+
+.cover-art {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* uniform square (为了明日); wide 联动/mode banners override inline */
+  overflow: hidden;
+}
+
+/* Cover art fills the square card, center-cropping any overflow (activity kvs are
+   a touch wider than 1:1). Banners get a card matching their own aspect, so cover
+   == no crop there. */
+.cover-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+}
+
+/* Empty-cover placeholder: the app logo, centered + dimmed, over the flat panel. */
+.cover-ph {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  width: 46%;
+  transform: translate(-50%, -50%);
+  opacity: 0.42;
+  filter: grayscale(0.2);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Filmic darkening so overlaid title typography always stays legible. */
+.cover-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.05) 0%,
+      rgba(0, 0, 0, 0) 38%,
+      rgba(0, 0, 0, 0.55) 78%,
+      rgba(0, 0, 0, 0.82) 100%
+    ),
+    radial-gradient(120% 120% at 50% 0%, transparent 55%, rgba(0, 0, 0, 0.4) 100%);
+  pointer-events: none;
+}
+
+.cover-meta {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 12px;
+  pointer-events: none;
+}
+
+.cover-title {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+  letter-spacing: 0.01em;
+}
+
+.cover-sub {
+  margin-top: 4px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
+}
+
+/* Card-level select checkbox (top-left). */
+.cover-check {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  color: #000;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(2px);
+  transition: all 0.15s;
+}
+
+.cover-check.on,
+.cover-check.partial {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #000;
+}
+
+.cover-check.partial {
+  background: rgba(244, 196, 48, 0.55);
+}
+
+/* Cache dot (top-right): yellow = partly cached, green = fully cached, hidden
+   when nothing cached. */
+.cover-dot {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 0, 0, 0.45);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.cover-dot.partial {
+  background: #f4c430; /* yellow — partly downloaded */
+}
+
+.cover-dot.all {
+  background: #3b82f6; /* blue — fully downloaded */
+}
+
+.cover-dot.read {
+  background: var(--success); /* green — fully read */
+}
+
+/* "Last watched" ribbon (top-left of the card). */
+.cover-last {
+  position: absolute;
+  top: 9px;
+  left: 9px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 2px 7px;
+  border-radius: 4px;
+  color: #000;
+  background: var(--accent);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* "Last watched" tag on a story row. */
+.dc-last-tag {
+  flex-shrink: 0;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 1px 6px;
+  border-radius: 4px;
+  color: #000;
+  background: var(--accent);
+}
+
+/* =========================================================================
+   Chapter detail (drill-in)
+   ========================================================================= */
+
+.chapter-detail {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.detail-hero {
+  position: relative;
+  flex-shrink: 0;
+  min-height: 128px;
+  /* No --safe-top here: the parent .browser-page already reserves the status-bar
+     inset, so the hero sits below it; adding it again would double-count. */
+  padding: 10px 20px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+/* With a 活动预告 banner: a short fixed height so the wide banner shows full-width
+   (no left/right crop on landscape) while keeping the header compact. */
+.detail-hero.has-banner {
+  min-height: 0;
+  height: 156px;
+}
+
+/* 活动预告 banner behind the hero (cropped to fill); the scrim fades its lower
+   half into the page background. */
+.hero-banner {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* short hero on a wide screen → full width shown, no L/R crop */
+  object-position: center;
+  user-select: none;
+}
+
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.1) 30%,
+    rgba(0, 0, 0, 0.55) 70%,
+    var(--bg-primary) 100%
+  );
+  pointer-events: none;
+}
+
+.hero-back {
+  position: absolute;
+  /* Fixed 10px (no --safe-top): .browser-page already insets the status bar, so the
+     hero top is below it. Adding the inset again pushed the icon onto the category. */
+  top: 10px;
+  left: 16px;
+  z-index: 2;
+}
+
+/* Keep the text block clear of the absolute back icon (which sits in the top-left
+   ~46px): leave room on the left for the first line and never wrap the title into
+   the icon's row. */
+.hero-meta {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-cat {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.hero-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 3px 16px rgba(0, 0, 0, 0.85);
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hero-sub {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.detail-body {
+  flex: 1;
+  padding: 8px 24px calc(48px + var(--safe-bottom));
+}
+
+@media (max-width: 560px) {
+  .detail-hero {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .hero-title {
+    font-size: 24px;
+  }
+  .detail-body {
+    padding: 8px 16px calc(48px + var(--safe-bottom));
+  }
+}
+
+.detail-chapter {
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+}
+
+.dc-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dc-title {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 700;
+  text-align: left;
+  padding: 4px 0;
+}
+
+.dc-title .arrow {
+  font-size: 11px;
+  color: var(--accent);
+  transition: transform 0.2s;
+}
+
+.dc-title .arrow.open {
+  transform: rotate(90deg);
+}
+
+.dc-count {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-left: auto;
+}
+
+/* Checkbox shared shape (card / chapter / story). */
+.dc-check,
+.dc-scheck {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: var(--bg-tertiary);
+  border: 1.5px solid var(--border);
+  color: #000;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.dc-scheck {
+  width: 18px;
+  height: 18px;
+  font-size: 11px;
+}
+
+.dc-check.on,
+.dc-check.partial,
+.dc-scheck.on {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.dc-check.partial {
+  background: rgba(244, 196, 48, 0.5);
+}
+
+.dc-stories {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 8px 0 4px 32px;
+}
+
+.dc-story {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.dc-story:hover {
+  background: var(--bg-secondary);
+}
+
+.dc-story.sel {
+  background: rgba(244, 196, 48, 0.08);
+}
+
+.dc-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: transparent; /* not downloaded → no visible dot (keeps row alignment) */
+  flex-shrink: 0;
+}
+
+.dc-dot.partial {
+  background: #f4c430; /* yellow — partly downloaded (chapter only) */
+  box-shadow: 0 0 6px rgba(244, 196, 48, 0.7);
+}
+
+.dc-dot.all {
+  background: #3b82f6; /* blue — fully downloaded */
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.6);
+}
+
+.dc-dot.read {
+  background: var(--success); /* green — fully read */
+  box-shadow: 0 0 6px rgba(76, 175, 80, 0.6);
+}
+
+.dc-stitle {
+  flex: 1;
+  font-size: 14px;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.dc-stitle:hover {
+  color: var(--accent);
+}
+
+/* Read vs unread: read stories/chapters are dimmed + tagged "已读". */
+.dc-story.read .dc-stitle {
+  color: var(--text-secondary);
+}
+
+.dc-read-tag {
+  flex-shrink: 0;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  padding: 1px 6px;
+  border-radius: 999px;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.detail-chapter.read .dc-name {
+  color: var(--text-secondary);
+}
+
+/* =========================================================================
+   Selection bar (persistent batch actions)
+   ========================================================================= */
+
+.selection-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px calc(10px + var(--safe-bottom));
+  background: rgba(18, 18, 18, 0.96);
+  border-top: 1px solid var(--accent);
+  box-shadow: 0 -6px 18px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+}
+
+/* When a download bar is showing, lift above it (its bar is ~2 thin rows). */
+.selection-bar.above-download {
+  bottom: 56px;
+}
+
+.sel-count {
+  font-size: 13px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.sel-count strong {
+  color: var(--accent);
+  font-size: 15px;
+}
+
+.sel-actions {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+.sel-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-size: 13px;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+
+.sel-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.sel-btn.primary {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+.sel-btn.primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.sel-btn.danger {
+  border-color: var(--error);
+  color: var(--error);
+}
+
+.sel-btn.danger:hover {
+  background: var(--error);
+  color: #fff;
+}
+
+.sel-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (max-width: 560px) {
+  .selection-bar {
+    gap: 8px;
+    padding: 8px 12px calc(8px + var(--safe-bottom));
+  }
+  .sel-btn {
+    padding: 6px 9px;
+    font-size: 12px;
+  }
+}
+
+
+/* ===== Arkstage ES: retoque visual ligero ===== */
+.browser-header {
+  gap: 14px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.browser-header h1 {
+  font-size: 22px;
+  letter-spacing: 0.01em;
+}
+
+.search-input {
+  border-radius: 8px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.search-input:focus {
+  border-color: rgba(244, 196, 48, 0.7);
+  box-shadow: 0 0 0 2px rgba(244, 196, 48, 0.10);
+}
+
+.cover-card {
+  border-radius: 12px;
+}
+
+.detail-chapter {
+  padding: 14px 0;
+}

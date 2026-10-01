@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Static checks: Rust unit tests + Rust build + frontend type-check + frontend build.
+# Exits non-zero on any failure.
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+echo "==> [1/6] bookshelf metadata fallback tests"
+npm run test:metadata
+
+echo "==> [2/6] StoryPlayer adapter tests"
+npm run test:storyplayer
+npm run test:dialogs
+
+echo "==> [3/6] cargo test (backend unit tests)"
+cargo test --manifest-path src-tauri/Cargo.toml
+
+echo "==> [4/6] cargo build (backend compiles)"
+cargo build --manifest-path src-tauri/Cargo.toml
+
+echo "==> [5/6] tsc -b (frontend type-check)"
+npx tsc -b frontend
+
+echo "==> [6/6] vite build (frontend bundles)"
+npm run build >/dev/null
+
+echo "STATIC: ALL PASS"

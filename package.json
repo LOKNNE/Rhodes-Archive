@@ -1,0 +1,47 @@
+{
+  "name": "arkstage",
+  "private": true,
+  "version": "1.2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite frontend",
+    "build": "tsc -b frontend && vite build frontend",
+    "lint": "eslint -c frontend/eslint.config.js frontend",
+    "test:metadata": "tsc frontend/src/lib/bookshelfMetadata.ts --target ES2023 --module ESNext --lib ES2023,DOM --skipLibCheck --outDir build/test && node --test frontend/src/lib/bookshelfMetadata.test.mjs",
+    "test:storyplayer": "tsc frontend/src/lib/storyPlayerAdapter.ts --target ES2023 --module ESNext --moduleResolution bundler --lib ES2023,DOM --skipLibCheck --outDir build/test && node --test frontend/src/lib/storyPlayerAdapter.test.mjs",
+    "test:dialogs": "tsc frontend/src/lib/dialogs.ts --target ES2023 --module ESNext --moduleResolution bundler --lib ES2023,DOM --skipLibCheck --outDir build/test && node --test frontend/src/lib/dialogs.test.mjs",
+    "verify:prts-sync": "node scripts/verify-prts-sync.mjs",
+    "preview": "vite preview frontend",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^4.3.0",
+    "@tauri-apps/api": "~2.10.1",
+    "@tauri-apps/plugin-dialog": "^2.7.1",
+    "@tauri-apps/plugin-os": "^2.3.2",
+    "acorn": "^8.18.0",
+    "es-module-lexer": "^3.0.2",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "^7.13.2",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@tauri-apps/cli": "~2.10.1",
+    "@types/node": "^24.12.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.4.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.57.0",
+    "vite": "^8.0.1"
+  }
+}
