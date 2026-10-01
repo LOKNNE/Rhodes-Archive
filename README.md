@@ -1,41 +1,111 @@
+<div align="center">
+
+<img src="frontend/public/logo.png" width="160" alt="Rhodes Archive logo" />
+
 # Rhodes Archive
 
-Fan-made archive and story player for **Arknights**, focused on preserving and reproducing stories with custom translations.
+### Archivo fan de historias de Arknights
 
-## About
+Reproduce, archiva y disfruta historias de **Arknights** con soporte para traducciones personalizadas.
 
-Rhodes Archive is an unofficial fan project based on the open-source **Arkstage** project. The goal is to make Arknights stories easier to archive, replay and translate, starting with Spanish translations.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Status](https://img.shields.io/badge/status-en%20desarrollo-orange)
+![Platform](https://img.shields.io/badge/platform-Windows-blue)
 
-Current work includes:
-- Spanish interface
-- External `.txt` translation support
-- Fullscreen story playback
-- Custom branding for Rhodes Archive
-- Fan translations of Arknights stories and collaborations
+[YouTube](https://www.youtube.com/@LOKNNE) · [Reddit](https://www.reddit.com/user/LOKNNE/)
 
-## Translations
+</div>
 
-Rhodes Archive can load translated story scripts from external `.txt` files. A translation file starts with:
+---
+
+## ✨ Qué es Rhodes Archive
+
+**Rhodes Archive** es un proyecto fan no oficial basado en el proyecto open-source **Arkstage**. Su objetivo es facilitar la reproducción, archivo y traducción de historias de Arknights, empezando por una experiencia adaptada al español.
+
+El proyecto sigue en desarrollo y puede cambiar con frecuencia.
+
+## ⭐ Funciones actuales
+
+- 🇪🇸 Interfaz principal en español
+- 📖 Reproducción de historias con StoryPlayer
+- 🌐 Carga de traducciones externas en archivos `.txt`
+- 🎬 Reproductor a pantalla completa
+- ⏩ Modo automático mediante la tecla `A` cuando está disponible
+- 💾 Caché local de recursos
+- 📦 Gestión y compresión de recursos
+- 🗂️ Sección propia de **Traducciones**
+- 🎨 Interfaz y branding personalizados de Rhodes Archive
+
+## 🌍 Sistema de traducciones
+
+Las traducciones se guardan como archivos `.txt` independientes. Cada archivo debe empezar con una línea como esta:
 
 ```txt
 #ARKSTAGE_TITLE=PAGE_TITLE
 ```
 
-followed by the complete translated story script.
+Debajo se incluye el script completo traducido de la historia.
 
-## Links
+Ejemplo de carpeta:
 
-- YouTube: https://www.youtube.com/@LOKNNE
-- Reddit: https://www.reddit.com/user/LOKNNE/
+```text
+translations/
+├── Ave Mujica Cap.1.txt
+└── Ave Mujica Cap 2.txt
+```
 
-## Credits
+Si Rhodes Archive encuentra una traducción cuyo `PAGE_TITLE` coincide con la historia seleccionada, la carga automáticamente. Si no existe, utiliza el texto original.
 
-Rhodes Archive is based on **Arkstage** and uses resources and technology related to **PRTS Wiki / StoryPlayer**.
+## 🛠️ Desarrollo
 
-Arknights, its characters, artwork, audio and story content belong to **Hypergryph** and their respective owners.
+El proyecto utiliza principalmente:
 
-This project is unofficial and is not affiliated with Hypergryph or PRTS Wiki.
+- **Tauri 2**
+- **Rust**
+- **React**
+- **TypeScript**
+- **StoryPlayer / recursos de PRTS Wiki**
 
-## License
+Para ejecutar el proyecto en desarrollo:
 
-The code and original modifications in this repository are released under the **MIT License**. This license does not apply to Arknights game assets, story text, artwork, music, audio or other copyrighted content owned by Hypergryph or other rights holders.
+```bash
+npm install
+npm run tauri dev
+```
+
+> Este repositorio está en desarrollo activo. Algunas funciones pueden estar incompletas o cambiar entre versiones.
+
+## 📺 Comunidad
+
+Puedes seguir el proyecto y las traducciones aquí:
+
+- **YouTube:** https://www.youtube.com/@LOKNNE
+- **Reddit:** https://www.reddit.com/user/LOKNNE/
+
+## ❤️ Créditos
+
+Rhodes Archive está basado en **Arkstage** y utiliza tecnología y recursos relacionados con **PRTS Wiki / StoryPlayer**.
+
+Gracias a los desarrolladores y comunidades que han hecho posibles estas herramientas.
+
+## ⚠️ Aviso legal
+
+Rhodes Archive es un proyecto fan **no oficial** y no está afiliado con Hypergryph, Gryphline ni PRTS Wiki.
+
+**Arknights**, sus personajes, historias, ilustraciones, música, audio y demás recursos pertenecen a **Hypergryph** y a sus respectivos propietarios.
+
+El repositorio no pretende reclamar propiedad sobre ningún recurso original de Arknights.
+
+## 📄 Licencia
+
+El código propio y las modificaciones originales de este repositorio se publican bajo la **MIT License**.
+
+La licencia MIT **no se aplica** a textos, imágenes, audio, música ni otros recursos protegidos pertenecientes a Hypergryph u otros titulares de derechos.
+
+---
+
+<div align="center">
+
+**Rhodes Archive** · made by [LOKNNE](https://github.com/LOKNNE)
+
+</div>
