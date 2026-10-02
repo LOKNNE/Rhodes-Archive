@@ -12,6 +12,12 @@ Reproduce, archiva y disfruta historias de **Arknights** con soporte para traduc
 ![Status](https://img.shields.io/badge/status-en%20desarrollo-orange)
 ![Platform](https://img.shields.io/badge/platform-Windows-blue)
 
+### ⬇️ Descargar
+
+[![Download for Windows](https://img.shields.io/badge/Download%20for%20Windows-v1.2.0%20Alpha-2ea44f?style=for-the-badge&logo=windows)](https://github.com/LOKNNE/Rhodes-Archive/releases/download/v1.2.0-alpha/Rhodes-Archive-v1.2.0-alpha-Windows-x64-Setup.exe)
+
+[Ver todas las versiones](https://github.com/LOKNNE/Rhodes-Archive/releases)
+
 [YouTube](https://www.youtube.com/@LOKNNE) · [Reddit](https://www.reddit.com/user/LOKNNE/)
 
 </div>
