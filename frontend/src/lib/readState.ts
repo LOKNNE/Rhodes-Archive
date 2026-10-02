@@ -27,8 +27,10 @@ export function markRead(pageTitle: string): void {
 }
 
 // "Last watched" — the most recently opened story (by page_title), so the shelf
-// and chapter list can point the user back to where they left off ("上次观看").
+// and chapter list can point the user back to where they left off.
 const LAST_KEY = "arkstage-last-watched";
+const RECENTS_KEY = "arkstage-recent-stories";
+const MAX_RECENTS = 6;
 
 export function getLastWatched(): string | null {
   try {
@@ -38,9 +40,25 @@ export function getLastWatched(): string | null {
   }
 }
 
+export function getRecentStories(): string[] {
+  try {
+    const raw = localStorage.getItem(RECENTS_KEY);
+    const parsed = raw ? (JSON.parse(raw) as unknown) : [];
+    return Array.isArray(parsed)
+      ? parsed.filter((item): item is string => typeof item === "string").slice(0, MAX_RECENTS)
+      : [];
+  } catch {
+    return [];
+  }
+}
+
 export function setLastWatched(pageTitle: string): void {
   try {
     localStorage.setItem(LAST_KEY, pageTitle);
+
+    const recent = getRecentStories().filter((title) => title !== pageTitle);
+    recent.unshift(pageTitle);
+    localStorage.setItem(RECENTS_KEY, JSON.stringify(recent.slice(0, MAX_RECENTS)));
   } catch {
     /* best-effort */
   }
