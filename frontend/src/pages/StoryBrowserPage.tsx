@@ -6,6 +6,7 @@ import { useDownload } from "../lib/DownloadContext";
 import { useCompression } from "../lib/CompressionContext";
 import { buildShelves } from "../lib/bookshelf";
 import { getReadStories, getLastWatched } from "../lib/readState";
+import { getFavorites, saveFavorites } from "../lib/favorites";
 import { listTranslations, type TranslationFileInfo } from "../lib/translationsFolder";
 import type { Book, Shelf } from "../lib/bookshelf";
 import CoverCard from "../components/CoverCard";
@@ -14,18 +15,14 @@ import SelectionBar from "../components/SelectionBar";
 import { storylineIcon } from "../assets/storylines";
 import { confirmAction, showNotice } from "../lib/dialogs";
 
-/**
- * Cinematic ebook bookshelf. Categories become shelf sections; chapters sharing
- * a cover key collapse into one CoverCard ("book"). Clicking a card drills into
- * an in-page ChapterDetail (no route push, so hardware-back stays here). A
- * persistent SelectionBar drives batch download/delete over selected stories.
- */
 export default function StoryBrowserPage() {
   const { index, loading, error, refresh } = useStoryIndex();
   const [search, setSearch] = useState("");
   const [characterSearch, setCharacterSearch] = useState("");
   const [translationFilter, setTranslationFilter] = useState<"all" | "translated" | "untranslated">("all");
   const [languageFilter, setLanguageFilter] = useState("");
+  const [favoriteFilter, setFavoriteFilter] = useState(false);
+  const [favorites, setFavorites] = useState<Set<string>>(() => getFavorites());
   const [translations, setTranslations] = useState<TranslationFileInfo[]>([]);
   const [cachedStories, setCachedStories] = useState<Set<string>>(new Set());
   const [selected, setSelected] = useState<Set<string>>(new Set());
@@ -33,6 +30,7 @@ export default function StoryBrowserPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const openCategory = searchParams.get("cat");
   const openCover = searchParams.get("book");
+
   const openBook: Book | null = useMemo(
     () =>
       openCover
@@ -73,6 +71,7 @@ export default function StoryBrowserPage() {
     const refreshState = () => {
       setReadStories(getReadStories());
       setLastWatchedState(getLastWatched());
+      setFavorites(getFavorites());
       refreshTranslations();
     };
     window.addEventListener("focus", refreshState);
@@ -109,6 +108,33 @@ export default function StoryBrowserPage() {
     [translations]
   );
 
+  const translationInfoForBook = useCallback(
+    (book: Book) => {
+      const items = book.pageTitles.flatMap((pt) => translationsByTitle.get(pt) ?? []);
+      return {
+        translated: items.length > 0,
+        languages: [...new Set(items.map((t) => t.language).filter(Boolean))].sort(),
+      };
+    },
+    [translationsByTitle]
+  );
+
+  const toggleFavoriteBook = useCallback((book: Book) => {
+    setFavorites((prev) => {
+      const next = new Set(prev);
+      const key = `${book.category}::${book.coverKey}`;
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      saveFavorites(next);
+      return next;
+    });
+  }, []);
+
+  const isFavorite = useCallback(
+    (book: Book) => favorites.has(`${book.category}::${book.coverKey}`),
+    [favorites]
+  );
+
   const filtered: Shelf[] = useMemo(() => {
     const q = search.trim().toLowerCase();
     const cq = characterSearch.trim().toLowerCase();
@@ -125,11 +151,12 @@ export default function StoryBrowserPage() {
                 ch.name.toLowerCase().includes(q) ||
                 (ch.activity_name?.toLowerCase().includes(q) ?? false) ||
                 ch.stories.some(
-                  (s) =>
-                    s.title.toLowerCase().includes(q) || s.page_title.toLowerCase().includes(q)
+                  (s) => s.title.toLowerCase().includes(q) || s.page_title.toLowerCase().includes(q)
                 )
             );
           if (!matchesText) return false;
+
+          if (favoriteFilter && !favorites.has(`${b.category}::${b.coverKey}`)) return false;
 
           const pageTranslations = b.pageTitles.flatMap((pt) => translationsByTitle.get(pt) ?? []);
           const isTranslated = pageTranslations.length > 0;
@@ -151,7 +178,7 @@ export default function StoryBrowserPage() {
         }),
       }))
       .filter((shelf) => shelf.books.length > 0);
-  }, [shelves, search, characterSearch, translationFilter, languageFilter, translationsByTitle]);
+  }, [shelves, search, characterSearch, translationFilter, languageFilter, favoriteFilter, favorites, translationsByTitle]);
 
   const liveBook: Book | null = useMemo(() => {
     if (!openBook) return null;
@@ -237,9 +264,7 @@ export default function StoryBrowserPage() {
   const batchDownload = () => startPredownload([...selected]);
   const batchDelete = () => deleteTitles([...selected], `${selected.size} historias`, clearSelection);
 
-  if (loading && !index) {
-    return <div className="loading">Cargando historias...</div>;
-  }
+  if (loading && !index) return <div className="loading">Cargando historias...</div>;
 
   if (error && !index) {
     return (
@@ -295,7 +320,15 @@ export default function StoryBrowserPage() {
                 <option key={lang} value={lang}>{lang.toUpperCase()}</option>
               ))}
             </select>
-            {(search || characterSearch || translationFilter !== "all" || languageFilter) && (
+            <button
+              className="nav-btn"
+              onClick={() => setFavoriteFilter((v) => !v)}
+              style={favoriteFilter ? { color: "#ffd54a", borderColor: "#8a7420" } : undefined}
+              title="Mostrar solo favoritos"
+            >
+              {favoriteFilter ? "★ Favoritos" : "☆ Favoritos"}
+            </button>
+            {(search || characterSearch || translationFilter !== "all" || languageFilter || favoriteFilter) && (
               <button
                 className="nav-btn"
                 onClick={() => {
@@ -303,6 +336,7 @@ export default function StoryBrowserPage() {
                   setCharacterSearch("");
                   setTranslationFilter("all");
                   setLanguageFilter("");
+                  setFavoriteFilter(false);
                 }}
               >
                 Limpiar filtros
@@ -335,6 +369,7 @@ export default function StoryBrowserPage() {
                 <div className="cover-grid">
                   {shelf.books.map((book) => {
                     const st = bookSelState(book);
+                    const ti = translationInfoForBook(book);
                     return (
                       <CoverCard
                         key={book.coverKey}
@@ -345,9 +380,13 @@ export default function StoryBrowserPage() {
                         selected={st.selected}
                         partial={st.partial && !st.selected}
                         selectionMode={selectionMode}
+                        favorite={isFavorite(book)}
+                        translated={ti.translated}
+                        languages={ti.languages}
                         onOpen={openBookCard}
                         onToggleSelect={toggleBook}
                         onLongPress={enterSelect}
+                        onToggleFavorite={toggleFavoriteBook}
                       />
                     );
                   })}
