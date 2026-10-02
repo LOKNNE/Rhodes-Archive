@@ -10,11 +10,7 @@ import { setLandscape } from "../lib/orientation";
 import { setImmersive } from "../lib/immersive";
 import { useHidePlayerBack } from "../lib/uiSettings";
 import { disposeEngineFrame } from "../lib/storyPlayerBoot";
-import {
-  autoTranslateAndSave,
-  isAutoTranslationConfigured,
-  loadTranslation,
-} from "../lib/translationsFolder";
+import { loadTranslation } from "../lib/translationsFolder";
 
 /**
  * Story player page — loads the ORIGINAL PRTS ScenarioSimulator engine via bootEngine().
@@ -34,14 +30,10 @@ export default function StoryPlayerPage() {
   const decodedTitle = pageTitle ? decodeURIComponent(pageTitle) : "";
   const { busy: compressionBusy } = useCompression();
 
-  // Safety net: if a compression batch is active (e.g. the app restarted onto a
-  // restored /play route while the batch resumes), bounce out of the reader —
-  // reading would fetch+write media the batch is concurrently rewriting.
   useEffect(() => {
     if (compressionBusy) navigate("/browse", { replace: true });
   }, [compressionBusy, navigate]);
 
-  // Desktop: enter native fullscreen while the story player is open.
   useEffect(() => {
     const appWindow = getCurrentWindow();
     void appWindow.setFullscreen(true).catch(() => {});
@@ -50,14 +42,11 @@ export default function StoryPlayerPage() {
     };
   }, []);
 
-  // Drive the Android keep-alive notification's "reading a story" state.
   useEffect(() => {
     setReading(true);
     return () => setReading(false);
   }, []);
 
-  // Record this as the "last watched" story on entry; only mark it READ after
-  // 30s in the reader (so merely peeking in doesn't count). Leaving early cancels.
   useEffect(() => {
     if (!decodedTitle) return;
     setLastWatched(decodedTitle);
@@ -65,8 +54,6 @@ export default function StoryPlayerPage() {
     return () => clearTimeout(t);
   }, [decodedTitle]);
 
-  // The player is the ONLY screen forced to landscape AND the only one that hides
-  // the system bars (immersive); both are restored on leave. (No-op off Android.)
   useEffect(() => {
     setLandscape(true);
     setImmersive(true);
@@ -85,8 +72,6 @@ export default function StoryPlayerPage() {
     (async () => {
       let stage = "inicio";
       try {
-        // Script + engine/data tables come from the same fresh PRTS response. If
-        // refresh fails, a validated last-known-good snapshot is retained visibly.
         stage = "loadStoryRuntime";
         setStatus(`正在同步剧情与演出引擎: ${decodedTitle}...`);
         const runtime = await loadStoryRuntime(decodedTitle);
@@ -97,10 +82,6 @@ export default function StoryPlayerPage() {
         }
         if (cancelled) return;
 
-        // 1) Prefer a translation already saved in /translations.
-        // 2) If none exists and OpenAI is configured, translate automatically,
-        //    save the generated .txt and use it immediately.
-        // 3) If translation is unavailable/fails, keep the original script.
         stage = "loadTranslation";
         setStatus("Buscando traducción...");
         let scriptToPlay = runtime.story.script;
@@ -109,38 +90,17 @@ export default function StoryPlayerPage() {
           if (externalTranslation) {
             scriptToPlay = externalTranslation;
             console.log("TRANSLATION FILE: loaded for", decodedTitle);
-          } else {
-            const configured = await isAutoTranslationConfigured();
-            if (configured) {
-              stage = "autoTranslate";
-              setStatus("Traduciendo capítulo automáticamente...");
-              const generated = await autoTranslateAndSave(
-                decodedTitle,
-                runtime.story.script,
-              );
-              if (cancelled) return;
-              if (generated.trim()) {
-                scriptToPlay = generated;
-                console.log("AUTO TRANSLATION: generated and saved for", decodedTitle);
-              }
-            } else {
-              setSyncWarning(
-                "No hay traducción guardada para este capítulo y la traducción automática todavía no está configurada. Se abrirá el texto original.",
-              );
-            }
           }
         } catch (translationError) {
           setSyncWarning(
-            `La traducción automática no pudo completarse; se usará el texto original.\n${
+            `No se pudo leer la carpeta de traducciones; se usará el texto original.\n${
               translationError instanceof Error
                 ? translationError.message
                 : String(translationError)
             }`,
           );
-          scriptToPlay = runtime.story.script;
         }
 
-        // === Step 3: Boot the engine inside an isolated iframe realm ===
         stage = "bootEngine";
         setStatus("正在初始化播放器...");
         const iframe = document.createElement("iframe");
@@ -160,9 +120,6 @@ export default function StoryPlayerPage() {
         } catch (candidateError) {
           if (cancelled) throw candidateError;
 
-          // If the translated TXT crashes the current StoryPlayer, retry the SAME
-          // engine once with the untouched Chinese script. This tells us whether
-          // the problem is the translation file or the player itself.
           if (scriptToPlay !== runtime.story.script) {
             disposeEngineFrame(iframe);
             iframe.remove();
@@ -183,7 +140,7 @@ export default function StoryPlayerPage() {
               });
 
               setSyncWarning(
-                `La traducción de este capítulo dio error y Rhodes Archive ha abierto el guion original.\n${
+                `La traducción de este capítulo dio error y Arkstage ha abierto el guion original.\n${
                   candidateError instanceof Error
                     ? candidateError.message
                     : String(candidateError)
@@ -264,7 +221,6 @@ export default function StoryPlayerPage() {
 
     return () => {
       cancelled = true;
-      // Removing the iframe disposes the whole engine realm (timers, audio, globals).
       try {
         container.querySelectorAll("iframe").forEach(disposeEngineFrame);
         container
@@ -278,8 +234,6 @@ export default function StoryPlayerPage() {
     };
   }, [decodedTitle]);
 
-  // Pop one history level (back to the 章节 detail we came from), so hardware
-  // back and this button behave identically.
   const handleBack = () => navigate(-1);
 
   if (error) {
@@ -362,8 +316,6 @@ const warningCloseStyle: React.CSSProperties = {
   borderRadius: "3px",
 };
 
-// Small, unobtrusive icon-only back button in the corner (the reader is meant to
-// be immersive; the system back gesture also works).
 const backBtnStyle: React.CSSProperties = {
   position: "fixed",
   top: "calc(6px + var(--safe-top))",
