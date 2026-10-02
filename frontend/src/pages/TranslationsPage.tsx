@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { open } from "@tauri-apps/plugin-dialog";
 import {
   getTranslationsFolder,
+  importTranslation,
   listTranslations,
   openTranslationsFolder,
   type TranslationFileInfo,
@@ -19,6 +21,7 @@ export default function TranslationsPage() {
   const [items, setItems] = useState<TranslationFileInfo[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
 
   const refresh = useCallback(async () => {
     setLoading(true);
@@ -37,6 +40,24 @@ export default function TranslationsPage() {
     }
   }, []);
 
+  const handleImport = useCallback(async () => {
+    setError(null);
+    setNotice(null);
+    try {
+      const selected = await open({
+        multiple: false,
+        directory: false,
+        filters: [{ name: "Traducción Rhodes Archive", extensions: ["txt"] }],
+      });
+      if (!selected || Array.isArray(selected)) return;
+      const filename = await importTranslation(selected);
+      setNotice(`Importada: ${filename}`);
+      await refresh();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    }
+  }, [refresh]);
+
   useEffect(() => {
     void refresh();
   }, [refresh]);
@@ -52,7 +73,8 @@ export default function TranslationsPage() {
       </div>
 
       <div style={s.toolbar}>
-        <button style={s.primary} onClick={() => void openTranslationsFolder()}>Abrir carpeta</button>
+        <button style={s.primary} onClick={() => void handleImport()}>Importar .txt</button>
+        <button style={s.secondary} onClick={() => void openTranslationsFolder()}>Abrir carpeta</button>
         <button style={s.secondary} onClick={() => void refresh()}>Actualizar lista</button>
       </div>
 
@@ -69,6 +91,7 @@ export default function TranslationsPage() {
         Si no hay #LANG, Rhodes Archive considera español para mantener compatibilidad con los archivos actuales. Los nombres de personaje se detectan automáticamente desde las líneas del guion.
       </div>
 
+      {notice && <div style={s.notice}>{notice}</div>}
       {error && <div style={s.error}>{error}</div>}
 
       {loading ? (
@@ -111,7 +134,7 @@ const s: Record<string, React.CSSProperties> = {
   back: { width: "40px", height: "40px", borderRadius: "10px", border: "1px solid #333", background: "#1b1b1b", color: "#fff", cursor: "pointer", fontSize: "21px" },
   title: { margin: 0, fontSize: "28px" },
   subtitle: { color: "#999", marginTop: "4px", fontSize: "14px" },
-  toolbar: { display: "flex", gap: "10px", marginBottom: "16px" },
+  toolbar: { display: "flex", gap: "10px", marginBottom: "16px", flexWrap: "wrap" },
   primary: { border: 0, borderRadius: "8px", padding: "10px 16px", background: "#f4c430", color: "#111", fontWeight: 700, cursor: "pointer" },
   secondary: { border: "1px solid #3a3a3a", borderRadius: "8px", padding: "10px 16px", background: "#1b1b1b", color: "#eee", cursor: "pointer" },
   box: { background: "#171717", border: "1px solid #292929", borderRadius: "10px", padding: "13px 15px", marginBottom: "12px" },
@@ -119,6 +142,7 @@ const s: Record<string, React.CSSProperties> = {
   path: { color: "#ddd", overflowWrap: "anywhere" },
   help: { background: "#171717", border: "1px solid #292929", borderRadius: "10px", padding: "13px 15px", color: "#aaa", lineHeight: 1.5, marginBottom: "18px" },
   example: { display: "block", marginTop: "8px", color: "#f4c430", background: "#0c0c0c", padding: "8px 10px", borderRadius: "6px" },
+  notice: { padding: "12px", borderRadius: "8px", background: "#17351f", border: "1px solid #2c6d3b", marginBottom: "14px", color: "#9ee9ae" },
   error: { padding: "12px", borderRadius: "8px", background: "#3a1717", border: "1px solid #6b2525", marginBottom: "14px" },
   empty: { padding: "28px", textAlign: "center", color: "#777", border: "1px dashed #333", borderRadius: "10px" },
   list: { display: "flex", flexDirection: "column", gap: "9px" },
