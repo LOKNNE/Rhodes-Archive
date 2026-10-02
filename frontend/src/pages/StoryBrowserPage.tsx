@@ -180,6 +180,16 @@ export default function StoryBrowserPage() {
       .filter((shelf) => shelf.books.length > 0);
   }, [shelves, search, characterSearch, translationFilter, languageFilter, favoriteFilter, favorites, translationsByTitle]);
 
+  const shelfProgress = useCallback((category: string) => {
+    const source = shelves.find((s) => s.category === category);
+    if (!source) return { read: 0, total: 0, percent: 0 };
+    const titles = source.books.flatMap((b) => b.pageTitles);
+    const total = titles.length;
+    const read = titles.filter((pt) => readStories.has(pt)).length;
+    const percent = total > 0 ? Math.round((read / total) * 100) : 0;
+    return { read, total, percent };
+  }, [shelves, readStories]);
+
   const liveBook: Book | null = useMemo(() => {
     if (!openBook) return null;
     for (const shelf of shelves) {
@@ -345,7 +355,9 @@ export default function StoryBrowserPage() {
           </div>
 
           <div className="browser-content shelf-content">
-            {filtered.map((shelf) => (
+            {filtered.map((shelf) => {
+              const progress = shelfProgress(shelf.category);
+              return (
               <section key={shelf.category} className="shelf">
                 <div className="shelf-header">
                   {selectionMode && (() => {
@@ -364,7 +376,9 @@ export default function StoryBrowserPage() {
                     <img className="shelf-icon" src={storylineIcon(shelf.category)} alt="" aria-hidden="true" />
                   )}
                   <span className="shelf-title">{shelf.category}</span>
-                  <span className="shelf-count">{shelf.books.length} capítulos</span>
+                  <span className="shelf-count">
+                    {shelf.books.length} capítulos · {progress.read}/{progress.total} leídas · {progress.percent}%
+                  </span>
                 </div>
                 <div className="cover-grid">
                   {shelf.books.map((book) => {
@@ -392,7 +406,8 @@ export default function StoryBrowserPage() {
                   })}
                 </div>
               </section>
-            ))}
+              );
+            })}
 
             {filtered.length === 0 && <div className="loading">No se encontraron historias con estos filtros</div>}
           </div>
