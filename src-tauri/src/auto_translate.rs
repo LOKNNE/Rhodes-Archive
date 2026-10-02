@@ -12,7 +12,8 @@ use crate::translations;
 
 const MODEL_NAME: &str = "Qwen3-0.6B-Q4_0.gguf";
 const SERVER_PORT: u16 = 18080;
-const MAX_CHUNK_CHARS: usize = 4_500;
+const MAX_BATCH_CHARS: usize = 2_800;
+const MAX_BATCH_ITEMS: usize = 24;
 
 static LOCAL_SERVER: OnceLock<Mutex<Option<Child>>> = OnceLock::new();
 
@@ -37,62 +38,41 @@ fn sanitize_filename(title: &str) -> String {
     }
 }
 
-fn split_script(script: &str) -> Vec<String> {
-    if script.chars().count() <= MAX_CHUNK_CHARS {
-        return vec![script.to_string()];
-    }
-
-    let mut chunks = Vec::new();
-    let mut current = String::new();
-    let mut count = 0usize;
-
-    for line in script.split_inclusive('\n') {
-        let line_count = line.chars().count();
-        if !current.is_empty() && count + line_count > MAX_CHUNK_CHARS {
-            chunks.push(current);
-            current = String::new();
-            count = 0;
-        }
-        current.push_str(line);
-        count += line_count;
-    }
-
-    if !current.is_empty() {
-        chunks.push(current);
-    }
-    chunks
-}
-
 fn local_ai_candidates(app: &AppHandle) -> Vec<PathBuf> {
     let mut out = Vec::new();
-
     if let Ok(resource_dir) = app.path().resource_dir() {
         out.push(resource_dir.join("local-ai"));
         out.push(resource_dir.join("resources").join("local-ai"));
     }
-
-    // Development path: src-tauri/resources/local-ai.
-    out.push(PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("resources").join("local-ai"));
+    out.push(
+        PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+            .join("resources")
+            .join("local-ai"),
+    );
     out
 }
 
 fn find_local_ai_dir(app: &AppHandle) -> Result<PathBuf, String> {
     for dir in local_ai_candidates(app) {
-        let server = dir.join(if cfg!(windows) { "llama-server.exe" } else { "llama-server" });
+        let server = dir.join(if cfg!(windows) {
+            "llama-server.exe"
+        } else {
+            "llama-server"
+        });
         let model = dir.join(MODEL_NAME);
         if server.exists() && model.exists() {
             return Ok(dir);
         }
     }
-
-    Err(
-        "El traductor local no está incluido en esta compilación. Vuelve a compilar Rhodes Archive para preparar el modelo local."
-            .to_string(),
-    )
+    Err("El traductor local no está incluido en esta compilación. Vuelve a compilar Rhodes Archive para preparar el modelo local.".to_string())
 }
 
 fn server_executable(dir: &Path) -> PathBuf {
-    dir.join(if cfg!(windows) { "llama-server.exe" } else { "llama-server" })
+    dir.join(if cfg!(windows) {
+        "llama-server.exe"
+    } else {
+        "llama-server"
+    })
 }
 
 fn local_client() -> Result<reqwest::Client, String> {
@@ -155,7 +135,6 @@ fn start_server(app: &AppHandle) -> Result<(), String> {
     #[cfg(windows)]
     {
         use std::os::windows::process::CommandExt;
-        // Do not flash a console window when the bundled inference server starts.
         command.creation_flags(0x08000000);
     }
 
@@ -184,21 +163,20 @@ async fn ensure_server(app: &AppHandle) -> Result<reqwest::Client, String> {
 }
 
 fn instructions() -> &'static str {
-    "Eres el traductor integrado de Rhodes Archive. Traduce guiones de Arknights al español natural y neutro.\n\
-No expliques nada y no muestres tu razonamiento. Devuelve únicamente el guion traducido.\n\
+    "Eres el traductor integrado de Rhodes Archive. Traduce únicamente texto narrativo y diálogos de Arknights al español natural y neutro.\n\
+Cada línea de entrada empieza por un identificador del tipo @@12@@.\n\
 REGLAS OBLIGATORIAS:\n\
-1. Conserva EXACTAMENTE los comandos del StoryPlayer, etiquetas, IDs, corchetes, llaves, parámetros, claves, rutas y nombres de recursos.\n\
-2. Traduce únicamente el texto visible para el lector.\n\
-3. No inventes, resumas ni elimines contenido.\n\
-4. Mantén los nombres propios y términos de Arknights de forma coherente.\n\
-5. Conserva el orden de las líneas y los saltos de línea.\n\
-6. No uses Markdown ni bloques de código.\n\
-7. Si una línea es solo un comando técnico, devuélvela idéntica."
+1. Devuelve exactamente una línea por identificador recibido.\n\
+2. Empieza cada línea de salida con el mismo identificador @@N@@.\n\
+3. Traduce solo el texto después del identificador.\n\
+4. No añadas explicaciones, Markdown ni razonamiento.\n\
+5. No inventes, resumas ni elimines contenido.\n\
+6. Conserva literalmente marcadores como {@nbs}, {@nickname}, <i>, </i> y similares.\n\
+7. No introduzcas saltos de línea dentro de una traducción."
 }
 
 fn strip_reasoning(text: &str) -> String {
     let mut s = text.trim().to_string();
-
     while let Some(start) = s.find("<think>") {
         if let Some(relative_end) = s[start..].find("</think>") {
             let end = start + relative_end + "</think>".len();
@@ -207,7 +185,6 @@ fn strip_reasoning(text: &str) -> String {
             break;
         }
     }
-
     if s.starts_with("```") {
         s = s.trim_start_matches("```").to_string();
         if let Some(pos) = s.find('\n') {
@@ -215,38 +192,70 @@ fn strip_reasoning(text: &str) -> String {
         }
         s = s.trim_end_matches("```").trim().to_string();
     }
-
     s
 }
 
-fn technical_line_count(text: &str) -> usize {
-    text.lines().filter(|line| line.trim_start().starts_with('[')).count()
-}
+/// Split a StoryPlayer line into an immutable technical prefix and visible text.
+/// Example: [name="Amiya"]你好 -> ("[name=\"Amiya\"]", "你好")
+/// Pure technical lines return an empty visible string and are never sent to AI.
+fn split_technical_prefix(line: &str) -> (&str, &str) {
+    let mut pos = 0usize;
+    let bytes = line.as_bytes();
 
-fn validate_structure(original: &str, translated: &str) -> Result<(), String> {
-    if translated.trim().is_empty() {
-        return Err("El modelo local devolvió una traducción vacía.".to_string());
+    while pos < bytes.len() && bytes[pos] == b'[' {
+        let Some(relative_end) = line[pos..].find(']') else {
+            break;
+        };
+        pos += relative_end + 1;
     }
 
-    let before = technical_line_count(original);
-    let after = technical_line_count(translated);
-    let tolerance = ((before as f32) * 0.05).ceil() as usize + 2;
-    if before.abs_diff(after) > tolerance {
-        return Err(format!(
-            "La traducción alteró demasiados comandos del StoryPlayer ({before} -> {after})."
-        ));
-    }
-    Ok(())
+    (&line[..pos], &line[pos..])
 }
 
-async fn translate_chunk(client: &reqwest::Client, chunk: &str) -> Result<String, String> {
+#[derive(Clone)]
+struct LineParts {
+    prefix: String,
+    visible: String,
+    newline: String,
+}
+
+fn parse_script(script: &str) -> Vec<LineParts> {
+    script
+        .split_inclusive('\n')
+        .map(|raw| {
+            let (body, newline) = if let Some(stripped) = raw.strip_suffix("\r\n") {
+                (stripped, "\r\n")
+            } else if let Some(stripped) = raw.strip_suffix('\n') {
+                (stripped, "\n")
+            } else {
+                (raw, "")
+            };
+            let (prefix, visible) = split_technical_prefix(body);
+            LineParts {
+                prefix: prefix.to_string(),
+                visible: visible.to_string(),
+                newline: newline.to_string(),
+            }
+        })
+        .collect()
+}
+
+async fn translate_batch(
+    client: &reqwest::Client,
+    items: &[(usize, String)],
+) -> Result<Vec<(usize, String)>, String> {
+    let mut prompt = String::from("/no_think\nTraduce estas líneas:\n");
+    for (id, text) in items {
+        prompt.push_str(&format!("@@{id}@@ {text}\n"));
+    }
+
     let body = json!({
         "model": MODEL_NAME,
         "messages": [
             { "role": "system", "content": instructions() },
-            { "role": "user", "content": format!("/no_think\nTraduce este fragmento:\n\n{chunk}") }
+            { "role": "user", "content": prompt }
         ],
-        "temperature": 0.1,
+        "temperature": 0.0,
         "max_tokens": 4096,
         "stream": false
     });
@@ -265,7 +274,11 @@ async fn translate_chunk(client: &reqwest::Client, chunk: &str) -> Result<String
         .map_err(|e| format!("No se pudo leer la respuesta del traductor local: {e}"))?;
 
     if !status.is_success() {
-        return Err(format!("El traductor local devolvió HTTP {}: {}", status.as_u16(), text));
+        return Err(format!(
+            "El traductor local devolvió HTTP {}: {}",
+            status.as_u16(),
+            text
+        ));
     }
 
     let value: Value = serde_json::from_str(&text)
@@ -280,8 +293,72 @@ async fn translate_chunk(client: &reqwest::Client, chunk: &str) -> Result<String
         .map(strip_reasoning)
         .ok_or_else(|| "El traductor local no devolvió texto.".to_string())?;
 
-    validate_structure(chunk, &result)?;
-    Ok(result)
+    let mut translated = Vec::new();
+    for line in result.lines() {
+        let trimmed = line.trim();
+        if !trimmed.starts_with("@@") {
+            continue;
+        }
+        let rest = &trimmed[2..];
+        let Some(end) = rest.find("@@") else {
+            continue;
+        };
+        let Ok(id) = rest[..end].parse::<usize>() else {
+            continue;
+        };
+        let value = rest[end + 2..].trim_start().to_string();
+        if !value.is_empty() {
+            translated.push((id, value));
+        }
+    }
+
+    Ok(translated)
+}
+
+async fn translate_script(client: &reqwest::Client, script: &str) -> Result<String, String> {
+    let mut lines = parse_script(script);
+    let mut pending: Vec<(usize, String)> = lines
+        .iter()
+        .enumerate()
+        .filter_map(|(i, line)| {
+            if line.visible.trim().is_empty() {
+                None
+            } else {
+                Some((i, line.visible.clone()))
+            }
+        })
+        .collect();
+
+    while !pending.is_empty() {
+        let mut batch = Vec::new();
+        let mut chars = 0usize;
+        while !pending.is_empty() && batch.len() < MAX_BATCH_ITEMS {
+            let next_chars = pending[0].1.chars().count();
+            if !batch.is_empty() && chars + next_chars > MAX_BATCH_CHARS {
+                break;
+            }
+            let item = pending.remove(0);
+            chars += item.1.chars().count();
+            batch.push(item);
+        }
+
+        let translated = translate_batch(client, &batch).await?;
+        // Missing/garbled model outputs deliberately keep the original visible text.
+        // The StoryPlayer command structure can therefore never be damaged by AI.
+        for (id, value) in translated {
+            if let Some(line) = lines.get_mut(id) {
+                line.visible = value;
+            }
+        }
+    }
+
+    let mut out = String::with_capacity(script.len());
+    for line in lines {
+        out.push_str(&line.prefix);
+        out.push_str(&line.visible);
+        out.push_str(&line.newline);
+    }
+    Ok(out)
 }
 
 #[tauri::command]
@@ -296,16 +373,7 @@ pub async fn auto_translate_and_save(
     script: String,
 ) -> Result<String, String> {
     let client = ensure_server(&app).await?;
-    let chunks = split_script(&script);
-    let mut translated = String::new();
-
-    for chunk in chunks {
-        let part = translate_chunk(&client, &chunk).await?;
-        translated.push_str(&part);
-        if !translated.ends_with('\n') && chunk.ends_with('\n') {
-            translated.push('\n');
-        }
-    }
+    let translated = translate_script(&client, &script).await?;
 
     let dir = translations::translations_dir()?;
     fs::create_dir_all(&dir)
