@@ -10,7 +10,11 @@ import { setLandscape } from "../lib/orientation";
 import { setImmersive } from "../lib/immersive";
 import { useHidePlayerBack } from "../lib/uiSettings";
 import { disposeEngineFrame } from "../lib/storyPlayerBoot";
-import { loadTranslation } from "../lib/translationsFolder";
+import {
+  autoTranslateAndSave,
+  isAutoTranslationConfigured,
+  loadTranslation,
+} from "../lib/translationsFolder";
 
 /**
  * Story player page — loads the ORIGINAL PRTS ScenarioSimulator engine via bootEngine().
@@ -93,8 +97,10 @@ export default function StoryPlayerPage() {
         }
         if (cancelled) return;
 
-        // External translations folder: each .txt declares its PAGE TITLE
-        // on the first line. If no matching translation exists, use the original.
+        // 1) Prefer a translation already saved in /translations.
+        // 2) If none exists and OpenAI is configured, translate automatically,
+        //    save the generated .txt and use it immediately.
+        // 3) If translation is unavailable/fails, keep the original script.
         stage = "loadTranslation";
         setStatus("Buscando traducción...");
         let scriptToPlay = runtime.story.script;
@@ -103,15 +109,35 @@ export default function StoryPlayerPage() {
           if (externalTranslation) {
             scriptToPlay = externalTranslation;
             console.log("TRANSLATION FILE: loaded for", decodedTitle);
+          } else {
+            const configured = await isAutoTranslationConfigured();
+            if (configured) {
+              stage = "autoTranslate";
+              setStatus("Traduciendo capítulo automáticamente...");
+              const generated = await autoTranslateAndSave(
+                decodedTitle,
+                runtime.story.script,
+              );
+              if (cancelled) return;
+              if (generated.trim()) {
+                scriptToPlay = generated;
+                console.log("AUTO TRANSLATION: generated and saved for", decodedTitle);
+              }
+            } else {
+              setSyncWarning(
+                "No hay traducción guardada para este capítulo y la traducción automática todavía no está configurada. Se abrirá el texto original.",
+              );
+            }
           }
         } catch (translationError) {
           setSyncWarning(
-            `No se pudo leer la carpeta de traducciones; se usará el texto original.\n${
+            `La traducción automática no pudo completarse; se usará el texto original.\n${
               translationError instanceof Error
                 ? translationError.message
                 : String(translationError)
             }`,
           );
+          scriptToPlay = runtime.story.script;
         }
 
         // === Step 3: Boot the engine inside an isolated iframe realm ===
@@ -157,7 +183,7 @@ export default function StoryPlayerPage() {
               });
 
               setSyncWarning(
-                `La traducción de este capítulo dio error y Arkstage ha abierto el guion original.\n${
+                `La traducción de este capítulo dio error y Rhodes Archive ha abierto el guion original.\n${
                   candidateError instanceof Error
                     ? candidateError.message
                     : String(candidateError)
