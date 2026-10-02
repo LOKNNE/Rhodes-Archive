@@ -1,72 +1,92 @@
 <div align="center">
 
-<img src="frontend/public/logo.png" width="160" alt="Rhodes Archive logo" />
+<img src="frontend/public/logo.png" width="150" alt="Rhodes Archive logo" />
 
 # Rhodes Archive
 
 ### Archivo fan de historias de Arknights
 
-Reproduce, archiva y disfruta historias de **Arknights** con soporte para traducciones personalizadas.
+Explora historias, reproduce escenas y carga traducciones fan en una interfaz pensada para disfrutarlas de forma cómoda.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-![Status](https://img.shields.io/badge/status-en%20desarrollo-orange)
-![Platform](https://img.shields.io/badge/platform-Windows-blue)
+[![Release](https://img.shields.io/github/v/release/LOKNNE/Rhodes-Archive?include_prereleases&label=release)](https://github.com/LOKNNE/Rhodes-Archive/releases)
+[![Platform](https://img.shields.io/badge/platform-Windows-0078D6?logo=windows)](https://github.com/LOKNNE/Rhodes-Archive/releases)
+[![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/status-alpha-orange)](ROADMAP.md)
 
-### ⬇️ Descargar
+### ⬇️ Descargar para Windows
 
-[![Download for Windows](https://img.shields.io/badge/Download%20for%20Windows-v1.2.0%20Alpha-2ea44f?style=for-the-badge&logo=windows)](https://github.com/LOKNNE/Rhodes-Archive/releases/download/v1.2.0-alpha/Rhodes-Archive-v1.2.0-alpha-Windows-x64-Setup.exe)
+[![Download for Windows](https://img.shields.io/badge/Descargar-Rhodes%20Archive-2ea44f?style=for-the-badge&logo=windows)](https://github.com/LOKNNE/Rhodes-Archive/releases/latest)
 
-[Ver todas las versiones](https://github.com/LOKNNE/Rhodes-Archive/releases)
+[Versiones](https://github.com/LOKNNE/Rhodes-Archive/releases) · [Changelog](CHANGELOG.md) · [Roadmap](ROADMAP.md) · [Contribuir](CONTRIBUTING.md)
 
-[YouTube](https://www.youtube.com/@LOKNNE) · [Reddit](https://www.reddit.com/user/LOKNNE/) · [Changelog](CHANGELOG.md) · [Roadmap](ROADMAP.md)
+[YouTube](https://www.youtube.com/@LOKNNE) · [Reddit](https://www.reddit.com/user/LOKNNE/)
 
 </div>
+
+---
+
+## 📖 ¿Qué es Rhodes Archive?
+
+**Rhodes Archive** es un proyecto fan no oficial basado en el proyecto open-source **Arkstage**. Su objetivo es ofrecer una forma cómoda de navegar y reproducir historias de **Arknights**, con especial atención al soporte para traducciones fan y a una experiencia adaptada al español.
+
+La aplicación utiliza StoryPlayer y recursos procedentes de PRTS Wiki para reconstruir las escenas dentro del reproductor.
+
+> El proyecto se encuentra en fase **alpha**. Puede haber historias incompatibles, recursos que tarden en cargar o secciones todavía sin traducir completamente.
 
 ---
 
 ## 📸 Capturas
 
-### Pantalla principal
-
-<div align="center">
-  <img src="docs/screenshots/1.png" width="900" alt="Pantalla principal de Rhodes Archive" />
-</div>
-
-### Biblioteca de historias
-
-<div align="center">
-  <img src="docs/screenshots/2.png" width="900" alt="Biblioteca de historias de Rhodes Archive" />
-</div>
-
-### Traducciones
-
-<div align="center">
-  <img src="docs/screenshots/3.png" width="900" alt="Gestor de traducciones de Rhodes Archive" />
-</div>
+<table>
+  <tr>
+    <td align="center"><strong>Inicio</strong></td>
+    <td align="center"><strong>Biblioteca</strong></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/1.png" alt="Pantalla principal de Rhodes Archive" /></td>
+    <td><img src="docs/screenshots/2.png" alt="Biblioteca de historias de Rhodes Archive" /></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><strong>Traducciones</strong></td>
+  </tr>
+  <tr>
+    <td colspan="2"><img src="docs/screenshots/3.png" alt="Gestor de traducciones de Rhodes Archive" /></td>
+  </tr>
+</table>
 
 ---
 
-## ✨ Qué es Rhodes Archive
-
-**Rhodes Archive** es un proyecto fan no oficial basado en el proyecto open-source **Arkstage**. Su objetivo es facilitar la reproducción, archivo y traducción de historias de Arknights, empezando por una experiencia adaptada al español.
-
-El proyecto sigue en desarrollo y puede cambiar con frecuencia.
-
-## ⭐ Funciones actuales
+## ✨ Funciones
 
 - 🇪🇸 Interfaz principal en español
-- 📖 Reproducción de historias con StoryPlayer
-- 🌐 Carga de traducciones externas en archivos `.txt`
+- 📖 Reproducción de historias mediante StoryPlayer
+- 🌐 Traducciones externas mediante archivos `.txt`
 - 🎬 Reproductor a pantalla completa
 - ⏩ Modo automático mediante la tecla `A` cuando está disponible
 - 💾 Caché local de recursos
 - 📦 Gestión y compresión de recursos
 - 🗂️ Sección propia de **Traducciones**
 - 🎨 Interfaz y branding personalizados de Rhodes Archive
+- 🧩 Si no existe traducción para un capítulo, se reproduce el texto original
 
-## 🌍 Sistema de traducciones
+---
 
-Las traducciones se guardan como archivos `.txt` independientes. Cada archivo debe empezar con una línea como esta:
+## 🚀 Inicio rápido
+
+1. Descarga la versión más reciente desde **Releases**.
+2. Instala Rhodes Archive en Windows.
+3. Abre la biblioteca y selecciona una historia.
+4. Si existe una traducción compatible en la carpeta `translations`, Rhodes Archive la cargará automáticamente.
+
+No necesitas modificar los archivos originales del juego.
+
+---
+
+## 🌍 Traducciones fan
+
+Las traducciones se guardan como archivos `.txt` independientes.
+
+La primera línea del archivo identifica exactamente la página de PRTS a la que pertenece:
 
 ```txt
 #ARKSTAGE_TITLE=PAGE_TITLE
@@ -74,7 +94,7 @@ Las traducciones se guardan como archivos `.txt` independientes. Cada archivo de
 
 Debajo se incluye el script completo traducido de la historia.
 
-Ejemplo de carpeta:
+Ejemplo:
 
 ```text
 translations/
@@ -82,52 +102,70 @@ translations/
 └── Ave Mujica Cap 2.txt
 ```
 
-Si Rhodes Archive encuentra una traducción cuyo `PAGE_TITLE` coincide con la historia seleccionada, la carga automáticamente. Si no existe, utiliza el texto original.
+Rhodes Archive compara `PAGE_TITLE` con la historia seleccionada:
+
+```text
+traducción encontrada  →  carga el .txt
+sin traducción         →  usa el texto original
+```
+
+Esto permite añadir, corregir o compartir traducciones sin modificar el reproductor.
+
+---
 
 ## ⚠️ Problemas conocidos
 
-Rhodes Archive está todavía en fase alpha. Actualmente pueden aparecer estos problemas:
+Rhodes Archive sigue en desarrollo. Actualmente pueden aparecer, entre otros, estos problemas:
 
-- La primera carga de una historia puede tardar más porque necesita obtener y guardar recursos.
-- Algunas historias o recursos pueden fallar si PRTS no responde correctamente.
-- Algunas partes secundarias de la interfaz pueden seguir sin estar completamente traducidas al español.
-- Determinadas historias pueden presentar problemas de compatibilidad con StoryPlayer.
+- La primera carga de una historia puede tardar mientras se obtienen y guardan recursos.
+- Algunas historias pueden fallar si PRTS no responde correctamente.
+- Algunas partes secundarias de la interfaz todavía pueden aparecer en chino o inglés.
+- Determinadas historias pueden presentar incompatibilidades con StoryPlayer.
+- Un archivo de traducción con comandos modificados o dañados puede provocar errores en la reproducción.
 
-Si encuentras un fallo, indica qué historia estabas abriendo y, si es posible, incluye una captura del error.
+Si encuentras un fallo, abre un **Issue** e indica la historia, qué estabas haciendo y, si puedes, adjunta una captura.
 
-Consulta también el [Changelog](CHANGELOG.md) y el [Roadmap](ROADMAP.md).
+---
 
 ## 🛠️ Desarrollo
 
-El proyecto utiliza principalmente:
+Tecnologías principales:
 
-- **Tauri 2**
-- **Rust**
-- **React**
-- **TypeScript**
-- **StoryPlayer / recursos de PRTS Wiki**
+<p>
+  <img src="https://img.shields.io/badge/Tauri-2-24C8DB?logo=tauri&logoColor=white" />
+  <img src="https://img.shields.io/badge/Rust-000000?logo=rust&logoColor=white" />
+  <img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white" />
+</p>
 
-Para ejecutar el proyecto en desarrollo:
+Para ejecutarlo en desarrollo:
 
 ```bash
 npm install
 npm run tauri dev
 ```
 
-> Este repositorio está en desarrollo activo. Algunas funciones pueden estar incompletas o cambiar entre versiones.
+Para colaborar, consulta [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## 📺 Comunidad
+---
 
-Puedes seguir el proyecto y las traducciones aquí:
+## 🗺️ Proyecto
 
-- **YouTube:** https://www.youtube.com/@LOKNNE
-- **Reddit:** https://www.reddit.com/user/LOKNNE/
+- 📋 [Roadmap](ROADMAP.md)
+- 📝 [Changelog](CHANGELOG.md)
+- 🐞 [Reportar un problema](https://github.com/LOKNNE/Rhodes-Archive/issues/new/choose)
+- 💡 [Proponer una mejora](https://github.com/LOKNNE/Rhodes-Archive/issues/new/choose)
+- 🌐 [Proponer o corregir una traducción](https://github.com/LOKNNE/Rhodes-Archive/issues/new/choose)
+
+---
 
 ## ❤️ Créditos
 
 Rhodes Archive está basado en **Arkstage** y utiliza tecnología y recursos relacionados con **PRTS Wiki / StoryPlayer**.
 
-Gracias a los desarrolladores y comunidades que han hecho posibles estas herramientas.
+Gracias a sus desarrolladores y a las comunidades que han hecho posibles estas herramientas.
+
+---
 
 ## ⚠️ Aviso legal
 
@@ -135,11 +173,13 @@ Rhodes Archive es un proyecto fan **no oficial** y no está afiliado con Hypergr
 
 **Arknights**, sus personajes, historias, ilustraciones, música, audio y demás recursos pertenecen a **Hypergryph** y a sus respectivos propietarios.
 
-El repositorio no pretende reclamar propiedad sobre ningún recurso original de Arknights.
+El repositorio no reclama propiedad sobre ningún recurso original de Arknights.
+
+---
 
 ## 📄 Licencia
 
-El código propio y las modificaciones originales de este repositorio se publican bajo la **MIT License**.
+El código propio y las modificaciones originales de este repositorio se publican bajo la [MIT License](LICENSE).
 
 La licencia MIT **no se aplica** a textos, imágenes, audio, música ni otros recursos protegidos pertenecientes a Hypergryph u otros titulares de derechos.
 
@@ -147,6 +187,6 @@ La licencia MIT **no se aplica** a textos, imágenes, audio, música ni otros re
 
 <div align="center">
 
-**Rhodes Archive** · made by [LOKNNE](https://github.com/LOKNNE)
+**Rhodes Archive** · hecho por [LOKNNE](https://github.com/LOKNNE)
 
 </div>
