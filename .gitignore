@@ -25,6 +25,10 @@ src-tauri/gen/apple/
 # Gradle/manifest/signing files). Its own src-tauri/gen/android/.gitignore
 # excludes the build outputs (app/build, .gradle, .cxx, local.properties).
 
+# Bundled local translator assets are downloaded automatically before Tauri dev/build.
+# They are intentionally not stored in Git because the model is ~429 MB.
+src-tauri/resources/local-ai/
+
 # Reference files (downloaded for analysis; kept out of git due to size)
 docs/reference/
 
