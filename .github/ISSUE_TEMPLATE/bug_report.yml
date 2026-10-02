@@ -1,0 +1,72 @@
+name: Bug report
+
+description: Reporta un error o comportamiento inesperado en Rhodes Archive.
+title: "[Bug] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por ayudar a mejorar Rhodes Archive. Cuanta más información incluyas, más fácil será reproducir y arreglar el problema.
+
+  - type: input
+    id: version
+    attributes:
+      label: Versión de Rhodes Archive
+      description: Ejemplo: v1.2.0-alpha
+      placeholder: v1.2.0-alpha
+    validations:
+      required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Sistema operativo
+      options:
+        - Windows 11
+        - Windows 10
+        - Otro
+    validations:
+      required: true
+
+  - type: input
+    id: story
+    attributes:
+      label: Historia o capítulo afectado
+      description: Si el error ocurre al abrir una historia concreta, indica su nombre o PAGE_TITLE.
+      placeholder: Ej. SR-ST-1_月落/NBT
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Qué pasó
+      description: Describe el error de la forma más clara posible.
+      placeholder: Explica qué viste, qué esperabas que ocurriera y qué ocurrió en realidad.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Pasos para reproducirlo
+      placeholder: |
+        1. Abrir Rhodes Archive
+        2. Entrar en Historias
+        3. Abrir ...
+        4. Aparece el error
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Capturas, vídeo o logs
+      description: Añade aquí cualquier captura, vídeo o mensaje de error que pueda ayudar.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Comprobaciones
+      options:
+        - label: He comprobado que no existe ya un issue abierto sobre este mismo problema.
+          required: true
