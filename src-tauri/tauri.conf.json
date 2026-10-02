@@ -6,8 +6,8 @@
   "build": {
     "frontendDist": "../build/dist",
     "devUrl": "http://localhost:5174",
-    "beforeDevCommand": "npm run dev",
-    "beforeBuildCommand": "npm run build"
+    "beforeDevCommand": "node scripts/prepare-local-ai.mjs && npm run dev",
+    "beforeBuildCommand": "node scripts/prepare-local-ai.mjs && npm run build"
   },
   "app": {
     "windows": [
@@ -22,7 +22,7 @@
       }
     ],
     "security": {
-      "csp": "default-src 'self' 'unsafe-inline' 'unsafe-eval' asset: http://asset.localhost prts-cdn: http://prts-cdn.localhost; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://code.jquery.com asset: http://asset.localhost prts-cdn: http://prts-cdn.localhost; worker-src 'self' blob:; style-src 'self' 'unsafe-inline' asset: http://asset.localhost prts-cdn: http://prts-cdn.localhost; img-src 'self' asset: http://asset.localhost prts-cdn: http://prts-cdn.localhost data: blob:; media-src 'self' asset: http://asset.localhost prts-cdn: http://prts-cdn.localhost blob: data:; font-src 'self' asset: http://asset.localhost prts-cdn: http://prts-cdn.localhost data: blob:; connect-src 'self' ipc: http://ipc.localhost prts-cdn: http://prts-cdn.localhost blob: data: https://data.jsdelivr.com https://cdn.jsdelivr.net https://api.github.com https://raw.githubusercontent.com",
+      "csp": "default-src 'self' 'unsafe-inline' 'unsafe-eval' asset: http://asset.localhost prts-cdn: http://prts-cdn.localhost; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://code.jquery.com asset: http://asset.localhost prts-cdn: http://prts-cdn.localhost; worker-src 'self' blob:; style-src 'self' 'unsafe-inline' asset: http://asset.localhost prts-cdn: http://prts-cdn.localhost; img-src 'self' asset: http://asset.localhost prts-cdn: http://prts-cdn.localhost data: blob:; media-src 'self' asset: http://asset.localhost prts-cdn: http://prts-cdn.localhost blob: data:; font-src 'self' asset: http://asset.localhost prts-cdn: http://prts-cdn.localhost data: blob:; connect-src 'self' ipc: http://ipc.localhost prts-cdn: http://prts-cdn.localhost blob: data: https://data.jsdelivr.com https://cdn.jsdelivr.net https://api.github.com https://raw.githubusercontent.com http://127.0.0.1:18080",
       "assetProtocol": {
         "enable": true,
         "scope": {
@@ -43,6 +43,9 @@
       "app",
       "dmg",
       "nsis"
+    ],
+    "resources": [
+      "resources/local-ai/**"
     ],
     "windows": {
       "nsis": {
