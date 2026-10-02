@@ -23,7 +23,7 @@ fn project_root_from_cwd() -> Option<PathBuf> {
     None
 }
 
-fn translations_dir() -> Result<PathBuf, String> {
+pub(crate) fn translations_dir() -> Result<PathBuf, String> {
     if let Ok(custom) = env::var("ARKSTAGE_TRANSLATIONS_DIR") {
         let path = PathBuf::from(custom);
         fs::create_dir_all(&path).map_err(|e| format!("No se pudo crear la carpeta de traducciones: {e}"))?;
