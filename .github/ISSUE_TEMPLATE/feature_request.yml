@@ -1,0 +1,46 @@
+name: Feature request
+
+description: Sugiere una nueva función o mejora para Rhodes Archive.
+title: "[Feature] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por compartir una idea para Rhodes Archive.
+
+  - type: textarea
+    id: idea
+    attributes:
+      label: Qué te gustaría añadir o mejorar
+      description: Explica la función o mejora que propones.
+      placeholder: Describe tu idea de la forma más concreta posible.
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Qué problema resolvería
+      description: Cuéntanos por qué sería útil y en qué situación la usarías.
+      placeholder: Ej. ayudaría a pasar de un capítulo al siguiente sin esperar a que cargue.
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Cómo imaginas que funcionaría
+      description: Si tienes una idea de cómo debería verse o comportarse, descríbela aquí.
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Información adicional
+      description: Puedes añadir ejemplos, capturas, enlaces o cualquier otro detalle útil.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Comprobaciones
+      options:
+        - label: He comprobado que no existe ya un issue abierto con la misma sugerencia.
+          required: true
