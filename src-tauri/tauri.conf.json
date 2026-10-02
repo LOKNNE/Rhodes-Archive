@@ -45,7 +45,7 @@
       "nsis"
     ],
     "resources": [
-      "resources/local-ai/**"
+      "resources/local-ai/**/*"
     ],
     "windows": {
       "nsis": {
