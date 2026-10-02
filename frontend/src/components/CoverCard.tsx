@@ -8,28 +8,20 @@ import { useLongPress } from "../lib/useLongPress";
 interface Props {
   book: Book;
   cachedStories: Set<string>;
-  /** Story page-titles the user has read (for the green "all read" dot). */
   readStories: Set<string>;
-  /** The last-watched story's page-title (badges the book that holds it). */
   lastWatched: string | null;
-  /** True when every story in the book is selected. */
   selected: boolean;
-  /** True when some (but not all) of the book's stories are selected. */
   partial: boolean;
-  /** Multi-select mode (checkboxes shown). Entered by long-pressing any card. */
   selectionMode: boolean;
+  favorite: boolean;
+  languages: string[];
+  translated: boolean;
   onOpen: (book: Book) => void;
   onToggleSelect: (book: Book) => void;
-  /** Long-press: enter selection mode and select this book. */
   onLongPress: (book: Book) => void;
+  onToggleFavorite: (book: Book) => void;
 }
 
-/**
- * One book's cinematic cover card. Tap opens the book (or toggles it in selection
- * mode); long-press enters selection mode and selects it. A small cache dot
- * (hidden / yellow=partial / green=all) sits top-right; the select checkbox only
- * appears in selection mode.
- */
 export default function CoverCard({
   book,
   cachedStories,
@@ -38,14 +30,19 @@ export default function CoverCard({
   selected,
   partial,
   selectionMode,
+  favorite,
+  languages,
+  translated,
   onOpen,
   onToggleSelect,
   onLongPress,
+  onToggleFavorite,
 }: Props) {
   const isLastWatched = !!lastWatched && book.pageTitles.includes(lastWatched);
   const fallback = coverFallback();
   const { metadata, resolveArt } = useBookshelfMetadata();
   const [art, setArt] = useState<ResolvedArt | null>(null);
+
   useEffect(() => {
     let alive = true;
     void resolveArt("covers", book.coverKey).then((next) => {
@@ -55,13 +52,9 @@ export default function CoverCard({
       alive = false;
     };
   }, [book.coverKey, metadata?.version, resolveArt]);
+
   const ratio = art ? art.width / art.height : 0;
-  // Wide 联动 + 集成战略/生息演算 导引图 banners (ratio ≈ 3) keep their own wide
-  // shape; every other card is a uniform square (为了明日's 1:1) with the art
-  // center-cropped to fill. Empty cards are square too.
   const isBanner = !!art && ratio >= 2;
-  // Only the square main-story kvs (反常光谱…) carry a large baked-in title, so
-  // they alone drop the text overlay.
   const titleBaked = !!art && ratio >= 0.95 && ratio <= 1.05;
 
   const cachedCount = useMemo(
@@ -73,7 +66,6 @@ export default function CoverCard({
     [book.pageTitles, readStories]
   );
   const n = book.storyCount;
-  // Status dot: none / yellow=partly downloaded / blue=all downloaded / green=all read.
   const dotClass =
     n > 0 && readCount === n
       ? "read"
@@ -106,6 +98,7 @@ export default function CoverCard({
         style={{
           background: fallback.background,
           aspectRatio: isBanner && art ? `${art.width} / ${art.height}` : "1 / 1",
+          position: "relative",
         }}
       >
         {art ? (
@@ -130,12 +123,105 @@ export default function CoverCard({
           <img className="cover-ph" src="/logo.png" alt="" aria-hidden="true" draggable={false} />
         )}
         <div className="cover-scrim" />
+
+        {!selectionMode && (
+          <button
+            aria-label={favorite ? "Quitar de favoritos" : "Añadir a favoritos"}
+            title={favorite ? "Quitar de favoritos" : "Añadir a favoritos"}
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              onToggleFavorite(book);
+            }}
+            style={{
+              position: "absolute",
+              top: 8,
+              left: 8,
+              zIndex: 12,
+              width: 30,
+              height: 30,
+              borderRadius: "50%",
+              border: "1px solid rgba(255,255,255,.25)",
+              background: "rgba(0,0,0,.58)",
+              color: favorite ? "#ffd54a" : "#fff",
+              fontSize: 18,
+              lineHeight: "26px",
+              cursor: "pointer",
+            }}
+          >
+            {favorite ? "★" : "☆"}
+          </button>
+        )}
+
+        {!selectionMode && (
+          <div
+            style={{
+              position: "absolute",
+              top: 8,
+              right: 8,
+              zIndex: 11,
+              display: "flex",
+              gap: 5,
+              flexWrap: "wrap",
+              justifyContent: "flex-end",
+              maxWidth: "70%",
+            }}
+          >
+            {(translated ? languages : ["CN"]).slice(0, 3).map((lang) => (
+              <span
+                key={lang}
+                style={{
+                  padding: "3px 6px",
+                  borderRadius: 6,
+                  background: translated ? "rgba(19,111,63,.9)" : "rgba(38,38,38,.9)",
+                  color: "#fff",
+                  fontSize: 10,
+                  fontWeight: 800,
+                  letterSpacing: ".03em",
+                  border: "1px solid rgba(255,255,255,.16)",
+                }}
+              >
+                {lang.toUpperCase()}
+              </span>
+            ))}
+            {n > 0 && readCount === n && (
+              <span
+                style={{
+                  padding: "3px 6px",
+                  borderRadius: 6,
+                  background: "rgba(29,116,67,.92)",
+                  color: "#fff",
+                  fontSize: 10,
+                  fontWeight: 800,
+                  border: "1px solid rgba(255,255,255,.16)",
+                }}
+              >
+                ✓
+              </span>
+            )}
+            {n > 0 && cachedCount === n && (
+              <span
+                style={{
+                  padding: "3px 6px",
+                  borderRadius: 6,
+                  background: "rgba(32,91,155,.92)",
+                  color: "#fff",
+                  fontSize: 10,
+                  fontWeight: 800,
+                  border: "1px solid rgba(255,255,255,.16)",
+                }}
+              >
+                ↓
+              </span>
+            )}
+          </div>
+        )}
+
         <div className="cover-meta">
           {!titleBaked && <div className="cover-title">{book.coverKey}</div>}
           <div className="cover-sub">{subtitle}</div>
         </div>
 
-        {/* Card-level multi-select (only in selection mode): selects/clears the book. */}
         {selectionMode && (
           <button
             className={`cover-check ${selected ? "on" : ""} ${partial ? "partial" : ""}`}
@@ -149,10 +235,7 @@ export default function CoverCard({
           </button>
         )}
 
-        {/* Cache dot: hidden / yellow (partial) / green (all). */}
         {dotClass && <span className={`cover-dot ${dotClass}`} />}
-
-        {/* "Last watched" ribbon — points the user back to where they left off. */}
         {isLastWatched && !selectionMode && <span className="cover-last">上次观看</span>}
       </div>
     </div>
