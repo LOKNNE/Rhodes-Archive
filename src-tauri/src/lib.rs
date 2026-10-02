@@ -1,5 +1,4 @@
 mod android_service;
-mod auto_translate;
 mod commands;
 mod compress;
 mod data_root;
@@ -91,10 +90,6 @@ fn open_external(app: tauri::AppHandle, url: String) -> Result<(), String> {
 pub fn run() {
     tauri::Builder::default()
         .register_asynchronous_uri_scheme_protocol("prts-cdn", |_app, request, responder| {
-            // URL format:
-            //   macOS/Linux: prts-cdn://localhost/{host}/{path}
-            //   Windows:     http://prts-cdn.localhost/{host}/{path}
-            // Extract path after host to build target URL.
             let uri = request.uri().clone();
             let path = uri.path().trim_start_matches('/');
 
@@ -110,12 +105,9 @@ pub fn run() {
 
             let query = uri.query().map(|q| format!("?{}", q)).unwrap_or_default();
             let target_url = format!("https://{}{}", path, query);
-
             let media_root = media::media_root(&data_root::data_root());
 
-            // 1) Serve from local content-addressed store if present (offline).
             if let Some(bytes) = media::read_local_validated(&media_root, &target_url) {
-                // Sniff: a `.png` key may hold WebP bytes after compression.
                 let ct = sniff_content_type(&bytes, path);
                 let r = tauri::http::Response::builder()
                     .status(200)
@@ -127,7 +119,6 @@ pub fn run() {
                 return;
             }
 
-            // 2) Not cached and offline mode: refuse with a marker the frontend detects.
             if !net::allow_online() {
                 let r = tauri::http::Response::builder()
                     .status(503)
@@ -139,8 +130,6 @@ pub fn run() {
                 return;
             }
 
-            // 3) Online: fetch, persist to store (cache-through), serve.
-            // Own the path for the async block (the borrowed `uri` doesn't live to 'static).
             let path = path.to_string();
             tauri::async_runtime::spawn(async move {
                 let path = path.as_str();
@@ -163,8 +152,6 @@ pub fn run() {
                                     );
                                     return;
                                 }
-                                // Real-time compression: when a tier is enabled and
-                                // this is an image, store + serve the WebP bytes.
                                 let stored = compress::maybe_transcode_image(
                                     &target_url,
                                     bytes.to_vec(),
@@ -196,8 +183,6 @@ pub fn run() {
         .setup(|app| {
             #[cfg(target_os = "android")]
             {
-                // App-private external storage (spec §2). Fall back to internal
-                // app-data if external is somehow unavailable so the app still runs.
                 match data_root::android_external_files_dir() {
                     Ok(dir) => {
                         log::info!("[data_root] android external files dir: {}", dir.display());
@@ -224,28 +209,20 @@ pub fn run() {
                         .build(),
                 )?;
             }
-            // Register the managed download engine (bulk predownload jobs).
             download::init(app.handle());
-            // Restore compression mode + resume an interrupted batch if any.
             compress::init(app.handle());
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
-            // External translation files
             translations::translation_folder_path,
             translations::list_translation_files,
             translations::load_translation_for_title,
             translations::open_translation_folder,
-            // Automatic OpenAI translation
-            auto_translate::auto_translation_configured,
-            auto_translate::auto_translate_and_save,
-            // Wiki fetching
             wiki::fetch_story_index,
             wiki::fetch_story_page,
             wiki::fetch_widget_bundle,
             wiki::fetch_story_runtime,
             wiki::fetch_page_revisions,
-            // Cache management
             cache::save_to_cache,
             cache::load_from_cache,
             cache::delete_from_cache,
@@ -253,12 +230,10 @@ pub fn run() {
             cache::get_cache_status,
             cache::clear_cache,
             cache::delete_chapter_cache,
-            // Asset management
             assets::download_asset,
             assets::get_asset_path,
             assets::read_asset_text,
             assets::refresh_engine_asset,
-            // Managed bulk downloads
             download::download_start,
             download::download_add,
             download::download_feed_cached,
@@ -271,10 +246,8 @@ pub fn run() {
             download::download_settings_set,
             download::keepalive_set_reading,
             download::keepalive_set_manifest,
-            // Network policy
             net::set_allow_online,
             net::get_allow_online,
-            // Client-side image compression (资源压缩)
             compress::compress_estimate,
             compress::compress_get_config,
             compress::compress_start,
@@ -283,15 +256,11 @@ pub fn run() {
             compress::compress_cancel,
             compress::compress_status,
             compress::compress_disable_realtime,
-            // Screen orientation (player forces landscape; elsewhere free) +
-            // immersive system-bar hiding (player only)
             android_service::set_orientation,
             android_service::set_immersive,
-            // Resource directory
             data_root::get_resource_dir,
             data_root::set_resource_dir,
             data_root::reset_resource_dir,
-            // External links (About page)
             open_external,
         ])
         .run(tauri::generate_context!())
