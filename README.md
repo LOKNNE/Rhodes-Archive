@@ -18,7 +18,7 @@ Reproduce, archiva y disfruta historias de **Arknights** con soporte para traduc
 
 [Ver todas las versiones](https://github.com/LOKNNE/Rhodes-Archive/releases)
 
-[YouTube](https://www.youtube.com/@LOKNNE) · [Reddit](https://www.reddit.com/user/LOKNNE/)
+[YouTube](https://www.youtube.com/@LOKNNE) · [Reddit](https://www.reddit.com/user/LOKNNE/) · [Changelog](CHANGELOG.md) · [Roadmap](ROADMAP.md)
 
 </div>
 
@@ -83,6 +83,19 @@ translations/
 ```
 
 Si Rhodes Archive encuentra una traducción cuyo `PAGE_TITLE` coincide con la historia seleccionada, la carga automáticamente. Si no existe, utiliza el texto original.
+
+## ⚠️ Problemas conocidos
+
+Rhodes Archive está todavía en fase alpha. Actualmente pueden aparecer estos problemas:
+
+- La primera carga de una historia puede tardar más porque necesita obtener y guardar recursos.
+- Algunas historias o recursos pueden fallar si PRTS no responde correctamente.
+- Algunas partes secundarias de la interfaz pueden seguir sin estar completamente traducidas al español.
+- Determinadas historias pueden presentar problemas de compatibilidad con StoryPlayer.
+
+Si encuentras un fallo, indica qué historia estabas abriendo y, si es posible, incluye una captura del error.
+
+Consulta también el [Changelog](CHANGELOG.md) y el [Roadmap](ROADMAP.md).
 
 ## 🛠️ Desarrollo
 
