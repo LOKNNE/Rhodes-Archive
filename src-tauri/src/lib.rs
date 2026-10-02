@@ -1,4 +1,5 @@
 mod android_service;
+mod auto_translate;
 mod commands;
 mod compress;
 mod data_root;
@@ -235,6 +236,9 @@ pub fn run() {
             translations::list_translation_files,
             translations::load_translation_for_title,
             translations::open_translation_folder,
+            // Automatic OpenAI translation
+            auto_translate::auto_translation_configured,
+            auto_translate::auto_translate_and_save,
             // Wiki fetching
             wiki::fetch_story_index,
             wiki::fetch_story_page,
