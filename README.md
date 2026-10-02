@@ -8,7 +8,6 @@
 
 Explora historias, reproduce escenas y carga traducciones fan en una interfaz pensada para disfrutarlas de forma cómoda.
 
-[![Release](https://img.shields.io/github/v/release/LOKNNE/Rhodes-Archive?include_prereleases&label=release)](https://github.com/LOKNNE/Rhodes-Archive/releases)
 [![Platform](https://img.shields.io/badge/platform-Windows-0078D6?logo=windows)](https://github.com/LOKNNE/Rhodes-Archive/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/status-alpha-orange)](ROADMAP.md)
