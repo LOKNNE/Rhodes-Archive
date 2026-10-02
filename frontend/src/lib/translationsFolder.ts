@@ -4,6 +4,8 @@ export interface TranslationFileInfo {
   filename: string;
   page_title: string;
   bytes: number;
+  language: string;
+  characters: string[];
 }
 
 export const getTranslationsFolder = () => invoke<string>("translation_folder_path");
