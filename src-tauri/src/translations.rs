@@ -1,11 +1,14 @@
+use regex::Regex;
 use serde::Serialize;
-use std::{env, fs, path::{Path, PathBuf}, process::Command};
+use std::{collections::BTreeSet, env, fs, path::{Path, PathBuf}, process::Command};
 
 #[derive(Debug, Serialize)]
 pub struct TranslationFileInfo {
     pub filename: String,
     pub page_title: String,
     pub bytes: u64,
+    pub language: String,
+    pub characters: Vec<String>,
 }
 
 fn project_root_from_cwd() -> Option<PathBuf> {
@@ -68,6 +71,35 @@ fn parse_translation_file(path: &Path) -> Result<(String, String), String> {
     Ok((title.to_string(), script))
 }
 
+fn translation_language(script: &str) -> String {
+    for line in script.lines().take(12) {
+        let trimmed = line.trim();
+        if let Some(value) = trimmed.strip_prefix("#LANG=") {
+            let lang = value.trim().to_lowercase();
+            if !lang.is_empty() {
+                return lang;
+            }
+        }
+    }
+    // Existing Rhodes Archive translations were created in Spanish before
+    // #LANG metadata existed, so keep them compatible.
+    "es".to_string()
+}
+
+fn translation_characters(script: &str) -> Vec<String> {
+    let re = Regex::new(r#"(?i)\bname\s*=\s*[\"']([^\"']+)[\"']"#).unwrap();
+    let mut names = BTreeSet::new();
+    for captures in re.captures_iter(script) {
+        if let Some(m) = captures.get(1) {
+            let name = m.as_str().trim();
+            if !name.is_empty() && name.len() <= 80 {
+                names.insert(name.to_string());
+            }
+        }
+    }
+    names.into_iter().collect()
+}
+
 #[tauri::command]
 pub fn translation_folder_path() -> Result<String, String> {
     Ok(translations_dir()?.to_string_lossy().to_string())
@@ -85,12 +117,14 @@ pub fn list_translation_files() -> Result<Vec<TranslationFileInfo>, String> {
             continue;
         }
 
-        if let Ok((page_title, _)) = parse_translation_file(&path) {
+        if let Ok((page_title, script)) = parse_translation_file(&path) {
             let bytes = entry.metadata().map(|m| m.len()).unwrap_or(0);
             out.push(TranslationFileInfo {
                 filename: entry.file_name().to_string_lossy().to_string(),
                 page_title,
                 bytes,
+                language: translation_language(&script),
+                characters: translation_characters(&script),
             });
         }
     }
