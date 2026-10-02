@@ -81,8 +81,6 @@ fn translation_language(script: &str) -> String {
             }
         }
     }
-    // Existing Rhodes Archive translations were created in Spanish before
-    // #LANG metadata existed, so keep them compatible.
     "es".to_string()
 }
 
@@ -131,6 +129,36 @@ pub fn list_translation_files() -> Result<Vec<TranslationFileInfo>, String> {
 
     out.sort_by(|a, b| a.page_title.cmp(&b.page_title));
     Ok(out)
+}
+
+#[tauri::command]
+pub fn import_translation_file(source_path: String) -> Result<String, String> {
+    let source = PathBuf::from(source_path);
+    if !source.is_file() {
+        return Err("El archivo seleccionado no existe.".to_string());
+    }
+    if source.extension().and_then(|s| s.to_str()).map(|s| s.eq_ignore_ascii_case("txt")) != Some(true) {
+        return Err("Solo se pueden importar archivos .txt".to_string());
+    }
+
+    // Validate the file before copying it into Rhodes Archive.
+    parse_translation_file(&source)?;
+
+    let dir = translations_dir()?;
+    let original_name = source.file_name().and_then(|s| s.to_str()).unwrap_or("traduccion.txt");
+    let stem = source.file_stem().and_then(|s| s.to_str()).unwrap_or("traduccion");
+    let ext = source.extension().and_then(|s| s.to_str()).unwrap_or("txt");
+    let mut destination = dir.join(original_name);
+    let mut n = 2usize;
+    while destination.exists() {
+        destination = dir.join(format!("{} ({n}).{}", stem, ext));
+        n += 1;
+    }
+
+    fs::copy(&source, &destination)
+        .map_err(|e| format!("No se pudo importar la traducción: {e}"))?;
+
+    Ok(destination.file_name().and_then(|s| s.to_str()).unwrap_or(original_name).to_string())
 }
 
 #[tauri::command]
