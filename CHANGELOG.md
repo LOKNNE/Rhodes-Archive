@@ -2,6 +2,20 @@
 
 Todos los cambios importantes de **Rhodes Archive** se documentarán aquí.
 
+## [1.2.2] - 2026-10-02
+
+### Añadido
+- Botón **Continuar viendo** en la pantalla de inicio.
+- Historial de historias recientes.
+- Progreso de lectura por categoría/evento con porcentaje.
+- Botón **Importar .txt** desde la sección de Traducciones.
+- Validación del archivo antes de importarlo.
+
+### Mejorado
+- La biblioteca muestra cuántas historias se han leído de cada categoría.
+- Importar traducciones ya no requiere copiar manualmente el archivo a la carpeta `translations`.
+- Si un archivo importado ya existe, Rhodes Archive conserva ambos con un nombre alternativo.
+
 ## [1.2.1] - 2026-10-02
 
 ### Añadido
