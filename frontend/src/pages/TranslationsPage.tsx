@@ -47,7 +47,7 @@ export default function TranslationsPage() {
         <button style={s.back} onClick={() => navigate(-1)}>←</button>
         <div>
           <h1 style={s.title}>Traducciones</h1>
-          <div style={s.subtitle}>Arkstage detecta automáticamente los .txt de esta carpeta.</div>
+          <div style={s.subtitle}>Rhodes Archive detecta automáticamente los .txt de esta carpeta.</div>
         </div>
       </div>
 
@@ -64,7 +64,9 @@ export default function TranslationsPage() {
       <div style={s.help}>
         Cada .txt debe empezar por:
         <code style={s.example}>#ARKSTAGE_TITLE=SR-1_月出/BEG</code>
-        Debajo va el script completo. El nombre del archivo puede ser cualquiera.
+        Para indicar idioma puedes añadir justo debajo, por ejemplo:
+        <code style={s.example}>#LANG=es</code>
+        Si no hay #LANG, Rhodes Archive considera español para mantener compatibilidad con los archivos actuales. Los nombres de personaje se detectan automáticamente desde las líneas del guion.
       </div>
 
       {error && <div style={s.error}>{error}</div>}
@@ -81,7 +83,9 @@ export default function TranslationsPage() {
                 <div style={s.ok}>✓</div>
                 <div>
                   <div style={s.pageTitle}>{item.page_title}</div>
-                  <div style={s.filename}>{item.filename}</div>
+                  <div style={s.filename}>
+                    {item.filename} · {item.language.toUpperCase()} · {item.characters.length} personajes
+                  </div>
                 </div>
               </div>
               <div style={s.actions}>
