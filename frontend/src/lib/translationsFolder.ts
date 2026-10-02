@@ -11,9 +11,3 @@ export const listTranslations = () => invoke<TranslationFileInfo[]>("list_transl
 export const loadTranslation = (pageTitle: string) =>
   invoke<string | null>("load_translation_for_title", { pageTitle });
 export const openTranslationsFolder = () => invoke<void>("open_translation_folder");
-
-export const isAutoTranslationConfigured = () =>
-  invoke<boolean>("auto_translation_configured");
-
-export const autoTranslateAndSave = (pageTitle: string, script: string) =>
-  invoke<string>("auto_translate_and_save", { pageTitle, script });
