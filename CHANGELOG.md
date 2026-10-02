@@ -2,6 +2,23 @@
 
 Todos los cambios importantes de **Rhodes Archive** se documentarán aquí.
 
+## [1.2.1] - 2026-10-02
+
+### Añadido
+- Filtros por nombre, personaje, estado de traducción e idioma.
+- Soporte para metadatos `#LANG=` en archivos de traducción.
+- Detección de personajes desde los scripts de traducción.
+- Favoritos persistentes para colecciones/historias.
+- Filtro para mostrar solo favoritos.
+- Badges visuales de idioma, lectura y descarga en las tarjetas.
+
+### Mejorado
+- Navegación de la biblioteca y búsqueda de historias.
+- Información visual del estado de cada colección.
+
+### Corregido
+- Eliminada la traducción automática experimental para volver al sistema estable de archivos `.txt` manuales.
+
 ## [1.2.0-alpha] - 2026-10-01
 
 ### Añadido
