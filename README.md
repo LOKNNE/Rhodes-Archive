@@ -162,7 +162,6 @@ Para colaborar, consulta [CONTRIBUTING.md](CONTRIBUTING.md).
 
 - [X / Twitter — @RhodesArchiveAK](https://x.com/RhodesArchiveAK)
 - [YouTube — @RhodesArchiveAK](https://www.youtube.com/@RhodesArchiveAK)
-- [GitHub — Rhodes Archive](.)
 
 ---
 
