@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, HashRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import StoryBrowserPage from "./pages/StoryBrowserPage";
 import StoryPlayerPage from "./pages/StoryPlayerPage";
@@ -21,12 +21,20 @@ import OperatorsPage from "./pages/OperatorsPage";
 import BannersPage from "./pages/BannersPage";
 import PlannerPage from "./pages/PlannerPage";
 import MyRhodesPage from "./pages/MyRhodesPage";
+import CloudSyncPage from "./pages/CloudSyncPage";
+import { hydrateFromCloud } from "./lib/cloudSync";
+
+const isTauri = typeof window !== "undefined" && "__TAURI_INTERNALS__" in window;
+const Router = isTauri ? BrowserRouter : HashRouter;
 
 export default function App() {
   useEffect(() => {
-    applyPersistedDownloadSettings();
-    void loadBundle().catch((error) => console.warn("PRTS engine startup sync failed", error));
-    startKeepalive();
+    if (isTauri) {
+      applyPersistedDownloadSettings();
+      void loadBundle().catch((error) => console.warn("PRTS engine startup sync failed", error));
+      startKeepalive();
+    }
+    void hydrateFromCloud().catch((error) => console.warn("Rhodes Cloud Sync startup:", error));
   }, []);
 
   const manifestProbeTitles = import.meta.env.DEV
@@ -37,7 +45,7 @@ export default function App() {
   }
 
   return (
-    <BrowserRouter>
+    <Router>
       <BookshelfMetadataProvider>
       <CompressionProvider>
       <DownloadProvider>
@@ -50,17 +58,18 @@ export default function App() {
           <Route path="/banners" element={<BannersPage />} />
           <Route path="/planner" element={<PlannerPage />} />
           <Route path="/my-rhodes" element={<MyRhodesPage />} />
+          <Route path="/cloud-sync" element={<CloudSyncPage />} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/help" element={<HelpPage />} />
           <Route path="/translations" element={<TranslationsPage />} />
         </Routes>
-        <DownloadBar />
-        <DebugConsole />
-        <TranslationsShortcut />
+        {isTauri && <DownloadBar />}
+        {isTauri && <DebugConsole />}
+        {isTauri && <TranslationsShortcut />}
       </DownloadProvider>
       </CompressionProvider>
       </BookshelfMetadataProvider>
-    </BrowserRouter>
+    </Router>
   );
 }
