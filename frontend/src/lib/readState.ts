@@ -1,8 +1,7 @@
-// Tracks which stories the user has opened in the player ("read"), so the
-// bookshelf can distinguish read vs unread chapters. Persisted in localStorage
-// (independent of the download cache — a story can be read without being cached,
-// or cached without being read).
+import { setSyncedItem, setSyncedJSON } from "./cloudSync";
 
+// Tracks which stories the user has opened in the player ("read"), so the
+// bookshelf can distinguish read vs unread chapters. Persisted in localStorage.
 const KEY = "arkstage-read-stories";
 
 export function getReadStories(): Set<string> {
@@ -14,20 +13,17 @@ export function getReadStories(): Set<string> {
   }
 }
 
-/** Mark one story (by page_title) as read; persists immediately. */
 export function markRead(pageTitle: string): void {
   try {
     const s = getReadStories();
     if (s.has(pageTitle)) return;
     s.add(pageTitle);
-    localStorage.setItem(KEY, JSON.stringify([...s]));
+    setSyncedJSON(KEY, [...s]);
   } catch {
     /* storage unavailable — read state is best-effort */
   }
 }
 
-// "Last watched" — the most recently opened story (by page_title), so the shelf
-// and chapter list can point the user back to where they left off.
 const LAST_KEY = "arkstage-last-watched";
 const RECENTS_KEY = "arkstage-recent-stories";
 const MAX_RECENTS = 6;
@@ -54,11 +50,10 @@ export function getRecentStories(): string[] {
 
 export function setLastWatched(pageTitle: string): void {
   try {
-    localStorage.setItem(LAST_KEY, pageTitle);
-
+    setSyncedItem(LAST_KEY, pageTitle);
     const recent = getRecentStories().filter((title) => title !== pageTitle);
     recent.unshift(pageTitle);
-    localStorage.setItem(RECENTS_KEY, JSON.stringify(recent.slice(0, MAX_RECENTS)));
+    setSyncedJSON(RECENTS_KEY, recent.slice(0, MAX_RECENTS));
   } catch {
     /* best-effort */
   }
