@@ -18,7 +18,7 @@ Explora historias, reproduce escenas y carga traducciones fan en una interfaz pe
 
 [Versiones](../../releases) · [Changelog](CHANGELOG.md) · [Roadmap](ROADMAP.md) · [Contribuir](CONTRIBUTING.md)
 
-[X / Twitter](https://x.com/RhodesArchiveAK) · [YouTube](https://www.youtube.com/@RhodesArchiveAK)
+[X / Twitter](https://x.com/LOKNNE) · [YouTube](https://www.youtube.com/@LOKNNE)
 
 </div>
 
@@ -160,8 +160,8 @@ Para colaborar, consulta [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## 🔗 Enlaces oficiales
 
-- [X / Twitter — @RhodesArchiveAK](https://x.com/RhodesArchiveAK)
-- [YouTube — @RhodesArchiveAK](https://www.youtube.com/@RhodesArchiveAK)
+- [X / Twitter — @LOKNNE](https://x.com/LOKNNE)
+- [YouTube — @LOKNNE](https://www.youtube.com/@LOKNNE)
 
 ---
 
