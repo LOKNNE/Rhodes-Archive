@@ -1,3 +1,5 @@
+import { setSyncedJSON } from "./cloudSync";
+
 const KEY = "rhodes_archive_favorites_v1";
 
 export function getFavorites(): Set<string> {
@@ -13,7 +15,7 @@ export function getFavorites(): Set<string> {
 
 export function saveFavorites(values: Set<string>) {
   try {
-    localStorage.setItem(KEY, JSON.stringify([...values]));
+    setSyncedJSON(KEY, [...values]);
   } catch {
     // Ignore storage failures; favorites are a convenience feature.
   }
