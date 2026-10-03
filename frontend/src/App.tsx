@@ -16,18 +16,16 @@ import { BookshelfMetadataProvider } from "./lib/BookshelfMetadataContext";
 import ManifestProbePage from "./pages/ManifestProbePage";
 import TranslationsPage from "./pages/TranslationsPage";
 import TranslationsShortcut from "./components/TranslationsShortcut";
+import CompanionHubPage from "./pages/CompanionHubPage";
+import OperatorsPage from "./pages/OperatorsPage";
+import BannersPage from "./pages/BannersPage";
+import PlannerPage from "./pages/PlannerPage";
+import MyRhodesPage from "./pages/MyRhodesPage";
 
 export default function App() {
-  // Re-apply the user's saved concurrency / bandwidth limit to the backend once
-  // on startup (the backend keeps them in memory only).
   useEffect(() => {
     applyPersistedDownloadSettings();
-    // Start the validated ScenarioSimulator/data-table hot update immediately;
-    // playback still has an exact-page fresh-first check before it boots.
     void loadBundle().catch((error) => console.warn("PRTS engine startup sync failed", error));
-    // Android: set the keep-alive notification to its idle text. The foreground
-    // service itself is started natively at launch (MainActivity); this just gives
-    // it content. No-op on desktop.
     startKeepalive();
   }, []);
 
@@ -45,14 +43,18 @@ export default function App() {
       <DownloadProvider>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/hub" element={<CompanionHubPage />} />
           <Route path="/browse" element={<StoryBrowserPage />} />
           <Route path="/play/:pageTitle" element={<StoryPlayerPage />} />
+          <Route path="/operators" element={<OperatorsPage />} />
+          <Route path="/banners" element={<BannersPage />} />
+          <Route path="/planner" element={<PlannerPage />} />
+          <Route path="/my-rhodes" element={<MyRhodesPage />} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/help" element={<HelpPage />} />
           <Route path="/translations" element={<TranslationsPage />} />
         </Routes>
-        {/* High-priority, app-wide download progress (hidden inside the reader). */}
         <DownloadBar />
         <DebugConsole />
         <TranslationsShortcut />
