@@ -25,9 +25,10 @@ export default function PlannerPage() {
     return () => window.removeEventListener("rhodes-cloud-hydrated", refresh);
   }, []);
 
-  useEffect(() => {
-    setSyncedJSON(KEY, { orundum, originite, tickets });
-  }, [orundum, originite, tickets]);
+  const save = (next: PlannerState) => setSyncedJSON(KEY, next);
+  const changeOrundum = (value: number) => { setOrundum(value); save({ orundum: value, originite, tickets }); };
+  const changeOriginite = (value: number) => { setOriginite(value); save({ orundum, originite: value, tickets }); };
+  const changeTickets = (value: number) => { setTickets(value); save({ orundum, originite, tickets: value }); };
 
   const result = useMemo(() => {
     const fromOrundum = Math.floor(Math.max(0, orundum) / 600);
@@ -47,11 +48,11 @@ export default function PlannerPage() {
 
       <div style={s.card}>
         <label style={s.label}>Orundum</label>
-        <input style={s.input} type="number" min={0} value={orundum} onChange={(e) => setOrundum(Number(e.target.value))} />
+        <input style={s.input} type="number" min={0} value={orundum} onChange={(e) => changeOrundum(Number(e.target.value))} />
         <label style={s.label}>Originite Prime</label>
-        <input style={s.input} type="number" min={0} value={originite} onChange={(e) => setOriginite(Number(e.target.value))} />
+        <input style={s.input} type="number" min={0} value={originite} onChange={(e) => changeOriginite(Number(e.target.value))} />
         <label style={s.label}>Tickets de Headhunting</label>
-        <input style={s.input} type="number" min={0} value={tickets} onChange={(e) => setTickets(Number(e.target.value))} />
+        <input style={s.input} type="number" min={0} value={tickets} onChange={(e) => changeTickets(Number(e.target.value))} />
       </div>
 
       <div style={s.result}>
