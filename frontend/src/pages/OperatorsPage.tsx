@@ -1,17 +1,24 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { setSyncedJSON } from "../lib/cloudSync";
 
 type Operator = { id: string; name: string; favorite: boolean; owned: boolean };
 const KEY = "rhodes-operators-manual";
 
 function loadItems(): Operator[] { try { return JSON.parse(localStorage.getItem(KEY) || "[]") as Operator[]; } catch { return []; } }
-function save(items: Operator[]) { localStorage.setItem(KEY, JSON.stringify(items)); }
+function save(items: Operator[]) { setSyncedJSON(KEY, items); }
 
 export default function OperatorsPage() {
   const navigate = useNavigate();
   const [items, setItems] = useState<Operator[]>(loadItems);
   const [name, setName] = useState("");
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    const refresh = () => setItems(loadItems());
+    window.addEventListener("rhodes-cloud-hydrated", refresh);
+    return () => window.removeEventListener("rhodes-cloud-hydrated", refresh);
+  }, []);
 
   const filtered = useMemo(() => items.filter((x) => x.name.toLowerCase().includes(search.toLowerCase())), [items, search]);
   const add = () => {
@@ -28,7 +35,7 @@ export default function OperatorsPage() {
     <div style={s.page}>
       <div style={s.header}>
         <button style={s.back} onClick={() => navigate(-1)}>←</button>
-        <div><h1 style={s.title}>Operadores</h1><div style={s.subtitle}>Base inicial de tu roster. Más adelante conectaremos el catálogo completo y builds.</div></div>
+        <div><h1 style={s.title}>Operadores</h1><div style={s.subtitle}>Base inicial de tu roster. Se sincroniza con Rhodes Cloud cuando tienes una cuenta conectada.</div></div>
       </div>
 
       <div style={s.toolbar}>
