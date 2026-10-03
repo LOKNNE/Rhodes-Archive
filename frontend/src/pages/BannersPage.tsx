@@ -1,5 +1,6 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { setSyncedJSON } from "../lib/cloudSync";
 
 type BannerTarget = { id: string; name: string; date: string; server: "Global" | "CN"; note: string };
 const KEY = "rhodes-banner-targets";
@@ -7,7 +8,7 @@ const KEY = "rhodes-banner-targets";
 function loadTargets(): BannerTarget[] {
   try { return JSON.parse(localStorage.getItem(KEY) || "[]") as BannerTarget[]; } catch { return []; }
 }
-function saveTargets(items: BannerTarget[]) { localStorage.setItem(KEY, JSON.stringify(items)); }
+function saveTargets(items: BannerTarget[]) { setSyncedJSON(KEY, items); }
 function daysUntil(date: string) {
   if (!date) return null;
   const target = new Date(`${date}T00:00:00`).getTime();
@@ -24,6 +25,12 @@ export default function BannersPage() {
   const [server, setServer] = useState<"Global" | "CN">("Global");
   const [note, setNote] = useState("");
 
+  useEffect(() => {
+    const refresh = () => setItems(loadTargets());
+    window.addEventListener("rhodes-cloud-hydrated", refresh);
+    return () => window.removeEventListener("rhodes-cloud-hydrated", refresh);
+  }, []);
+
   const sorted = useMemo(() => [...items].sort((a,b) => (a.date || "9999").localeCompare(b.date || "9999")), [items]);
   const add = () => {
     if (!name.trim()) return;
@@ -36,7 +43,7 @@ export default function BannersPage() {
     <div style={s.page}>
       <div style={s.header}>
         <button style={s.back} onClick={() => navigate(-1)}>←</button>
-        <div><h1 style={s.title}>Banners</h1><div style={s.subtitle}>Guarda tus próximos objetivos mientras añadimos datos automáticos Global/CN.</div></div>
+        <div><h1 style={s.title}>Banners</h1><div style={s.subtitle}>Guarda próximos objetivos, fechas y servidor. Con Cloud Sync aparecen igual en app y web.</div></div>
       </div>
 
       <div style={s.form}>
