@@ -34,14 +34,17 @@ export default function HomePage() {
     <div className="home-page">
       <img className="home-logo" src="/logo.png" alt="Rhodes Archive" />
       <h1 className="home-title">Rhodes Archive</h1>
-      <p className="home-tagline">Archivo fan de historias de Arknights</p>
+      <p className="home-tagline">Historias, operadores, banners y herramientas de Arknights</p>
 
       <button className="home-help" onClick={() => navigate("/help")}>
         Ayuda
       </button>
 
       <div className="home-actions">
-        <button className="btn-primary" onClick={() => navigate("/browse")}>
+        <button className="btn-primary" onClick={() => navigate("/hub")}>
+          Rhodes Hub
+        </button>
+        <button className="nav-btn" onClick={() => navigate("/browse")}>
           Historias
         </button>
         <button className="nav-btn" onClick={() => navigate("/translations")}>
