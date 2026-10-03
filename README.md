@@ -8,17 +8,17 @@
 
 Explora historias, reproduce escenas y carga traducciones fan en una interfaz pensada para disfrutarlas de forma cómoda.
 
-[![Platform](https://img.shields.io/badge/platform-Windows-0078D6?logo=windows)](https://github.com/LOKNNE/Rhodes-Archive/releases)
+[![Platform](https://img.shields.io/badge/platform-Windows-0078D6?logo=windows)](../../releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/status-alpha-orange)](ROADMAP.md)
 
 ### ⬇️ Descargar para Windows
 
-[![Download for Windows](https://img.shields.io/badge/Descargar-Rhodes%20Archive-2ea44f?style=for-the-badge&logo=windows)](https://github.com/LOKNNE/Rhodes-Archive/releases/latest)
+[![Download for Windows](https://img.shields.io/badge/Descargar-Rhodes%20Archive-2ea44f?style=for-the-badge&logo=windows)](../../releases/latest)
 
-[Versiones](https://github.com/LOKNNE/Rhodes-Archive/releases) · [Changelog](CHANGELOG.md) · [Roadmap](ROADMAP.md) · [Contribuir](CONTRIBUTING.md)
+[Versiones](../../releases) · [Changelog](CHANGELOG.md) · [Roadmap](ROADMAP.md) · [Contribuir](CONTRIBUTING.md)
 
-[YouTube](https://www.youtube.com/@LOKNNE) · [Reddit](https://www.reddit.com/user/LOKNNE/)
+[X / Twitter](https://x.com/RhodesArchiveAK) · [YouTube](https://www.youtube.com/@RhodesArchiveAK)
 
 </div>
 
@@ -152,9 +152,17 @@ Para colaborar, consulta [CONTRIBUTING.md](CONTRIBUTING.md).
 
 - 📋 [Roadmap](ROADMAP.md)
 - 📝 [Changelog](CHANGELOG.md)
-- 🐞 [Reportar un problema](https://github.com/LOKNNE/Rhodes-Archive/issues/new/choose)
-- 💡 [Proponer una mejora](https://github.com/LOKNNE/Rhodes-Archive/issues/new/choose)
-- 🌐 [Proponer o corregir una traducción](https://github.com/LOKNNE/Rhodes-Archive/issues/new/choose)
+- 🐞 [Reportar un problema](../../issues/new/choose)
+- 💡 [Proponer una mejora](../../issues/new/choose)
+- 🌐 [Proponer o corregir una traducción](../../issues/new/choose)
+
+---
+
+## 🔗 Enlaces oficiales
+
+- [X / Twitter — @RhodesArchiveAK](https://x.com/RhodesArchiveAK)
+- [YouTube — @RhodesArchiveAK](https://www.youtube.com/@RhodesArchiveAK)
+- [GitHub — Rhodes Archive](.)
 
 ---
 
@@ -186,6 +194,6 @@ La licencia MIT **no se aplica** a textos, imágenes, audio, música ni otros re
 
 <div align="center">
 
-**Rhodes Archive** · hecho por [LOKNNE](https://github.com/LOKNNE)
+**Rhodes Archive**
 
 </div>
