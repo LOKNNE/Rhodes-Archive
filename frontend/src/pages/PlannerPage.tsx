@@ -1,11 +1,33 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { setSyncedJSON } from "../lib/cloudSync";
+
+const KEY = "rhodes-planner-v1";
+type PlannerState = { orundum: number; originite: number; tickets: number };
+function loadPlanner(): PlannerState {
+  try { return { orundum: 0, originite: 0, tickets: 0, ...(JSON.parse(localStorage.getItem(KEY) || "{}") as Partial<PlannerState>) }; }
+  catch { return { orundum: 0, originite: 0, tickets: 0 }; }
+}
 
 export default function PlannerPage() {
   const navigate = useNavigate();
-  const [orundum, setOrundum] = useState(0);
-  const [originite, setOriginite] = useState(0);
-  const [tickets, setTickets] = useState(0);
+  const initial = loadPlanner();
+  const [orundum, setOrundum] = useState(initial.orundum);
+  const [originite, setOriginite] = useState(initial.originite);
+  const [tickets, setTickets] = useState(initial.tickets);
+
+  useEffect(() => {
+    const refresh = () => {
+      const next = loadPlanner();
+      setOrundum(next.orundum); setOriginite(next.originite); setTickets(next.tickets);
+    };
+    window.addEventListener("rhodes-cloud-hydrated", refresh);
+    return () => window.removeEventListener("rhodes-cloud-hydrated", refresh);
+  }, []);
+
+  useEffect(() => {
+    setSyncedJSON(KEY, { orundum, originite, tickets });
+  }, [orundum, originite, tickets]);
 
   const result = useMemo(() => {
     const fromOrundum = Math.floor(Math.max(0, orundum) / 600);
@@ -19,7 +41,7 @@ export default function PlannerPage() {
         <button style={s.back} onClick={() => navigate(-1)}>←</button>
         <div>
           <h1 style={s.title}>Planner</h1>
-          <div style={s.subtitle}>Primera herramienta: calculadora rápida de pulls.</div>
+          <div style={s.subtitle}>Calculadora rápida de pulls, guardada y sincronizable.</div>
         </div>
       </div>
 
