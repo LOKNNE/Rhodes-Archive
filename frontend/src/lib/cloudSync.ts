@@ -20,8 +20,11 @@ type CloudSession = {
 
 type AuthResponse = CloudSession & { error?: string; msg?: string };
 
-const supabaseUrl = (import.meta.env.VITE_SUPABASE_URL as string | undefined)?.replace(/\/$/, "") || "";
-const anonKey = (import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined) || "";
+const DEFAULT_SUPABASE_URL = "https://kdvubzitbaynuhrktlek.supabase.co";
+const DEFAULT_SUPABASE_PUBLISHABLE_KEY = "sb_publishable_chmDIGAu8n1_zCXDE8xd-A_mu86u_vh";
+
+const supabaseUrl = ((import.meta.env.VITE_SUPABASE_URL as string | undefined) || DEFAULT_SUPABASE_URL).replace(/\/$/, "");
+const anonKey = (import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined) || DEFAULT_SUPABASE_PUBLISHABLE_KEY;
 
 export function cloudConfigured() {
   return Boolean(supabaseUrl && anonKey);
