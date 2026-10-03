@@ -1,5 +1,6 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { setSyncedJSON } from "../lib/cloudSync";
 
 type Profile = { doctor: string; level: string; favorite: string; nextTarget: string };
 const KEY = "rhodes-my-profile";
@@ -17,11 +18,23 @@ function operatorCount() {
 export default function MyRhodesPage() {
   const navigate = useNavigate();
   const [profile, setProfile] = useState<Profile>(loadProfile);
-  const count = useMemo(operatorCount, []);
+  const [count, setCount] = useState(() => operatorCount());
+
+  useEffect(() => {
+    const refresh = () => { setProfile(loadProfile()); setCount(operatorCount()); };
+    window.addEventListener("rhodes-cloud-hydrated", refresh);
+    window.addEventListener("storage", refresh);
+    return () => {
+      window.removeEventListener("rhodes-cloud-hydrated", refresh);
+      window.removeEventListener("storage", refresh);
+    };
+  }, []);
+
+  const operatorLabel = useMemo(() => count === 1 ? "OPERATOR" : "OPERATORS", [count]);
 
   const set = (key: keyof Profile, value: string) => {
     const next = { ...profile, [key]: value };
-    setProfile(next); localStorage.setItem(KEY, JSON.stringify(next));
+    setProfile(next); setSyncedJSON(KEY, next);
   };
 
   const exportCard = () => {
@@ -35,7 +48,7 @@ export default function MyRhodesPage() {
     ctx.fillStyle = "#ffffff"; ctx.font = "700 44px system-ui"; ctx.fillText(profile.doctor || "Doctor", 72, 220);
     ctx.fillStyle = "#aaaaaa"; ctx.font = "26px system-ui"; ctx.fillText(`Lv. ${profile.level || "—"}`, 72, 262);
     ctx.fillStyle = "#f4c430"; ctx.font = "700 82px system-ui"; ctx.fillText(String(count), 72, 380);
-    ctx.fillStyle = "#999999"; ctx.font = "22px system-ui"; ctx.fillText("OPERATORS", 78, 415);
+    ctx.fillStyle = "#999999"; ctx.font = "22px system-ui"; ctx.fillText(operatorLabel, 78, 415);
     ctx.fillStyle = "#ffffff"; ctx.font = "700 28px system-ui"; ctx.fillText("Favourite", 470, 255);
     ctx.fillStyle = "#bcbcbc"; ctx.font = "26px system-ui"; ctx.fillText(profile.favorite || "—", 470, 295);
     ctx.fillStyle = "#ffffff"; ctx.font = "700 28px system-ui"; ctx.fillText("Next target", 470, 385);
@@ -49,7 +62,7 @@ export default function MyRhodesPage() {
     <div style={s.page}>
       <div style={s.header}>
         <button style={s.back} onClick={() => navigate(-1)}>←</button>
-        <div><h1 style={s.title}>My Rhodes</h1><div style={s.subtitle}>Tu perfil local. No requiere cuenta ni login.</div></div>
+        <div><h1 style={s.title}>My Rhodes</h1><div style={s.subtitle}>Tu perfil personal. Con Cloud Sync puedes tenerlo igual en la app y en la web.</div></div>
       </div>
 
       <div style={s.layout}>
@@ -64,7 +77,7 @@ export default function MyRhodesPage() {
           <div style={s.kicker}>MY RHODES</div>
           <div style={s.doctor}>{profile.doctor || "Doctor"}</div>
           <div style={s.level}>Lv. {profile.level || "—"}</div>
-          <div style={s.metric}>{count}</div><div style={s.metricLabel}>OPERATORS</div>
+          <div style={s.metric}>{count}</div><div style={s.metricLabel}>{operatorLabel}</div>
           <div style={s.row}><span>Favourite</span><strong>{profile.favorite || "—"}</strong></div>
           <div style={s.row}><span>Next target</span><strong>{profile.nextTarget || "—"}</strong></div>
           <button style={s.primary} onClick={exportCard}>Exportar tarjeta PNG</button>
