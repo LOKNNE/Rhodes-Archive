@@ -2,6 +2,34 @@
 
 Todos los cambios importantes de **Rhodes Archive** se documentarán aquí.
 
+## [1.2.3] - 2026-10-04
+
+### Añadido
+- Traducción automática de historias mediante **LibreTranslate**.
+- Soporte de traducción automática a **español** e **inglés**.
+- Servidor público de traducción para que los usuarios no necesiten instalar Docker, LibreTranslate ni configurar una API key.
+- Caché local de traducciones automáticas para evitar volver a traducir un capítulo ya procesado.
+- Mensajes internos del reproductor preparados para mostrarse en español o inglés.
+
+### Traducciones personalizadas
+- La antigua sección de traducciones `.txt` pasa a tratarse como **Traducciones personalizadas**.
+- Los archivos `.txt` personalizados se mantienen como una capa editable para corregir nombres, términos de lore o frases que no queden bien con la traducción automática.
+- Las traducciones personalizadas tienen prioridad sobre la traducción automática cuando existe un archivo compatible para el capítulo.
+- Se añade un acceso **Editar .txt** desde la lista de traducciones personalizadas.
+- Se mantienen `#ARKSTAGE_TITLE=` y `#LANG=es` / `#LANG=en` como metadatos de los archivos personalizados.
+
+### Importante sobre la primera traducción
+- El servidor gratuito de traducción puede entrar en reposo después de un periodo sin uso.
+- Cuando está dormido, el primer acceso puede tardar aproximadamente **30–90 segundos** en despertar.
+- Una vez despierto, la primera traducción completa de un capítulo puede tardar desde **alrededor de 1 minuto hasta varios minutos**, según la longitud del capítulo y la carga del servidor.
+- Los capítulos ya traducidos deberían abrir mucho más rápido gracias a la caché local.
+
+### Cambiado
+- OpenAI deja de ser necesario para la traducción automática.
+- Los usuarios finales no necesitan ninguna API key.
+
+---
+
 ## [1.2.2] - 2026-10-02
 
 ### Añadido
