@@ -6,9 +6,10 @@
 
 ### Archivo fan de historias de Arknights
 
-Explora historias, reproduce escenas y carga traducciones fan en una interfaz pensada para disfrutarlas de forma cómoda.
+Explora historias, reproduce escenas y utiliza traducción automática o traducciones personalizadas `.txt` en una interfaz pensada para disfrutarlas de forma cómoda.
 
 [![Platform](https://img.shields.io/badge/platform-Windows-0078D6?logo=windows)](../../releases)
+[![Version](https://img.shields.io/badge/version-1.2.3-2ea44f)](CHANGELOG.md)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/status-alpha-orange)](ROADMAP.md)
 
@@ -26,11 +27,98 @@ Explora historias, reproduce escenas y carga traducciones fan en una interfaz pe
 
 ## 📖 ¿Qué es Rhodes Archive?
 
-**Rhodes Archive** es un proyecto fan no oficial basado en el proyecto open-source **Arkstage**. Su objetivo es ofrecer una forma cómoda de navegar y reproducir historias de **Arknights**, con especial atención al soporte para traducciones fan y a una experiencia adaptada al español.
+**Rhodes Archive** es un proyecto fan no oficial basado en el proyecto open-source **Arkstage**. Su objetivo es ofrecer una forma cómoda de navegar y reproducir historias de **Arknights**, con especial atención a las traducciones y a una experiencia adaptada a español e inglés.
 
 La aplicación utiliza StoryPlayer y recursos procedentes de PRTS Wiki para reconstruir las escenas dentro del reproductor.
 
 > El proyecto se encuentra en fase **alpha**. Puede haber historias incompatibles, recursos que tarden en cargar o secciones todavía sin traducir completamente.
+
+---
+
+## ✨ Novedades de la versión 1.2.3
+
+- 🌐 Traducción automática mediante **LibreTranslate**.
+- 🇪🇸🇬🇧 Traducción de historias a español o inglés.
+- 🔑 No hace falta una API key de OpenAI.
+- 🖥️ El usuario no necesita instalar Docker ni LibreTranslate.
+- 💾 Las traducciones automáticas se guardan en caché para no repetir el trabajo cada vez.
+- ✏️ Los `.txt` pasan a ser **Traducciones personalizadas** y editables.
+- ⭐ Una traducción personalizada compatible tiene prioridad sobre la traducción automática.
+- 🌍 Mensajes internos del reproductor preparados para español e inglés.
+
+Consulta todos los cambios en [CHANGELOG.md](CHANGELOG.md).
+
+---
+
+## ⏳ Primera traducción y tiempo de espera
+
+La traducción automática utiliza un servidor de LibreTranslate alojado para Rhodes Archive.
+
+El servidor puede entrar en reposo cuando lleva un tiempo sin recibir tráfico. Si eso ocurre, la **primera carga** puede ser bastante más lenta de lo normal:
+
+- **Despertar del servidor:** aproximadamente **30–90 segundos**.
+- **Primera traducción de un capítulo:** desde **~1 minuto hasta varios minutos**, dependiendo de la longitud de la historia y de la carga del servidor.
+- **Capítulos ya traducidos:** deberían abrir mucho más rápido gracias a la caché local.
+
+Si la primera traducción parece parada, espera un poco antes de cerrar el capítulo. En versiones futuras se mejorará el indicador de progreso.
+
+---
+
+## 🌐 Traducción automática
+
+Cuando un capítulo no tiene una traducción personalizada compatible, Rhodes Archive puede generar una traducción automática mediante LibreTranslate.
+
+Flujo general:
+
+```text
+traducción personalizada compatible
+            ↓ si existe
+       usar el .txt
+            ↓ si no existe
+       LibreTranslate
+            ↓
+       caché local
+```
+
+El objetivo es que un usuario normal pueda instalar Rhodes Archive y usar las traducciones sin configurar claves, servidores ni herramientas adicionales.
+
+---
+
+## ✏️ Traducciones personalizadas
+
+Los archivos `.txt` se mantienen como una capa **personalizada y editable**.
+
+Son especialmente útiles para:
+
+- corregir nombres propios;
+- mejorar términos de lore;
+- ajustar frases mal traducidas automáticamente;
+- preparar traducciones revisadas manualmente;
+- compartir una versión personalizada de un capítulo.
+
+Las traducciones personalizadas tienen prioridad sobre la traducción automática cuando coinciden con el capítulo.
+
+Cada archivo debe comenzar por:
+
+```txt
+#ARKSTAGE_TITLE=PAGE_TITLE
+```
+
+Y puede indicar el idioma con:
+
+```txt
+#LANG=es
+```
+
+o:
+
+```txt
+#LANG=en
+```
+
+Después se incluye el script traducido.
+
+> Puedes editar diálogos, nombres y textos visibles, pero evita modificar comandos, identificadores o parámetros técnicos del guion, ya que una modificación incorrecta puede romper la reproducción.
 
 ---
 
@@ -46,10 +134,10 @@ La aplicación utiliza StoryPlayer y recursos procedentes de PRTS Wiki para reco
     <td><img src="docs/screenshots/2.png" alt="Biblioteca de historias de Rhodes Archive" /></td>
   </tr>
   <tr>
-    <td colspan="2" align="center"><strong>Traducciones</strong></td>
+    <td colspan="2" align="center"><strong>Traducciones personalizadas</strong></td>
   </tr>
   <tr>
-    <td colspan="2"><img src="docs/screenshots/3.png" alt="Gestor de traducciones de Rhodes Archive" /></td>
+    <td colspan="2"><img src="docs/screenshots/3.png" alt="Gestor de traducciones personalizadas de Rhodes Archive" /></td>
   </tr>
 </table>
 
@@ -57,16 +145,15 @@ La aplicación utiliza StoryPlayer y recursos procedentes de PRTS Wiki para reco
 
 ## ✨ Funciones
 
-- 🇪🇸 Interfaz principal en español
 - 📖 Reproducción de historias mediante StoryPlayer
-- 🌐 Traducciones externas mediante archivos `.txt`
+- 🌐 Traducción automática con LibreTranslate
+- ✏️ Traducciones personalizadas mediante archivos `.txt`
 - 🎬 Reproductor a pantalla completa
 - ⏩ Modo automático mediante la tecla `A` cuando está disponible
-- 💾 Caché local de recursos
+- 💾 Caché local de recursos y traducciones
 - 📦 Gestión y compresión de recursos
-- 🗂️ Sección propia de **Traducciones**
+- 🗂️ Sección propia de **Traducciones personalizadas**
 - 🎨 Interfaz y branding personalizados de Rhodes Archive
-- 🧩 Si no existe traducción para un capítulo, se reproduce el texto original
 
 ---
 
@@ -75,40 +162,10 @@ La aplicación utiliza StoryPlayer y recursos procedentes de PRTS Wiki para reco
 1. Descarga la versión más reciente desde **Releases**.
 2. Instala Rhodes Archive en Windows.
 3. Abre la biblioteca y selecciona una historia.
-4. Si existe una traducción compatible en la carpeta `translations`, Rhodes Archive la cargará automáticamente.
+4. Si existe una traducción personalizada compatible, Rhodes Archive la usa.
+5. Si no existe, puede generar la traducción automática correspondiente.
 
-No necesitas modificar los archivos originales del juego.
-
----
-
-## 🌍 Traducciones fan
-
-Las traducciones se guardan como archivos `.txt` independientes.
-
-La primera línea del archivo identifica exactamente la página de PRTS a la que pertenece:
-
-```txt
-#ARKSTAGE_TITLE=PAGE_TITLE
-```
-
-Debajo se incluye el script completo traducido de la historia.
-
-Ejemplo:
-
-```text
-translations/
-├── Ave Mujica Cap.1.txt
-└── Ave Mujica Cap 2.txt
-```
-
-Rhodes Archive compara `PAGE_TITLE` con la historia seleccionada:
-
-```text
-traducción encontrada  →  carga el .txt
-sin traducción         →  usa el texto original
-```
-
-Esto permite añadir, corregir o compartir traducciones sin modificar el reproductor.
+No necesitas modificar los archivos originales del juego ni configurar una API key.
 
 ---
 
@@ -116,11 +173,12 @@ Esto permite añadir, corregir o compartir traducciones sin modificar el reprodu
 
 Rhodes Archive sigue en desarrollo. Actualmente pueden aparecer, entre otros, estos problemas:
 
-- La primera carga de una historia puede tardar mientras se obtienen y guardan recursos.
+- La primera traducción puede tardar si el servidor necesita despertar.
 - Algunas historias pueden fallar si PRTS no responde correctamente.
 - Algunas partes secundarias de la interfaz todavía pueden aparecer en chino o inglés.
 - Determinadas historias pueden presentar incompatibilidades con StoryPlayer.
-- Un archivo de traducción con comandos modificados o dañados puede provocar errores en la reproducción.
+- Una traducción personalizada con comandos modificados o dañados puede provocar errores en la reproducción.
+- La calidad de una traducción automática puede variar, especialmente con nombres propios y terminología de lore.
 
 Si encuentras un fallo, abre un **Issue** e indica la historia, qué estabas haciendo y, si puedes, adjunta una captura.
 
@@ -193,6 +251,6 @@ La licencia MIT **no se aplica** a textos, imágenes, audio, música ni otros re
 
 <div align="center">
 
-**Rhodes Archive**
+**Rhodes Archive 1.2.3**
 
 </div>
