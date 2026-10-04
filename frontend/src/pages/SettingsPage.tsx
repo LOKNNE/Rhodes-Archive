@@ -47,6 +47,12 @@ export default function SettingsPage() {
   const [concurrency, setConcurrency] = useState(4);
   const [rateLimitKbps, setRateLimitKbps] = useState(0);
   const [envInfo, setEnvInfo] = useState("");
+  const [storyLanguage, setStoryLanguageState] = useState<"es" | "en">(
+    localStorage.getItem("rhodes-story-language") === "en" ? "en" : "es",
+  );
+  const [playerLanguage, setPlayerLanguageState] = useState<"es" | "en">(
+    localStorage.getItem("rhodes-ui-language") === "en" ? "en" : "es",
+  );
 
   useEffect(() => {
     const saved = localStorage.getItem("prts-nickname");
@@ -144,6 +150,18 @@ export default function SettingsPage() {
     showMsg("Nombre guardado");
   };
 
+  const setStoryLanguage = (value: "es" | "en") => {
+    localStorage.setItem("rhodes-story-language", value);
+    setStoryLanguageState(value);
+    showMsg(value === "es" ? "Historias en español" : "Stories in English");
+  };
+
+  const setPlayerLanguage = (value: "es" | "en") => {
+    localStorage.setItem("rhodes-ui-language", value);
+    setPlayerLanguageState(value);
+    showMsg(value === "es" ? "Mensajes del reproductor en español" : "Player messages in English");
+  };
+
   // Cache the assets of EVERY story in the index (one big background download).
   const cacheAllStories = async () => {
     if (!await confirmAction("Se descargarán los recursos de todas las historias. Puede consumir mucho almacenamiento y datos. ¿Continuar?")) return;
@@ -223,7 +241,7 @@ export default function SettingsPage() {
 
       {/* Nickname */}
       <div className="setting-group">
-        <label>Nombre del Doctor (sustituye &#123;@nickname&#125; en las historias)</label>
+        <label>Nombre del Doctor (sustituye &#{123;@nickname&#x125; en las historias)</label>
         <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
           <input
             type="text"
@@ -232,6 +250,26 @@ export default function SettingsPage() {
             placeholder="Doctor"
           />
           <button className="btn-primary" onClick={saveNickname}>Guardar</button>
+        </div>
+      </div>
+
+      {/* Translation languages */}
+      <div className="setting-group">
+        <label>Idioma de las historias</label>
+        <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", alignItems: "center" }}>
+          <button className={storyLanguage === "es" ? "btn-primary" : "nav-btn"} onClick={() => setStoryLanguage("es")}>Español</button>
+          <button className={storyLanguage === "en" ? "btn-primary" : "nav-btn"} onClick={() => setStoryLanguage("en")}>English</button>
+          <span style={{ fontSize: "13px", color: "var(--text-secondary)" }}>
+            Las traducciones .txt personalizadas del mismo idioma tienen prioridad; si no existen, se usa la traducción automática.
+          </span>
+        </div>
+      </div>
+
+      <div className="setting-group">
+        <label>Idioma de los mensajes del reproductor</label>
+        <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", alignItems: "center" }}>
+          <button className={playerLanguage === "es" ? "btn-primary" : "nav-btn"} onClick={() => setPlayerLanguage("es")}>Español</button>
+          <button className={playerLanguage === "en" ? "btn-primary" : "nav-btn"} onClick={() => setPlayerLanguage("en")}>English</button>
         </div>
       </div>
 
@@ -285,7 +323,7 @@ export default function SettingsPage() {
         <label>Consola de depuración</label>
         <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
           <button className="nav-btn" onClick={toggleDebugConsole}>
-            {debugConsole ? "Registro de depuración: Activado" : "Registro de depuración: Desactivado"}
+            {debugConsole ? "Registro de depuración Activado" : "Registro de depuración: Desactivado"}
           </button>
           <span style={{ fontSize: "13px", color: "var(--text-secondary)" }}>
             {debugConsole
@@ -315,7 +353,7 @@ export default function SettingsPage() {
               </div>
               <div style={{ wordBreak: "break-all", color: "var(--text-secondary)" }}>
                 Ubicación predeterminada: {resDir.default_dir}
-                {resDir.default_writable ? "" : " — sin permisos de escritura; se usa una alternativa"}
+                {resDir.default_writable ? "" :  — sin permisos de escritura; se usa una alternativa"}
               </div>
               <div style={{ color: "var(--text-secondary)", marginTop: "4px" }}>
                 Cambiar la carpeta no moverá automáticamente los recursos ya descargados. Se recomienda reiniciar la aplicación.

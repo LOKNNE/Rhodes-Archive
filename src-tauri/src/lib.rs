@@ -8,6 +8,7 @@ mod models;
 mod net;
 mod parser;
 mod translations;
+mod translate;
 
 use commands::{assets, cache, wiki};
 use tauri::Manager;
@@ -211,6 +212,9 @@ pub fn run() {
             translations::import_translation_file,
             translations::load_translation_for_title,
             translations::open_translation_folder,
+            translate::translation_cache_get,
+            translate::translation_cache_put,
+            translate::translate_segments,
             wiki::fetch_story_index,
             wiki::fetch_story_page,
             wiki::fetch_widget_bundle,
