@@ -141,7 +141,6 @@ pub fn import_translation_file(source_path: String) -> Result<String, String> {
         return Err("Solo se pueden importar archivos .txt".to_string());
     }
 
-    // Validate the file before copying it into Rhodes Archive.
     parse_translation_file(&source)?;
 
     let dir = translations_dir()?;
@@ -162,8 +161,13 @@ pub fn import_translation_file(source_path: String) -> Result<String, String> {
 }
 
 #[tauri::command]
-pub fn load_translation_for_title(page_title: String) -> Result<Option<String>, String> {
+pub fn load_translation_for_title(
+    page_title: String,
+    language: Option<String>,
+) -> Result<Option<String>, String> {
     let dir = translations_dir()?;
+    let wanted_language = language.map(|v| v.trim().to_lowercase());
+
     for entry in fs::read_dir(&dir).map_err(|e| format!("No se pudo leer la carpeta: {e}"))? {
         let entry = entry.map_err(|e| e.to_string())?;
         let path = entry.path();
@@ -171,9 +175,15 @@ pub fn load_translation_for_title(page_title: String) -> Result<Option<String>, 
             continue;
         }
         if let Ok((title, script)) = parse_translation_file(&path) {
-            if title == page_title {
-                return Ok(Some(script));
+            if title != page_title {
+                continue;
             }
+            if let Some(ref wanted) = wanted_language {
+                if translation_language(&script) != *wanted {
+                    continue;
+                }
+            }
+            return Ok(Some(script));
         }
     }
     Ok(None)
