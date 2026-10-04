@@ -12,6 +12,6 @@ export const getTranslationsFolder = () => invoke<string>("translation_folder_pa
 export const listTranslations = () => invoke<TranslationFileInfo[]>("list_translation_files");
 export const importTranslation = (sourcePath: string) =>
   invoke<string>("import_translation_file", { sourcePath });
-export const loadTranslation = (pageTitle: string) =>
-  invoke<string | null>("load_translation_for_title", { pageTitle });
+export const loadTranslation = (pageTitle: string, language?: "es" | "en") =>
+  invoke<string | null>("load_translation_for_title", { pageTitle, language });
 export const openTranslationsFolder = () => invoke<void>("open_translation_folder");
