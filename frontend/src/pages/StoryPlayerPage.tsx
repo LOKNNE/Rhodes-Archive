@@ -11,6 +11,22 @@ import { setImmersive } from "../lib/immersive";
 import { useHidePlayerBack } from "../lib/uiSettings";
 import { disposeEngineFrame } from "../lib/storyPlayerBoot";
 import { loadTranslation } from "../lib/translationsFolder";
+import { getAutomaticTranslation } from "../lib/autoTranslate";
+
+type StoryLanguage = "es" | "en";
+type UiLanguage = "es" | "en";
+
+function getStoryLanguage(): StoryLanguage {
+  return localStorage.getItem("rhodes-story-language") === "en" ? "en" : "es";
+}
+
+function getUiLanguage(): UiLanguage {
+  return localStorage.getItem("rhodes-ui-language") === "en" ? "en" : "es";
+}
+
+function uiText(es: string, en: string): string {
+  return getUiLanguage() === "en" ? en : es;
+}
 
 /**
  * Story player page — loads the ORIGINAL PRTS ScenarioSimulator engine via bootEngine().
@@ -23,7 +39,7 @@ export default function StoryPlayerPage() {
   const hidePlayerBack = useHidePlayerBack();
   const containerRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(true);
-  const [status, setStatus] = useState("正在加载...");
+  const [status, setStatus] = useState(uiText("Cargando...", "Loading..."));
   const [error, setError] = useState<string | null>(null);
   const [syncWarning, setSyncWarning] = useState<string | null>(null);
 
@@ -73,36 +89,57 @@ export default function StoryPlayerPage() {
       let stage = "inicio";
       try {
         stage = "loadStoryRuntime";
-        setStatus(`正在同步剧情与演出引擎: ${decodedTitle}...`);
+        setStatus(uiText(`Sincronizando historia: ${decodedTitle}...`, `Syncing story: ${decodedTitle}...`));
         const runtime = await loadStoryRuntime(decodedTitle);
         console.log("PAGE TITLE:", decodedTitle);
         console.log("SCRIPT ARKNIGHTS:", runtime.story.script);
         if (runtime.source !== "live") {
-          setSyncWarning("PRTS 同步失败，当前使用上次验证成功的离线快照；建议联网后重新进入。\n" + (runtime.warning || ""));
+          setSyncWarning(uiText("No se pudo sincronizar PRTS; se usará la última copia offline válida. Inténtalo de nuevo con conexión.\n", "PRTS sync failed; using the last valid offline snapshot. Try again when online.\n") + (runtime.warning || ""));
         }
         if (cancelled) return;
 
         stage = "loadTranslation";
-        setStatus("Buscando traducción...");
+        const storyLanguage = getStoryLanguage();
+        setStatus(uiText("Buscando traducción...", "Looking for translation..."));
         let scriptToPlay = runtime.story.script;
+
         try {
-          const externalTranslation = await loadTranslation(decodedTitle);
+          const externalTranslation = await loadTranslation(decodedTitle, storyLanguage);
+
           if (externalTranslation) {
             scriptToPlay = externalTranslation;
             console.log("TRANSLATION FILE: loaded for", decodedTitle);
+          } else {
+            stage = "autoTranslate";
+            scriptToPlay = await getAutomaticTranslation(
+              decodedTitle,
+              runtime.story.script,
+              storyLanguage,
+              (message) => {
+                if (!cancelled) setStatus(message);
+              },
+            );
+            console.log("AUTOMATIC TRANSLATION: loaded for", decodedTitle, storyLanguage);
           }
         } catch (translationError) {
           setSyncWarning(
-            `No se pudo leer la carpeta de traducciones; se usará el texto original.\n${
-              translationError instanceof Error
-                ? translationError.message
-                : String(translationError)
-            }`,
+            uiText(
+              `No se pudo cargar o generar la traducción; se usará el texto original.\n${
+                translationError instanceof Error
+                  ? translationError.message
+                  : String(translationError)
+              }`,
+              `The translation could not be loaded or generated; the original text will be used.\n${
+                translationError instanceof Error
+                  ? translationError.message
+                  : String(translationError)
+              }`,
+            ),
           );
         }
 
         stage = "bootEngine";
-        setStatus("正在初始化播放器...");
+        setStatus(uiText("Inicializando reproductor...", "Initializing player..."));
         const iframe = document.createElement("iframe");
         iframe.style.cssText = "width:100%;height:100%;border:0;display:block;background:#000;";
         container.innerHTML = "";
@@ -140,11 +177,11 @@ export default function StoryPlayerPage() {
               });
 
               setSyncWarning(
-                `La traducción de este capítulo dio error y Arkstage ha abierto el guion original.\n${
+                uiText(`La traducción de este capítulo dio error y Rhodes Archive ha abierto el guion original.\n${
                   candidateError instanceof Error
                     ? candidateError.message
                     : String(candidateError)
-                }`
+                }`, `This chapter translation failed and Rhodes Archive opened the original script.\n${candidateError instanceof Error ? candidateError.message : String(candidateError)}`)
               );
             } catch (originalError) {
               disposeEngineFrame(originalFrame);
@@ -239,20 +276,20 @@ export default function StoryPlayerPage() {
   if (error) {
     return (
       <div style={centerStyle}>
-        <div style={{ color: "#f44336", marginBottom: "16px" }}>加载失败: {error}</div>
-        <button onClick={handleBack} style={btnStyle}>返回</button>
+        <div style={{ color: "#f44336", marginBottom: "16px" }}>{uiText("Error al cargar", "Load failed")}: {error}</div>
+        <button onClick={handleBack} style={btnStyle}>{uiText("Volver", "Back")}</button>
       </div>
     );
   }
 
   return (
     <div style={{ width: "100%", height: "100%", background: "#000", position: "relative" }}>
-      {!hidePlayerBack && <button onClick={handleBack} style={backBtnStyle} aria-label="返回" title="返回">◀</button>}
+      {!hidePlayerBack && <button onClick={handleBack} style={backBtnStyle} aria-label={uiText("Volver", "Back")} title={uiText("Volver", "Back")}>◀</button>}
 
       {syncWarning && (
         <div style={warningStyle} role="status">
           {syncWarning}
-          <button onClick={() => setSyncWarning(null)} style={warningCloseStyle}>知道了</button>
+          <button onClick={() => setSyncWarning(null)} style={warningCloseStyle}>{uiText("Entendido", "Got it")}</button>
         </div>
       )}
 
