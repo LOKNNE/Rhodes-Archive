@@ -37,7 +37,7 @@ Todos los cambios importantes de **Rhodes Archive** se documentarán aquí.
 - Los capítulos ya traducidos deberían abrir mucho más rápido gracias a la caché local.
 
 ### Cambiado
-- OpenAI deja de ser necesario para la traducción automática.
+- La traducción automática pasa a utilizar el servidor público de LibreTranslate.
 - Los usuarios finales no necesitan ninguna API key.
 
 ---
