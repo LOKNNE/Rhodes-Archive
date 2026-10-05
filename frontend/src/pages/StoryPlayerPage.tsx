@@ -42,6 +42,7 @@ export default function StoryPlayerPage() {
   const [status, setStatus] = useState(uiText("Cargando...", "Loading..."));
   const [error, setError] = useState<string | null>(null);
   const [syncWarning, setSyncWarning] = useState<string | null>(null);
+  const [translationFailed, setTranslationFailed] = useState(false);
 
   const decodedTitle = pageTitle ? decodeURIComponent(pageTitle) : "";
   const { busy: compressionBusy } = useCompression();
@@ -89,6 +90,7 @@ export default function StoryPlayerPage() {
       let stage = "inicio";
       try {
         stage = "loadStoryRuntime";
+        setTranslationFailed(false);
         setStatus(uiText(`Sincronizando historia: ${decodedTitle}...`, `Syncing story: ${decodedTitle}...`));
         const runtime = await loadStoryRuntime(decodedTitle);
         console.log("PAGE TITLE:", decodedTitle);
@@ -100,13 +102,14 @@ export default function StoryPlayerPage() {
 
         stage = "loadTranslation";
         const storyLanguage = getStoryLanguage();
-        setStatus(uiText("Buscando traducción...", "Looking for translation..."));
+        setStatus(uiText("Buscando traducción personalizada...", "Looking for custom translation..."));
         let scriptToPlay = runtime.story.script;
 
         try {
           const externalTranslation = await loadTranslation(decodedTitle, storyLanguage);
 
           if (externalTranslation) {
+            setStatus(uiText("Usando traducción personalizada...", "Using custom translation..."));
             scriptToPlay = externalTranslation;
             console.log("TRANSLATION FILE: loaded for", decodedTitle);
           } else {
@@ -122,6 +125,7 @@ export default function StoryPlayerPage() {
             console.log("AUTOMATIC TRANSLATION: loaded for", decodedTitle, storyLanguage);
           }
         } catch (translationError) {
+          setTranslationFailed(true);
           setSyncWarning(
             uiText(
               `No se pudo cargar o generar la traducción; se usará el texto original.\n${
@@ -272,12 +276,16 @@ export default function StoryPlayerPage() {
   }, [decodedTitle]);
 
   const handleBack = () => navigate(-1);
+  const retryTranslation = () => window.location.reload();
 
   if (error) {
     return (
       <div style={centerStyle}>
         <div style={{ color: "#f44336", marginBottom: "16px" }}>{uiText("Error al cargar", "Load failed")}: {error}</div>
-        <button onClick={handleBack} style={btnStyle}>{uiText("Volver", "Back")}</button>
+        <div style={{ display: "flex", gap: "10px" }}>
+          <button onClick={retryTranslation} style={btnStyle}>{uiText("Reintentar", "Retry")}</button>
+          <button onClick={handleBack} style={btnStyle}>{uiText("Volver", "Back")}</button>
+        </div>
       </div>
     );
   }
@@ -289,13 +297,18 @@ export default function StoryPlayerPage() {
       {syncWarning && (
         <div style={warningStyle} role="status">
           {syncWarning}
+          {translationFailed && (
+            <button onClick={retryTranslation} style={warningRetryStyle}>
+              {uiText("Reintentar traducción", "Retry translation")}
+            </button>
+          )}
           <button onClick={() => setSyncWarning(null)} style={warningCloseStyle}>{uiText("Entendido", "Got it")}</button>
         </div>
       )}
 
       {loading && (
         <div style={centerStyle}>
-          <div style={{ color: "#929292", fontSize: "16px" }}>{status}</div>
+          <div style={{ color: "#929292", fontSize: "16px", textAlign: "center", maxWidth: "680px" }}>{status}</div>
         </div>
       )}
 
@@ -351,6 +364,17 @@ const warningCloseStyle: React.CSSProperties = {
   background: "#f4c430",
   border: 0,
   borderRadius: "3px",
+  cursor: "pointer",
+};
+
+const warningRetryStyle: React.CSSProperties = {
+  marginLeft: "12px",
+  padding: "3px 8px",
+  color: "#f4c430",
+  background: "rgba(0,0,0,0.28)",
+  border: "1px solid #f4c430",
+  borderRadius: "3px",
+  cursor: "pointer",
 };
 
 const backBtnStyle: React.CSSProperties = {
