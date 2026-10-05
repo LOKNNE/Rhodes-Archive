@@ -4,13 +4,20 @@ Todos los cambios importantes de **Rhodes Archive** se documentarán aquí.
 
 ## [1.2.4] - 2026-10-05
 
+### Añadido
+- Botón **Reintentar traducción** cuando la traducción automática falla.
+- Botón **Reintentar** en errores generales de carga del reproductor.
+- Acceso directo para **Abrir carpeta** desde Traducciones personalizadas.
+
+### Mejorado
+- Estados de traducción más claros durante la carga: comprobación de caché, carga desde caché, conexión con el servidor, traducción del capítulo y guardado en caché.
+- Mensaje específico cuando se está usando una **traducción personalizada**.
+- Presentación más limpia del proyecto y navegación más clara hacia las traducciones personalizadas.
+
 ### Cambiado
 - El acceso principal pasa a llamarse **Traducciones personalizadas**.
 - El acceso flotante a traducciones deja de aparecer en Historias, Ajustes y otras pantallas secundarias.
 - Limpieza general de metadatos y archivos auxiliares del repositorio.
-
-### Mejorado
-- Presentación más limpia del proyecto y navegación más clara hacia las traducciones personalizadas.
 
 ---
 
