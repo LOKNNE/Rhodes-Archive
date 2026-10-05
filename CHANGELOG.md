@@ -2,6 +2,18 @@
 
 Todos los cambios importantes de **Rhodes Archive** se documentarán aquí.
 
+## [1.2.4] - 2026-10-05
+
+### Cambiado
+- El acceso principal pasa a llamarse **Traducciones personalizadas**.
+- El acceso flotante a traducciones deja de aparecer en Historias, Ajustes y otras pantallas secundarias.
+- Limpieza general de metadatos y archivos auxiliares del repositorio.
+
+### Mejorado
+- Presentación más limpia del proyecto y navegación más clara hacia las traducciones personalizadas.
+
+---
+
 ## [1.2.3] - 2026-10-04
 
 ### Añadido
@@ -77,12 +89,3 @@ Todos los cambios importantes de **Rhodes Archive** se documentarán aquí.
 - Flujo de carga de historias y compatibilidad con StoryPlayer.
 - Manejo de caché y recursos locales.
 - Integración de traducciones personalizadas.
-
-### Conocido
-- Algunas historias pueden tardar en cargar la primera vez.
-- Algunas partes de la interfaz pueden seguir sin traducirse completamente.
-- Al ser una versión alpha, pueden existir errores de compatibilidad con determinadas historias o recursos.
-
----
-
-Rhodes Archive sigue en desarrollo activo. Las versiones alpha pueden cambiar con frecuencia.
