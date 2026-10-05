@@ -137,6 +137,12 @@ export async function getAutomaticTranslation(
   targetLanguage: "es" | "en",
   onStatus?: (message: string) => void,
 ): Promise<string> {
+  onStatus?.(
+    targetLanguage === "es"
+      ? "Comprobando caché de traducción..."
+      : "Checking translation cache...",
+  );
+
   const cached = await invoke<string | null>("translation_cache_get", {
     title,
     sourceScript,
@@ -146,8 +152,8 @@ export async function getAutomaticTranslation(
   if (cached) {
     onStatus?.(
       targetLanguage === "es"
-        ? "Usando traducción guardada..."
-        : "Using saved translation...",
+        ? "Cargando traducción desde caché..."
+        : "Loading translation from cache...",
     );
     return cached;
   }
@@ -170,14 +176,22 @@ export async function getAutomaticTranslation(
   const pending = segments.filter((segment) => !translations.has(segment));
   const batches = Math.ceil(pending.length / BATCH_SIZE);
 
+  if (pending.length > 0) {
+    onStatus?.(
+      targetLanguage === "es"
+        ? "Conectando con el servidor de traducción... Puede tardar si está arrancando."
+        : "Connecting to the translation server... This may take a while if it is starting up.",
+    );
+  }
+
   for (let start = 0, batch = 0; start < pending.length; start += BATCH_SIZE) {
     batch += 1;
     const group = pending.slice(start, start + BATCH_SIZE);
 
     onStatus?.(
       targetLanguage === "es"
-        ? `Traduciendo con LibreTranslate... ${batch}/${batches}`
-        : `Translating with LibreTranslate... ${batch}/${batches}`,
+        ? `Traduciendo capítulo... ${batch}/${batches}`
+        : `Translating chapter... ${batch}/${batches}`,
     );
 
     const result = await invoke<string[]>("translate_segments", {
@@ -189,8 +203,8 @@ export async function getAutomaticTranslation(
     if (result.length !== group.length) {
       throw new Error(
         targetLanguage === "es"
-          ? "LibreTranslate devolvió una cantidad incorrecta de líneas."
-          : "LibreTranslate returned an incorrect number of lines.",
+          ? "El servidor de traducción devolvió una cantidad incorrecta de líneas."
+          : "The translation server returned an incorrect number of lines.",
       );
     }
 
@@ -201,6 +215,12 @@ export async function getAutomaticTranslation(
     prepared,
     translations,
     targetLanguage,
+  );
+
+  onStatus?.(
+    targetLanguage === "es"
+      ? "Guardando traducción en caché..."
+      : "Saving translation to cache...",
   );
 
   await invoke("translation_cache_put", {
