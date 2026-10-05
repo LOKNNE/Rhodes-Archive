@@ -48,7 +48,7 @@ export default function HomePage() {
           Historias
         </button>
         <button className="nav-btn" onClick={() => navigate("/translations")}>
-          Traducciones
+          Traducciones personalizadas
         </button>
         <button className="nav-btn" onClick={() => navigate("/settings")}>
           Ajustes
