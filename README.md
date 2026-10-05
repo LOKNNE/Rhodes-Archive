@@ -9,7 +9,7 @@
 Explora historias, reproduce escenas y utiliza traducción automática o traducciones personalizadas `.txt` en una interfaz pensada para disfrutarlas de forma cómoda.
 
 [![Platform](https://img.shields.io/badge/platform-Windows-0078D6?logo=windows)](../../releases)
-[![Version](https://img.shields.io/badge/version-1.2.3-2ea44f)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.2.4-2ea44f)](CHANGELOG.md)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/status-alpha-orange)](ROADMAP.md)
 
@@ -35,16 +35,15 @@ La aplicación utiliza StoryPlayer y recursos procedentes de PRTS Wiki para reco
 
 ---
 
-## ✨ Novedades de la versión 1.2.3
+## ✨ Novedades de la versión 1.2.4
 
-- 🌐 Traducción automática mediante **LibreTranslate**.
+- ✏️ El acceso principal pasa a llamarse **Traducciones personalizadas**.
+- 🧹 El botón flotante de traducciones ya no aparece en Historias, Ajustes ni otras pantallas secundarias.
+- 🗂️ Navegación más limpia y presentación general del proyecto mejorada.
+- 🌐 Se mantiene la traducción automática mediante **LibreTranslate**.
 - 🇪🇸🇬🇧 Traducción de historias a español o inglés.
-- 🔑 No hace falta una API key de OpenAI.
-- 🖥️ El usuario no necesita instalar Docker ni LibreTranslate.
 - 💾 Las traducciones automáticas se guardan en caché para no repetir el trabajo cada vez.
-- ✏️ Los `.txt` pasan a ser **Traducciones personalizadas** y editables.
 - ⭐ Una traducción personalizada compatible tiene prioridad sobre la traducción automática.
-- 🌍 Mensajes internos del reproductor preparados para español e inglés.
 
 Consulta todos los cambios en [CHANGELOG.md](CHANGELOG.md).
 
@@ -165,7 +164,7 @@ Después se incluye el script traducido.
 4. Si existe una traducción personalizada compatible, Rhodes Archive la usa.
 5. Si no existe, puede generar la traducción automática correspondiente.
 
-No necesitas modificar los archivos originales del juego ni configurar una API key.
+No necesitas modificar los archivos originales del juego ni configurar claves externas.
 
 ---
 
@@ -251,6 +250,6 @@ La licencia MIT **no se aplica** a textos, imágenes, audio, música ni otros re
 
 <div align="center">
 
-**Rhodes Archive 1.2.3**
+**Rhodes Archive 1.2.4**
 
 </div>
