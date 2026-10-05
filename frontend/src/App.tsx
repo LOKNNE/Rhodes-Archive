@@ -15,7 +15,6 @@ import { startKeepalive } from "./lib/keepalive";
 import { BookshelfMetadataProvider } from "./lib/BookshelfMetadataContext";
 import ManifestProbePage from "./pages/ManifestProbePage";
 import TranslationsPage from "./pages/TranslationsPage";
-import TranslationsShortcut from "./components/TranslationsShortcut";
 import CompanionHubPage from "./pages/CompanionHubPage";
 import OperatorsPage from "./pages/OperatorsPage";
 import BannersPage from "./pages/BannersPage";
@@ -66,7 +65,6 @@ export default function App() {
         </Routes>
         {isTauri && <DownloadBar />}
         {isTauri && <DebugConsole />}
-        {isTauri && <TranslationsShortcut />}
       </DownloadProvider>
       </CompressionProvider>
       </BookshelfMetadataProvider>
